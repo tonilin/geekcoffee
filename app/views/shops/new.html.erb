@@ -1,1 +1,27 @@
-123
+<div class="span12">
+
+  <h3> 建立新咖啡館 </h3>
+
+  <div class="row">
+    <div class="span6">
+
+      <%= simple_form_for @shop, :url => shops_path(@shop), :html => {:class => "form-horizontal"} do |f| %>
+        <%= f.input :name %>
+        <%= f.input :description %>
+        <%= f.input :address %>
+        <%= f.input :hours %>
+        <%= f.input :is_wifi_free %>
+        <%= f.input :have_plugs %>
+        <%= f.input :plug_price %>
+        <%= f.submit "建立", :disable_with => '建立中...', :class => "btn btn-primary btn-submit pull-right" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="location-preview">
+
+
+  </div>
+
+
+</div>
