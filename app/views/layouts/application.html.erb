@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= render_page_title_tag %>
+  <%= render_page_description_meta_tag %>
+  <%= render_page_keywords_meta_tag %>
+  <%= render_page_image_link_tag %>
+  <%= csrf_meta_tag %>
+
+  <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag "application" %>
+  
+  <%= yield :stylesheets %>
+
+  <meta property="og:title"       content="<%= page_title ||  SeoHelper.configuration.site_name %>"/>
+  <meta property="og:description" content="<%= page_description || SeoHelper.configuration.default_page_description %>"/>
+  <meta property="og:image"   content="<%= page_image ||  SeoHelper.configuration.default_page_image %>"/>
+
+</head>
+<body>
+
+  <div class="container">
+      <div class="content">
+        <div class="row">
+          <%= yield %>
+        </div> 
+      </div>
+
+      <%= render :partial => "common/footer" %>    
+  </div>
+
+
+  <%= render :partial => "common/bootstrap_modal" %>    
+  <%= render :partial => "common/facebook_js" %>
+  <%= render :partial => "common/google_analytics" %>
+ 
+  <%= javascript_include_tag "application" %>
+
+  <%= yield :javascripts %>
+
+
+</body>
+</html>
