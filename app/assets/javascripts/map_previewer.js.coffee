@@ -6,16 +6,18 @@ class MapPreviewer
     }
 
     @map = new google.maps.Map(@container[0], mapOptions);
+    @shop_address_input = $("#shop_address")
+
 
     @bindEvents()
     @addressAutoComplate()
 
   bindEvents: ->
-    $("#shop_address").on "keydown", (event) ->
+    @shop_address_input.on "keydown", (event) ->
       event.preventDefault() if event.keyCode is 13
 
   addressAutoComplate: ->
-    @autocomplete = new google.maps.places.Autocomplete $("#shop_address")[0], {
+    @autocomplete = new google.maps.places.Autocomplete @shop_address_input[0], {
       types: ['geocode']
     }
     google.maps.event.addListener @autocomplete, 'place_changed', =>
