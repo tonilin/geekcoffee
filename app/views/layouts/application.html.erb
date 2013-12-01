@@ -7,6 +7,7 @@
   <%= render_page_image_link_tag %>
   <%= csrf_meta_tag %>
 
+  <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag "application" %>
   
   <%= yield :stylesheets %>
@@ -18,19 +19,21 @@
 </head>
 <body>
 
+  <div class="header-image">
+    <div class="headline">
+      <div class="container">
+        <h1>Geek Coffee</h1>
+        <h2>尋找你附近的上網咖啡廳</h2>
+      </div>
+    </div>
+  </div>
 
-<%= render :partial => "common/menu" %>
 
   <div class="container">
-
-      <%#= notice_message %>
-
       <div class="content">
         <div class="row">
           <%= yield %>
-          <%= yield (:sidebar) %>
         </div> 
-    
       </div>
 
       <%= render :partial => "common/footer" %>    
