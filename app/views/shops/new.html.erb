@@ -1,33 +1,24 @@
 <div class="span12 new-shop-page">
 
-  <h3> 建立新咖啡館 </h3>
-
   <div class="row">
+    <div class="hero-unit">
+      <h2>建立新咖啡館</h2>
 
-    <div class="span6">
       <div class="map-preview"></div>
+
+      <div class="shop-location-form">
+        <%= simple_form_for @shop, :url => shops_path(@shop), :html => {:class => "form-horizontal"} do |f| %>
+          <%= f.hidden_field :lat %>
+          <%= f.hidden_field :lng %>
+
+          <div class="input-append">
+            <%= f.input_field :address, :class => "input-append span4"  %>
+            <%= f.submit "建立", :disable_with => '建立中...', :class => "btn btn-primary btn-submit pull-right" %>
+          </div>
+
+        <% end %>
+      </div>
     </div>
-
-
-    <div class="span6">
-
-      <%= simple_form_for @shop, :url => shops_path(@shop), :html => {:class => "form-horizontal"} do |f| %>
-        <%= f.hidden_field :lat %>
-        <%= f.hidden_field :lng %>
-        <%= f.input :name %>
-        <%= f.input :description %>
-        <%= f.input :address %>
-        <%= f.input :hours %>
-        <%= f.input :is_wifi_free %>
-        <%= f.input :have_plugs %>
-        <%= f.input :plug_price %>
-        <%= f.submit "建立", :disable_with => '建立中...', :class => "btn btn-primary btn-submit pull-right" %>
-      <% end %>
-    </div>
-
-
-  </div>
-
 
 
 
