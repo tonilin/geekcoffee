@@ -23,16 +23,39 @@ class MapPreviewer
         event.preventDefault()
       else
         @submitBtn.attr("disabled", "disabled")
-    
+
     @autocomplete = new google.maps.places.Autocomplete @shopAddressInput[0], {
       types: ['geocode']
     }
     google.maps.event.addListener @autocomplete, 'place_changed', =>
-      @handlePlaceChaged()
+      place = @autocomplete.getPlace()   
 
-  handlePlaceChaged: ->
-    place = @autocomplete.getPlace()   
+      if !place.geometry
+        @addressPrediction(place.name)
+      else
+        @handlePlaceChaged(place)
 
+  addressPrediction: (address_name)=>
+
+    prediction = new google.maps.places.AutocompleteService()
+
+    prediction.getPlacePredictions {
+      input: address_name,
+      types: ['geocode']
+    }, (place)=>
+      if !place
+        return
+
+      place = place[0]
+      placeReference = place.reference
+
+      placeDetailService = new google.maps.places.PlacesService(@map)
+      placeDetailService.getDetails {
+        reference: placeReference
+      }, (result) =>
+        @handlePlaceChaged(result)
+
+  handlePlaceChaged: (place)->
     location = place.geometry.location
     viewPort = place.geometry.viewport
     lat = location.ob
