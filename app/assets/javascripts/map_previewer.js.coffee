@@ -6,18 +6,25 @@ class MapPreviewer
     }
 
     @map = new google.maps.Map(@container[0], mapOptions);
-    @shop_address_input = $("#shop_address")
+    @shopAddressInput = $("#shop_address")
+    @submitBtn = $(".btn-submit")
 
 
     @bindEvents()
     @addressAutoComplate()
 
   bindEvents: ->
-    @shop_address_input.on "keydown", (event) ->
-      event.preventDefault() if event.keyCode is 13
+    return 
+
 
   addressAutoComplate: ->
-    @autocomplete = new google.maps.places.Autocomplete @shop_address_input[0], {
+    @shopAddressInput.on "keydown", (event) =>
+      if event.keyCode == 13
+        event.preventDefault()
+      else
+        @submitBtn.attr("disabled", "disabled")
+    
+    @autocomplete = new google.maps.places.Autocomplete @shopAddressInput[0], {
       types: ['geocode']
     }
     google.maps.event.addListener @autocomplete, 'place_changed', =>
@@ -25,6 +32,7 @@ class MapPreviewer
 
   handlePlaceChaged: ->
     place = @autocomplete.getPlace()   
+
     location = place.geometry.location
     viewPort = place.geometry.viewport
     lat = location.ob
@@ -35,6 +43,8 @@ class MapPreviewer
 
     @moveToLocation(location)
     @markLocation(location)
+
+    @submitBtn.removeAttr("disabled")
 
   moveToLocation: (location)->
     @map.setCenter(location)
