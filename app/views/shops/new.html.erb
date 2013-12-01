@@ -12,6 +12,8 @@
     <div class="span6">
 
       <%= simple_form_for @shop, :url => shops_path(@shop), :html => {:class => "form-horizontal"} do |f| %>
+        <%= f.hidden_field :lat %>
+        <%= f.hidden_field :lng %>
         <%= f.input :name %>
         <%= f.input :description %>
         <%= f.input :address %>
