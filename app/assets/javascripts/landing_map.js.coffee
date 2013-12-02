@@ -33,8 +33,8 @@ class LandingMap
         map: @map,
         title: shop.name
       }
-      marker = new google.maps.Marker(markerOptions);
-      marker.metadata = {type: "point", id: 1};
+      marker = new google.maps.Marker(markerOptions)
+      marker.setValues({id: shop.id});
 
 $ ->
   if $(".landing-map").length > 0
