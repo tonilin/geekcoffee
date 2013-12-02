@@ -15,7 +15,7 @@ class ShopsController < ApplicationController
     if @shop.save
       redirect_to root_path,  :flash => { :success => "成功建立咖啡館" }
     else
-      render :new
+      render :new_step2
     end
   end
 
