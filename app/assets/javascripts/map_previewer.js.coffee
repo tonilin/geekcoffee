@@ -53,6 +53,7 @@ class MapPreviewer
       placeDetailService.getDetails {
         reference: placeReference
       }, (result) =>
+        @shopAddressInput.val(result.formatted_address)
         @handlePlaceChaged(result)
 
   handlePlaceChaged: (place)->
@@ -67,6 +68,7 @@ class MapPreviewer
     @moveToLocation(location)
     @markLocation(location)
 
+    @shopAddressInput.attr("disabled", "disabled")
     @submitBtn.removeAttr("disabled")
 
   moveToLocation: (location)->
