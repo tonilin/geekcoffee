@@ -1,0 +1,20 @@
+<div class="span12 new-shop-step2-page">
+
+  <div class="row">
+    <div class="hero-unit">
+      <h2>填入咖啡館詳細資料</h2>
+
+      <%= simple_form_for @shop, :url => shops_path, :html => {:class => "form-horizontal"} do |f| %>
+          <%= f.hidden_field :lat %>
+          <%= f.hidden_field :lng %>
+          <%= f.hidden_field :address %>
+          <%= f.input :name, :label => "咖啡館名稱" %>
+          <%= f.input :address, :label => "地址", :disabled => true %>
+          <%= f.input :is_wifi_free, :label => "是否有免費 WIFI" %>
+          <%= f.input :have_plugs, :label => "是否有插座" %>
+          <%= f.input :hours, :label => "營業時間" %>
+          <%= f.input :description, :label => "描述" %>
+      <% end %>
+    </div>
+  </div>
+</div>
