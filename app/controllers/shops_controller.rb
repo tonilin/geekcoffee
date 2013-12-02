@@ -20,6 +20,12 @@ class ShopsController < ApplicationController
   end
 
   def index
+    respond_to do |format|
+      format.json do
+        render :json => Shop.all, :each_serializer => ShopSimpleSerializer
+      end
+    end
+
 
   end
 
