@@ -13,7 +13,7 @@ class ShopsController < ApplicationController
     @shop = Shop.new(shop_params)
 
     if @shop.save
-      redirect_to root_path
+      redirect_to root_path,  :flash => { :success => "成功建立咖啡館" }
     else
       render :new
     end
