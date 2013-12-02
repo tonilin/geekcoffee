@@ -3,6 +3,10 @@ Geekcoffee::Application.routes.draw do
   root :to => 'pages#welcome'
 
 
-  resources :shops
+  resources :shops do
+    collection do
+      post :new_step2
+    end
+  end
 
 end
