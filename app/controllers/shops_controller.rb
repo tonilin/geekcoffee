@@ -4,6 +4,11 @@ class ShopsController < ApplicationController
     @shop = Shop.new
   end
 
+  def new_step2
+    @shop = Shop.new(shop_params)
+  end
+
+
   def create
     @shop = Shop.new(shop_params)
 
@@ -17,7 +22,7 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :description, :hours, :is_wifi_free, :have_plugs, :plug_price)
+    params.require(:shop).permit(:name, :address, :lat, :lng, :description, :hours, :is_wifi_free, :have_plugs, :plug_price)
   end
 
 
