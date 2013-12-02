@@ -22,7 +22,7 @@ class MapPreviewer
       if event.keyCode == 13
         event.preventDefault()
       else
-        @submitBtn.attr("disabled", "disabled")
+        @disableSubmit()
 
     @autocomplete = new google.maps.places.Autocomplete @shopAddressInput[0], {
       types: ['geocode']
@@ -68,8 +68,18 @@ class MapPreviewer
     @moveToLocation(location)
     @markLocation(location)
 
+    @disableAddressInput()
+    @enableSubmit()
+
+
+  disableAddressInput: ->
     @shopAddressInput.attr("disabled", "disabled")
+
+  enableSubmit: ->
     @submitBtn.removeAttr("disabled")
+
+  disableSubmit: ->
+    @submitBtn.attr("disabled", "disabled")
 
   moveToLocation: (location)->
     @map.setCenter(location)
