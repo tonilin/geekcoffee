@@ -4,23 +4,29 @@
     <div class="hero-unit">
       <h2>建立新咖啡館</h2>
 
-      <div class="map-preview"></div>
-
+      <%= simple_form_for @shop, :url => shops_path(@shop), :html => {:class => "form-horizontal"} do |f| %>
       <div class="shop-location-form">
-        <%= simple_form_for @shop, :url => shops_path(@shop), :html => {:class => "form-horizontal"} do |f| %>
+
           <%= f.hidden_field :lat %>
           <%= f.hidden_field :lng %>
+          <%= f.hidden_field :address %>
 
           <div class="input-append">
-            <%= f.input_field :address, :class => "input-append span4"  %>
-            <%= f.submit "建立", :disabled => true, :disable_with => '建立中...', :class => "btn btn-primary btn-submit" %>
+            <input id="address-search-input" class="input-append span4" type="text">
+            <%= button_tag "搜尋", :class => "btn btn-primary" %>
           </div>
-
-        <% end %>
       </div>
+
+      <div class="map-preview"></div>
+      <% end %>
+
     </div>
-
-
-
-
 </div>
+
+
+<script id="info-window-template" type="text/x-handlebars-template">
+  <div class="info-window">
+    <p class="address-name">{{address}}</p>
+    <input class="btn btn-primary btn-submit" type="submit" value="在此建立咖啡館">
+  </div>
+</script>

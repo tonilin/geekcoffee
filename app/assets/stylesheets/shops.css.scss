@@ -8,13 +8,32 @@
   .map-preview {
     width: 100%;
     height: 400px;
+
+    img {
+      max-width: none;
+    }
+
   }
 
   .shop-location-form {
-    margin-top: 30px;
+    margin-bottom: 20px;
     text-align: center;
   }
 
+
+  .info-window {
+    width: 500px;
+    text-align: center;
+
+    .address-name {
+      font-size: 18px;
+    }
+
+    .btn-submit {
+      margin-top: 10px;
+    }
+
+  }
 
 }
 

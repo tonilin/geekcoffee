@@ -1,17 +1,27 @@
 class MapPreviewer
   constructor: (@container) ->
+    @initialMapElemant()
+    @initialInfoWindowTemplate()
+
+    @shopAddressInput = $("#address-search-input")
+
+
+    @bindEvents()
+    @addressAutoComplate()
+
+  initialMapElemant: ->
     mapOptions = {
       zoom: 7,
       center: new google.maps.LatLng(23.84, 121.01)
     }
 
     @map = new google.maps.Map(@container[0], mapOptions);
-    @shopAddressInput = $("#shop_address")
-    @submitBtn = $(".btn-submit")
+    @infowindow = new google.maps.InfoWindow
+    @marker = new google.maps.Marker
 
-
-    @bindEvents()
-    @addressAutoComplate()
+  initialInfoWindowTemplate: ->
+    source   = $("#info-window-template").html();
+    @info_window_template = Handlebars.compile(source);
 
   bindEvents: ->
     return 
@@ -21,8 +31,6 @@ class MapPreviewer
     @shopAddressInput.on "keydown", (event) =>
       if event.keyCode == 13
         event.preventDefault()
-      else
-        @disableSubmit()
 
     @autocomplete = new google.maps.places.Autocomplete @shopAddressInput[0], {
       types: ['geocode']
@@ -53,7 +61,6 @@ class MapPreviewer
       placeDetailService.getDetails {
         reference: placeReference
       }, (result) =>
-        @shopAddressInput.val(result.formatted_address)
         @handlePlaceChaged(result)
 
   handlePlaceChaged: (place)->
@@ -61,32 +68,33 @@ class MapPreviewer
     viewPort = place.geometry.viewport
     lat = location.ob
     lng = location.pb
+    address = place.formatted_address
 
+    @fill_address_input(address)
     @fill_lat_input(lat)
     @fill_lng_input(lng)
 
     @moveToLocation(location)
     @markLocation(location)
+    @createInfoWindow(place)
 
-    @disableAddressInput()
-    @enableSubmit()
+  createInfoWindow: (place) ->
+    context = {
+      address: place.formatted_address
+    }
 
+    @infowindow.setOptions {
+      content: @info_window_template(context)
+    }
 
-  disableAddressInput: ->
-    @shopAddressInput.attr("disabled", "disabled")
+    @infowindow.open(@map, @marker);
 
-  enableSubmit: ->
-    @submitBtn.removeAttr("disabled")
-
-  disableSubmit: ->
-    @submitBtn.attr("disabled", "disabled")
 
   moveToLocation: (location)->
     @map.setCenter(location)
     @map.setZoom(16)
 
   markLocation: (location) ->
-    @marker ||= new google.maps.Marker
     options = {
       position: location,
       map: @map,
@@ -94,6 +102,8 @@ class MapPreviewer
     }
     @marker.setOptions(options)
 
+  fill_address_input: (address)->
+    $("#shop_address").val(address)
   fill_lat_input: (lat)->
     $("#shop_lat").val(lat)
   fill_lng_input: (lng)->
