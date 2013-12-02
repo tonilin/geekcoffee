@@ -24,9 +24,17 @@ class LandingMap
       dataType: "json"
     }
 
-  handleReturnData: (data)->
-    console.log(data)
+  handleReturnData: (data)=>
+    shops = data.shops
 
+    for shop in shops
+      markerOptions = {
+        position: new google.maps.LatLng(shop.lat, shop.lng),
+        map: @map,
+        title: shop.name
+      }
+      marker = new google.maps.Marker(markerOptions);
+      marker.metadata = {type: "point", id: 1};
 
 $ ->
   if $(".landing-map").length > 0
