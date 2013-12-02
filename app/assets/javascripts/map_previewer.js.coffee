@@ -75,7 +75,7 @@ class MapPreviewer
     @fill_lng_input(lng)
 
     @moveToLocation(location)
-    @markLocation(location)
+    @markLocation(address, location)
     @createInfoWindow(place)
 
   createInfoWindow: (place) ->
@@ -94,11 +94,11 @@ class MapPreviewer
     @map.setCenter(location)
     @map.setZoom(16)
 
-  markLocation: (location) ->
+  markLocation: (address, location) ->
     options = {
       position: location,
       map: @map,
-      title:"Hello World!"
+      title: address
     }
     @marker.setOptions(options)
 
