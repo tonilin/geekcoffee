@@ -1,6 +1,11 @@
 class LandingMap
   constructor: (@container) ->
+    @shop_api_endpoint = Setting.shop_api_endpoint
+
     @initialMapElemant()
+
+    @queryShops()
+
 
   initialMapElemant: ->
     mapOptions = {
@@ -9,6 +14,18 @@ class LandingMap
     }
 
     @map = new google.maps.Map(@container[0], mapOptions);
+
+  queryShops: ->
+
+    $.ajax {
+      url: @shop_api_endpoint,
+      data: {},
+      success: @handleReturnData,
+      dataType: "json"
+    }
+
+  handleReturnData: (data)->
+    console.log(data)
 
 
 $ ->
