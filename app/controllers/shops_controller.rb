@@ -22,7 +22,7 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :address, :lat, :lng, :description, :hours, :is_wifi_free, :have_plugs, :plug_price)
+    params.require(:shop).permit(:name, :address, :lat, :lng, :description, :hours, :is_wifi_free, :power_outlets, :plug_price)
   end
 
 
