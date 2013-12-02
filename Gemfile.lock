@@ -100,6 +100,7 @@ GEM
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     fssm (0.2.10)
+    geocoder (1.1.8)
     hashie (2.0.5)
     high_voltage (2.0.0)
     highline (1.6.20)
@@ -275,6 +276,7 @@ DEPENDENCIES
   devise (= 3.0.2)
   fabrication
   faker
+  geocoder
   high_voltage
   hipchat
   jquery-rails
