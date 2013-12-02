@@ -31,8 +31,8 @@ class LandingMap
       markerOptions = {
         position: new google.maps.LatLng(shop.lat, shop.lng),
         map: @map,
-        title: shop.name
-        icon: "/images/coffee.png"
+        title: shop.name,
+        icon: "/images/coffee.png",
       }
       marker = new google.maps.Marker(markerOptions)
       marker.setValues({id: shop.id});

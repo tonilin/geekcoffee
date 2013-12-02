@@ -98,7 +98,8 @@ class MapPreviewer
     options = {
       position: location,
       map: @map,
-      title: address
+      title: address,
+      icon: "/images/coffee.png",
     }
     @marker.setOptions(options)
 
