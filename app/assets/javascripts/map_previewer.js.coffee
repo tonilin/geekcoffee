@@ -31,7 +31,30 @@ class MapPreviewer
       place = @autocomplete.getPlace()   
 
       if !place.geometry
+        @addressPrediction(place.name)
+      else
         @handlePlaceChaged(place)
+
+  addressPrediction: (address_name)=>
+
+    prediction = new google.maps.places.AutocompleteService()
+
+    prediction.getPlacePredictions {
+      input: address_name,
+      types: ['geocode']
+    }, (place)=>
+      if !place
+        return
+
+      place = place[0]
+      placeReference = place.reference
+
+      placeDetailService = new google.maps.places.PlacesService(@map)
+      placeDetailService.getDetails {
+        reference: placeReference
+      }, (result) =>
+        @shopAddressInput.val(result.formatted_address)
+        @handlePlaceChaged(result)
 
   handlePlaceChaged: (place)->
     location = place.geometry.location
