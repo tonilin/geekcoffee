@@ -19,6 +19,11 @@ class ShopsController < ApplicationController
     end
   end
 
+  def index
+
+  end
+
+
   private
 
   def shop_params
