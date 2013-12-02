@@ -29,19 +29,20 @@
       <div class="container">
         <h1>Geek Coffee</h1>
         <h2>尋找你附近的上網咖啡廳</h2>
+        <%= render_langing_shop_new_btn %>
       </div>
     </div>
   </div>
 
 
-  <div class="container">
-      <div class="content">
-        <div class="row">
-          <%= yield %>
-        </div> 
-      </div>
 
-      <%= render :partial => "common/footer" %>    
+  <div class="content">
+    <%= yield %>
+  </div>
+
+
+  <div class="container">
+    <%= render :partial => "common/footer" %>    
   </div>
 
 
