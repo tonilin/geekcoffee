@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 20131201120915) do
     t.text     "description"
     t.string   "address"
     t.string   "hours"
-    t.decimal  "lat",           precision: 10, scale: 6
-    t.decimal  "lng",           precision: 10, scale: 6
-    t.boolean  "is_wifi_free",                           default: false
-    t.boolean  "power_outlets",                          default: false
+    t.float    "lat"
+    t.float    "lng"
+    t.boolean  "is_wifi_free",  default: false
+    t.boolean  "power_outlets", default: false
     t.integer  "plug_price"
     t.datetime "created_at"
     t.datetime "updated_at"

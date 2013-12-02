@@ -18,6 +18,7 @@
 
 class Shop < ActiveRecord::Base
   validates_presence_of :name, :address, :lat, :lng
+  geocoded_by :latitude  => :lat, :longitude => :lng
 
 
 end
