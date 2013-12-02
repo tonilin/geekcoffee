@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20131201120915) do
     t.decimal  "lat",            precision: 10, scale: 6
     t.decimal  "lng",            precision: 10, scale: 6
     t.boolean  "is_wifi_free"
-    t.boolean  "have_plugs"
+    t.boolean  "power_outlets"
     t.integer  "plug_price"
     t.datetime "created_at"
     t.datetime "updated_at"
