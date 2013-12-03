@@ -4,10 +4,16 @@ class LandingMap
     @mapSideBar = $(".map-sidebar")
     @shopDetail = $(".shop-detail") 
 
+
+    @bindEvents()
     @initialMapElemant()
     @initialShopDetailTemplate()
     @queryShops()
 
+
+  bindEvents: ->
+    @mapSideBar.find(".close").click =>
+      @hideSideBar()
 
 
   initialMapElemant: ->

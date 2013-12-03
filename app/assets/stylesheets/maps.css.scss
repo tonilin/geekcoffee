@@ -1,6 +1,7 @@
 // Place all the styles related to the maps controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "compass/css3/transition";
 
 .map-sidebar {
   position: absolute;
@@ -11,6 +12,8 @@
   width: 300px;
   background-color: #ccc;
   padding: 0px;
+
+  @include transition(left 0.3s);
 
   &.active {
     left: 0px;
