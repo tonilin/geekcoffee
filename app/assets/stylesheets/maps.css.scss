@@ -37,6 +37,28 @@ $sideBarWidth: 300px;
 
   .shop-detail {
     padding: 10px;
+
+    h3 {
+      text-align: center;
+    }
+
+    .address {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+
+    .dl-horizontal {
+      dt {
+        width: auto;
+        margin-bottom: 10px;
+      }
+      dd {
+        margin-left: 130px;
+        margin-bottom: 10px;
+      }
+    } 
+
   }
 
 }
