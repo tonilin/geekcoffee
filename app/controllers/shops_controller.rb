@@ -1,5 +1,16 @@
 class ShopsController < ApplicationController
 
+  def show
+    @shop = Shop.find(params[:id])
+
+    respond_to do |format|
+      format.json do
+        render :json => @shop, :serializer => ShopDetailSerializer, :root => false
+      end
+    end
+  end
+
+
   def new
     @shop = Shop.new
   end
