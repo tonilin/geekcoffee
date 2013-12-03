@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "compass/css3/transition";
 
+$sideBarColor: #d1c1cc;
+$sideBarWidth: 300px;
+
+
 .map-container.active {
 
   .map-sidebar {
@@ -10,7 +14,7 @@
   }
 
   .shop-map {
-    left: 300px;
+    left: $sideBarWidth;
   }
 
 }
@@ -20,9 +24,9 @@
   z-index: 2;
   top: 40px;
   bottom: 0px;
-  left: -320px;
-  width: 300px;
-  background-color: #ccc;
+  left: -$sideBarWidth;
+  width: $sideBarWidth;
+  background-color: $sideBarColor;
   padding: 0px;
 
   @include transition(left 0.3s);
