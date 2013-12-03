@@ -5,4 +5,4 @@
 //= require handlebars
 
 //= require map_previewer
-//= require landing_map
+//= require shop_map

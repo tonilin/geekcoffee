@@ -38,5 +38,5 @@ class LandingMap
       marker.setValues({id: shop.id});
 
 $ ->
-  if $(".landing-map").length > 0
-    mapPreviewer = new LandingMap($(".landing-map"))
+  if $(".shop-map").length > 0
+    mapPreviewer = new LandingMap($(".shop-map"))
