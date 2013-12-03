@@ -13,8 +13,8 @@ class LandingMap
 
 
   bindEvents: ->
-    @mapSideBar.find(".close").click =>
-      @hideSideBar()
+    # @mapSideBar.find(".close").click =>
+    #   @hideSideBar()
 
 
   initialMapElemant: ->
@@ -70,15 +70,16 @@ class LandingMap
       data: {},
       dataType: "json"
       success: (data)=>
-        @showSideBar()
-        @shopDetail.html(@shop_detail_template(data))
+
+        $("#modal-from-dom").modal({show:true, backdrop: true, keyboard: false});
+        $("#modal-from-dom").html(@shop_detail_template(data));
     }
 
-  showSideBar: ->
-    @mapContainer.addClass("active")
+  # showSideBar: ->
+  #   @mapContainer.addClass("active")
 
-  hideSideBar: ->
-    @mapContainer.removeClass("active")
+  # hideSideBar: ->
+  #   @mapContainer.removeClass("active")
 
   bounceMarker: (marker)->
     @animationMarker.setAnimation(null) if @animationMarker
