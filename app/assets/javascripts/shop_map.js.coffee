@@ -3,6 +3,7 @@ class LandingMap
     @shop_api_endpoint = Setting.shop_api_endpoint
 
     @initialMapElemant()
+    @initialShopDetailTemplate()
 
     @queryShops()
 
@@ -14,6 +15,10 @@ class LandingMap
     }
 
     @map = new google.maps.Map(@container[0], mapOptions);
+
+  initialShopDetailTemplate: ->
+    source   = $("#shop-detail-template").html();
+    @shop_detail_template = Handlebars.compile(source);
 
   queryShops: ->
 
@@ -37,14 +42,26 @@ class LandingMap
       }
 
       marker = new google.maps.Marker(markerOptions)
-      marker.setValues({id: shop.id});
+      marker.setValues({
+        id: shop.id
+      });
 
 
       google.maps.event.addListener marker, 'click', ->
         that.handleMarkerClick(this)
 
   handleMarkerClick: (marker) ->
-    alert(marker.title)
+    marker_id = marker.get("id")
+
+    $.ajax {
+      url: "#{@shop_api_endpoint}/#{marker_id}",
+      data: {},
+      dataType: "json"
+      success: (data)=>
+        $(".shop-detail").html(@shop_detail_template(data))
+    }
+
+
 
 
 $ ->
