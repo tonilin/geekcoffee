@@ -1,9 +1,5 @@
 <ul class="nav pills pull-right">
 
-    <li>
-      <div class="social"> <%=  fb_like(Setting.domain) %>  </div>
-    </li>
-
   <% if current_user %>    
 
     <li class="dropdown">
@@ -17,11 +13,11 @@
 
     </li>
 
-<% else %>
-  <li> <%= link_to( "Sign Up" ,new_user_registration_path) %> </li>
-  <li> <%= link_to( "Login", new_user_session_path )  %> </li>   
-  <li> <%= link_to( "FB Login", "/users/auth/facebook" )  %> </li>   
-<% end %>
+  <% else %>
+    <li> <%= link_to( "註冊" , new_user_registration_path) %> </li>
+    <li> <%= link_to( "登入", new_user_session_path )  %> </li>   
+    <li> <%= link_to( "FB 登入", "/users/auth/facebook" )  %> </li>   
+  <% end %>
 
 
 </ul>
