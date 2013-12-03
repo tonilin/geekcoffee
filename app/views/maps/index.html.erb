@@ -1,4 +1,4 @@
-<div class="map-container">
+<div class="map-container active">
   <div class="map-sidebar">
     <button type="button" class="close">&times;</button>
     <div class="shop-detail"></div>
@@ -11,4 +11,35 @@
 <script id="shop-detail-template" type="text/x-handlebars-template">
   <h3>{{name}}</h3>
   <div class="address">{{address}}</div>
+
+  {{#if hours}}
+    <div class="hours">
+      營業時間: {{hours}}
+    </div>
+  {{/if}}
+
+  <div class="is_wifi_free">
+    免費 wifi:
+    {{#if is_wifi_free}}
+      有
+    {{else}}
+      無
+    {{/if}}
+  </div>
+
+  <div class="power_outlets">
+    有無插座
+    {{#if power_outlets}}
+      有
+    {{else}}
+      無
+    {{/if}}
+  </div>
+
+  {{#if description}}
+    <div class="hours">
+      描述: {{description}}
+    </div>
+  {{/if}}
+
 </script>
