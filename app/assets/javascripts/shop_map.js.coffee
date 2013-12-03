@@ -3,6 +3,7 @@ class LandingMap
     @shop_api_endpoint = Setting.shop_api_endpoint
     @mapSideBar = $(".map-sidebar")
     @shopDetail = $(".shop-detail") 
+    @mapContainer = $(".map-container")
 
 
     @bindEvents()
@@ -71,10 +72,10 @@ class LandingMap
     }
 
   showSideBar: ->
-    @mapSideBar.addClass("active")
+    @mapContainer.addClass("active")
 
   hideSideBar: ->
-    @mapSideBar.removeClass("active")
+    @mapContainer.removeClass("active")
 
 
 $ ->
