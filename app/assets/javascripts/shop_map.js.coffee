@@ -15,7 +15,12 @@ class LandingMap
   bindEvents: ->
 
     google.maps.event.addListener @map, 'click', =>
+      @stopBounceMarker()
       @infowindow.close()
+
+    google.maps.event.addListener @infowindow, 'closeclick', =>
+      @stopBounceMarker()
+
 
   initialMapElemant: ->
     mapOptions = {
@@ -90,6 +95,9 @@ class LandingMap
     
     @animationMarker = marker
     marker.setAnimation(google.maps.Animation.BOUNCE)
+
+  stopBounceMarker: ->
+    @animationMarker.setAnimation(null) if @animationMarker
 
 $ ->
   if $(".shop-map").length > 0
