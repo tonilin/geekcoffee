@@ -9,18 +9,18 @@
 
 
 <script id="shop-detail-template" type="text/x-handlebars-template">
-  <h3>{{name}}</h3>
+  <h3><%= fa_icon("coffee") %> {{name}}</h3>
   <div class="address">{{address}}</div>
 
   <dl class="dl-horizontal">
 
     {{#if hours}}
-      <dt class="hours">營業時間</dt>
+      <dt class="hours"><%= fa_icon("clock-o") %> 營業時間</dt>
       <dd>{{hours}}</dd>
     {{/if}}
 
 
-    <dt class="is-wifi-free">免費 wifi</dt>
+    <dt class="is-wifi-free"><%= fa_icon("signal") %> 免費 wifi</dt>
     <dd>
       {{#if is_wifi_free}}
         有
@@ -30,7 +30,7 @@
     </dd>
 
 
-    <dt class="is-wifi-free">有無插座</dt>
+    <dt class="is-wifi-free"><%= fa_icon("bolt") %> 有無插座</dt>
     <dd>
       {{#if power_outlets}}
         有
