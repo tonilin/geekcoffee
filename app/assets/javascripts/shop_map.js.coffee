@@ -2,7 +2,7 @@ class LandingMap
   constructor: (@container) ->
     @shop_api_endpoint = Setting.shop_api_endpoint
     @mapSideBar = $(".map-sidebar")
-
+    @shopDetail = $(".shop-detail") 
 
     @initialMapElemant()
     @initialShopDetailTemplate()
@@ -61,7 +61,7 @@ class LandingMap
       dataType: "json"
       success: (data)=>
         @showSideBar()
-        @mapSideBar.html(@shop_detail_template(data))
+        @shopDetail.html(@shop_detail_template(data))
     }
 
   showSideBar: ->
