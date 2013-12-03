@@ -25,6 +25,7 @@ class LandingMap
     }
 
   handleReturnData: (data)=>
+    that = this
     shops = data.shops
 
     for shop in shops
@@ -34,8 +35,17 @@ class LandingMap
         title: shop.name,
         icon: "/images/coffee.png",
       }
+
       marker = new google.maps.Marker(markerOptions)
       marker.setValues({id: shop.id});
+
+
+      google.maps.event.addListener marker, 'click', ->
+        that.handleMarkerClick(this)
+
+  handleMarkerClick: (marker) ->
+    alert(marker.title)
+
 
 $ ->
   if $(".shop-map").length > 0
