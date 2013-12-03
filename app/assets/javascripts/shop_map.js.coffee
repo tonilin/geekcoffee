@@ -6,16 +6,16 @@ class LandingMap
     @mapContainer = $(".map-container")
 
 
-    @bindEvents()
+
     @initialMapElemant()
     @initialShopDetailTemplate()
     @queryShops()
-
+    @bindEvents()
 
   bindEvents: ->
-    # @mapSideBar.find(".close").click =>
-    #   @hideSideBar()
 
+    google.maps.event.addListener @map, 'click', =>
+      @infowindow.close()
 
   initialMapElemant: ->
     mapOptions = {
@@ -24,6 +24,7 @@ class LandingMap
     }
 
     @map = new google.maps.Map(@container[0], mapOptions);
+    @infowindow = new google.maps.InfoWindow
 
   initialShopDetailTemplate: ->
     source   = $("#shop-detail-template").html();
@@ -70,14 +71,12 @@ class LandingMap
       data: {},
       dataType: "json"
       success: (data)=>
-        @infowindow ||= new google.maps.InfoWindow
+
         @infowindow.setOptions {
           content: @shop_detail_template(data)
         }
 
         @infowindow.open(@map, marker);
-        #$("#modal-from-dom").modal({show:true, backdrop: true, keyboard: false});
-        #$("#modal-from-dom").html(@shop_detail_template(data));
     }
 
   # showSideBar: ->
