@@ -9,12 +9,12 @@
       <a class="brand" href="/">Geek Coffee</a>
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <li class="active">
-            <a href="/">Home</a>
+          <li class="<%= active_link_to_class(root_path, :active => :exclusive) %>">
+            <%= link_to("Home", root_path) %>
           </li>
         </ul>
         <ul class="nav">
-          <li class="">
+          <li class="<%= active_link_to_class(maps_path, :active => :inclusive) %>">
             <%= link_to("Map", maps_path) %>
           </li>
         </ul>
