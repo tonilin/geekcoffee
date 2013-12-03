@@ -18,6 +18,11 @@
             <%= link_to("地圖", maps_path) %>
           </li>
         </ul>
+        <ul class="nav">
+          <li class="<%= active_link_to_class(new_shop_path, :active => :inclusive) %>">
+            <%= link_to("新增咖啡館", new_shop_path) %>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
