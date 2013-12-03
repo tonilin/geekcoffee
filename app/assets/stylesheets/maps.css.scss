@@ -2,19 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.shop-detail {
+.map-sidebar {
   position: absolute;
   z-index: 2;
   top: 40px;
   bottom: 0px;
-  left: 0px;
+  left: -320px;
   width: 300px;
   background-color: #ccc;
+  padding: 10px;
+
+  &.active {
+    left: 0px;
+  }
 }
+
+
 
 .shop-map {
   position: absolute;
-  left: 300px;
+  left: 0px;
   right: 0px;
   top: 40px;
   bottom: 0px;
