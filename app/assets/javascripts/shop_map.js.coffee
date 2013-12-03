@@ -70,9 +70,14 @@ class LandingMap
       data: {},
       dataType: "json"
       success: (data)=>
+        @infowindow ||= new google.maps.InfoWindow
+        @infowindow.setOptions {
+          content: @shop_detail_template(data)
+        }
 
-        $("#modal-from-dom").modal({show:true, backdrop: true, keyboard: false});
-        $("#modal-from-dom").html(@shop_detail_template(data));
+        @infowindow.open(@map, marker);
+        #$("#modal-from-dom").modal({show:true, backdrop: true, keyboard: false});
+        #$("#modal-from-dom").html(@shop_detail_template(data));
     }
 
   # showSideBar: ->
