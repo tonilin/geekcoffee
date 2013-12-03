@@ -2,12 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+.shop-detail {
+  position: absolute;
+  z-index: 2;
+  top: 40px;
+  bottom: 0px;
+  left: 0px;
+  width: 300px;
+  background-color: #ccc;
+}
 
 .shop-map {
   position: absolute;
-  left: 0px;
+  left: 300px;
   right: 0px;
   top: 40px;
   bottom: 0px;
 }
+
