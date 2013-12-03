@@ -10,6 +10,8 @@ GEM
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
+    active_link_to (1.0.1)
+      actionpack
     active_model_serializers (0.8.1)
       activemodel (>= 3.0)
     activemodel (4.0.0)
@@ -256,6 +258,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_link_to
   active_model_serializers
   airbrake
   anjlab-bootstrap-rails (= 2.3.1.2)

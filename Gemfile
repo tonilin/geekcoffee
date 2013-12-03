@@ -55,6 +55,7 @@ gem "compass-rails", "~> 2.0.alpha.0"
 gem "unicorn"
 
 gem "geocoder"
+gem "active_link_to"
 
 group :development do
   gem "capistrano"
