@@ -47,7 +47,7 @@ class LandingMap
         position: new google.maps.LatLng(shop.lat, shop.lng),
         map: @map,
         title: shop.name,
-        icon: "/images/coffee.png",
+        icon: "/images/coffee.png"
       }
 
       marker = new google.maps.Marker(markerOptions)
@@ -56,11 +56,14 @@ class LandingMap
       });
 
 
+
       google.maps.event.addListener marker, 'click', ->
         that.handleMarkerClick(this)
 
   handleMarkerClick: (marker) ->
     marker_id = marker.get("id")
+
+    @bounceMarker(marker)
 
     $.ajax {
       url: "#{@shop_api_endpoint}/#{marker_id}",
@@ -77,6 +80,11 @@ class LandingMap
   hideSideBar: ->
     @mapContainer.removeClass("active")
 
+  bounceMarker: (marker)->
+    @animationMarker.setAnimation(null) if @animationMarker
+    
+    @animationMarker = marker
+    marker.setAnimation(google.maps.Animation.BOUNCE)
 
 $ ->
   if $(".shop-map").length > 0
