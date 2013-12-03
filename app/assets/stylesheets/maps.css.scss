@@ -10,11 +10,20 @@
   left: -320px;
   width: 300px;
   background-color: #ccc;
-  padding: 10px;
+  padding: 0px;
 
   &.active {
     left: 0px;
   }
+
+  .close {
+    margin: 5px;
+  }
+
+  .shop-detail {
+    padding: 10px;
+  }
+
 }
 
 
