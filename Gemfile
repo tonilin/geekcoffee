@@ -57,6 +57,8 @@ gem "unicorn"
 gem "geocoder"
 gem "active_link_to"
 
+gem "font-awesome-rails", "~> 4.0.0"
+
 group :development do
   gem "capistrano"
   gem "capistrano-ext"

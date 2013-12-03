@@ -101,6 +101,8 @@ GEM
       i18n (~> 0.5)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    font-awesome-rails (4.0.3.0)
+      railties (>= 3.2, < 5.0)
     fssm (0.2.10)
     geocoder (1.1.8)
     hashie (2.0.5)
@@ -279,6 +281,7 @@ DEPENDENCIES
   devise (= 3.0.2)
   fabrication
   faker
+  font-awesome-rails (~> 4.0.0)
   geocoder
   high_voltage
   hipchat
