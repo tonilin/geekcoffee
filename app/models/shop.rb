@@ -21,8 +21,20 @@
 class Shop < ActiveRecord::Base
   belongs_to :user
 
+  validate :website_url_validator
   validates_presence_of :name, :address, :lat, :lng
   geocoded_by :latitude  => :lat, :longitude => :lng
+
+
+  def website_url_validator
+
+    if website_url.present?
+      if !(website_url =~ URI::regexp(%w(http https)))
+        self.errors[:website_url] << "請輸入正確的網址"
+      end
+    end
+  end
+
 
 
 end
