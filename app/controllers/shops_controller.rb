@@ -39,15 +39,13 @@ class ShopsController < ApplicationController
         render :json => Shop.all, :each_serializer => ShopSimpleSerializer
       end
     end
-
-
   end
 
 
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :address, :lat, :lng, :description, :hours, :is_wifi_free, :power_outlets, :plug_price)
+    params.require(:shop).permit(:name, :address, :lat, :lng, :description, :hours, :is_wifi_free, :power_outlets, :plug_price, :website_url)
   end
 
 
