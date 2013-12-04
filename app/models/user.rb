@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   extend OmniauthCallbacks
 
   has_many :authorizations, :dependent => :destroy
+  has_many :shops, :dependent => :destroy
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable

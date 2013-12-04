@@ -17,6 +17,8 @@
 #
 
 class Shop < ActiveRecord::Base
+  belongs_to :user
+
   validates_presence_of :name, :address, :lat, :lng
   geocoded_by :latitude  => :lat, :longitude => :lng
 
