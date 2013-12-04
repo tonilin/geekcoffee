@@ -25,4 +25,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   
   provides_callback_for :facebook
 
+
+  # This is solution for existing accout want bind Google login but current_user is always nil
+  # https://github.com/intridea/omniauth/issues/185                             
+  def handle_unverified_request                                                 
+    true                                                                        
+  end 
+
 end
