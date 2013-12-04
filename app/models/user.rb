@@ -25,4 +25,10 @@ class User < ActiveRecord::Base
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+
+  def bind_service(response)                                                    
+    provider = response["provider"]                                             
+    uid = response["uid"]                                                       
+    authorizations.create(:provider => provider , :uid => uid )                 
+  end
 end
