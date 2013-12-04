@@ -21,3 +21,5 @@ public/uploads
 vendor/bundler_gems
 config/database.yml
 config/config.yml
+
+/config/initializers/secret_token.rb
