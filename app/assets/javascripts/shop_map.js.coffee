@@ -30,9 +30,12 @@ class LandingMap
 
     @map = new google.maps.Map(@container[0], mapOptions);
     @infowindow = new google.maps.InfoWindow
-    @markerClusterer = new MarkerClusterer(@map, [], {
+
+
+    cluster_options = {
       maxZoom: 18
-    })
+    }
+    @markerClusterer = new MarkerClusterer(@map, [], cluster_options)
 
   initialShopDetailTemplate: ->
     source   = $("#shop-detail-template").html();
