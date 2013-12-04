@@ -1,0 +1,44 @@
+<div class="shop-detail">
+  <h3><%= fa_icon("coffee") %> {{name}}</h3>
+
+  <div class="address">{{address}}</div>
+
+  <dl class="dl-horizontal">
+    {{#if website_url}}
+      <dt class="hours"><%= fa_icon("globe") %> 網站</dt>
+      <dd><a href="{{website_url}}" target="_blank"><%= fa_icon("external-link") %></a></dd>
+    {{/if}}
+
+
+    {{#if hours}}
+      <dt class="hours"><%= fa_icon("clock-o") %> 營業時間</dt>
+      <dd>{{hours}}</dd>
+    {{/if}}
+
+
+    <dt class="is-wifi-free"><%= fa_icon("signal") %> 免費 wifi</dt>
+    <dd>
+      {{#if is_wifi_free}}
+        有
+      {{else}}
+        無
+      {{/if}}
+    </dd>
+
+
+    <dt class="is-wifi-free"><%= fa_icon("bolt") %> 有無插座</dt>
+    <dd>
+      {{#if power_outlets}}
+        有
+      {{else}}
+        無
+      {{/if}}
+    </dd>
+
+    {{#if description}}
+      <dt class="hours">描述</dt>
+      <dd>{{description}}</dd>
+    {{/if}}
+
+  </dl>
+</div>
