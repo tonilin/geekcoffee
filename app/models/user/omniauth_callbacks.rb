@@ -13,7 +13,7 @@ class User
         user.save
         return user
       else
-        user = User.new_from_provider_data(provider, uid, data, credentials)
+        user = User.new_from_provider_data("facebook", uid, data, credentials)
         user.authorizations << Authorization.new(:provider => "facebook", :uid => uid )
         if user.save(:validate => false)
           return user
