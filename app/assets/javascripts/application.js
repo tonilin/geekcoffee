@@ -7,3 +7,4 @@
 
 //= require map_previewer
 //= require shop_map
+//= require markerclusterer

@@ -4,7 +4,7 @@ class LandingMap
     @mapSideBar = $(".map-sidebar")
     @shopDetail = $(".shop-detail") 
     @mapContainer = $(".map-container")
-
+    @markers = []
 
 
     @initialMapElemant()
@@ -30,6 +30,9 @@ class LandingMap
 
     @map = new google.maps.Map(@container[0], mapOptions);
     @infowindow = new google.maps.InfoWindow
+    @markerClusterer = new MarkerClusterer(@map, [], {
+      maxZoom: 18
+    })
 
   initialShopDetailTemplate: ->
     source   = $("#shop-detail-template").html();
@@ -60,6 +63,9 @@ class LandingMap
       marker.setValues({
         id: shop.id
       });
+
+      @markerClusterer.addMarker(marker)
+
 
 
 
