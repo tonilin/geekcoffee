@@ -7,13 +7,15 @@
 #  description   :text
 #  address       :string(255)
 #  hours         :string(255)
-#  lat           :decimal(10, 6)
-#  lng           :decimal(10, 6)
+#  lat           :float
+#  lng           :float
 #  is_wifi_free  :boolean          default(FALSE)
 #  power_outlets :boolean          default(FALSE)
 #  plug_price    :integer
 #  created_at    :datetime
 #  updated_at    :datetime
+#  user_id       :integer
+#  website_url   :string(255)
 #
 
 require 'spec_helper'
