@@ -24,6 +24,7 @@ class ShopsController < ApplicationController
 
   def create
     @shop = Shop.new(shop_params)
+    @shop.user = current_user
 
     if @shop.save
       redirect_to root_path,  :flash => { :success => "成功建立咖啡館" }
