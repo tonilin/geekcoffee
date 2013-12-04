@@ -41,7 +41,8 @@ class LandingMap
           height: 64,
           url: "/images/cluster.png",
           width: 64,
-          textColor: "#FFFFFF"
+          textColor: "#FFFFFF",
+          fontWeight: "normal"
         }
       ]
     }
