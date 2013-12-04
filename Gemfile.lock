@@ -39,10 +39,6 @@ GEM
       rake
     arel (4.0.1)
     atomic (1.1.14)
-    auto-facebook (0.4)
-      omniauth
-      omniauth-facebook
-      rails (= 4.0.0)
     bcrypt-ruby (3.1.2)
     better_errors (0.9.0)
       coderay (>= 1.0.0)
@@ -265,7 +261,6 @@ DEPENDENCIES
   airbrake
   anjlab-bootstrap-rails (= 2.3.1.2)
   annotate
-  auto-facebook (= 0.4)
   better_errors (~> 0.9.0)
   binding_of_caller
   cape

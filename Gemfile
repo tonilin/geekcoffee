@@ -42,7 +42,6 @@ gem "rvm-capistrano"
 
 gem "omniauth"
 gem "omniauth-facebook"
-gem "auto-facebook", "0.4"
 
 
 gem "hipchat"
