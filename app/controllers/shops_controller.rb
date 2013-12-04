@@ -1,4 +1,6 @@
 class ShopsController < ApplicationController
+  before_filter :login_required, :only => [:create, :new, :new_step2]
+
 
   def show
     @shop = Shop.find(params[:id])
