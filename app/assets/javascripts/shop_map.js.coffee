@@ -33,7 +33,17 @@ class LandingMap
 
 
     cluster_options = {
-      maxZoom: 18
+      maxZoom: 18,
+      styles: [
+        {
+          anchorIcon: [32, 32]
+          anchorText: [10, -4]
+          height: 64,
+          url: "/images/cluster.png",
+          width: 64,
+          textColor: "#FFFFFF"
+        }
+      ]
     }
     @markerClusterer = new MarkerClusterer(@map, [], cluster_options)
 
