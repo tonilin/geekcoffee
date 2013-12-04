@@ -36,13 +36,14 @@ class LandingMap
       maxZoom: 18,
       styles: [
         {
-          anchorIcon: [32, 32]
-          anchorText: [10, -4]
+          anchorIcon: [32, 32],
+          anchorText: [11, -4],
           height: 64,
           url: "/images/cluster.png",
           width: 64,
           textColor: "#FFFFFF",
-          fontWeight: "normal"
+          fontWeight: "normal",
+          fontFamily: 'Playball';
         }
       ]
     }
