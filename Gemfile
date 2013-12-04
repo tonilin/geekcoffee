@@ -58,6 +58,8 @@ gem "active_link_to"
 
 gem "font-awesome-rails", "~> 4.0.0"
 
+gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
+
 group :development do
   gem "capistrano"
   gem "capistrano-ext"
