@@ -9,10 +9,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
             redirect_to setting_path, :notice => "Bind #{provider} account successfully."
           else
             @user = User.find_or_create_for_#{provider}(env["omniauth.auth"])
-  
+
             if @user.persisted?
-             # flash[:notice] = "Signed in with #{provider.to_s.titleize} successfully."
-              
+              flash[:notice] = "Signed in with #{provider.to_s.titleize} successfully."
               
               sign_in_and_redirect @user, :event => :authentication, :notice => "Signed in successfully."
             else
@@ -25,12 +24,5 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
   
   provides_callback_for :facebook
-
-  # This is solution for existing accout want bind Google login but current_user is always nil
-  # https://github.com/intridea/omniauth/issues/185
-  def handle_unverified_request
-    true
-  end
-
 
 end
