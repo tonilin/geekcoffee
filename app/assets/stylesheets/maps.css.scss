@@ -5,6 +5,7 @@
 
 $sideBarColor: #d1c1cc;
 $sideBarWidth: 300px;
+$searchBarWidth: 300px;
 
 
 .map-container.active {
@@ -65,8 +66,23 @@ $sideBarWidth: 300px;
 
 }
 
+.map-search-bar {
+  z-index: 3;
+  position: absolute;
+  left: 50%;
+  width: $searchBarWidth;
+  margin-left: -$searchBarWidth/2;
+  margin-top: 20px;
+
+  .map-search-input {
+    font-size: 20px;
+    height: 26px;
+  }
+}
+
 
 .shop-map {
+  z-index: 1;
   position: absolute;
   left: 0px;
   right: 0px;
