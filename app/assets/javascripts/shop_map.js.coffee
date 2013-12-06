@@ -4,12 +4,17 @@ class LandingMap
     @mapSideBar = $(".map-sidebar")
     @shopDetail = $(".shop-detail") 
     @mapContainer = $(".map-container")
+    @mapSearchInput = $("#map-search-input")
+
     @markers = []
+
+
 
 
     @initialMapElemant()
     @initialShopDetailTemplate()
     @queryShops()
+    @searchAutoComplete()
     @bindEvents()
 
   bindEvents: ->
@@ -104,6 +109,61 @@ class LandingMap
 
         @infowindow.open(@map, marker);
     }
+
+
+  addressPrediction: (address_name)=>
+    prediction = new google.maps.places.AutocompleteService()
+
+    prediction.getPlacePredictions {
+      input: address_name,
+      types: ['geocode']
+    }, (place)=>
+      if !place
+        return
+
+      place = place[0]
+      placeReference = place.reference
+
+      placeDetailService = new google.maps.places.PlacesService(@map)
+      placeDetailService.getDetails {
+        reference: placeReference
+      }, (result) =>
+        @handlePlaceChaged(result)
+
+
+  searchAutoComplete: (marker) ->
+    @mapSearchInput.on "keydown", (event) =>
+      if event.keyCode == 13
+        event.preventDefault()
+
+    @autocomplete = new google.maps.places.Autocomplete @mapSearchInput[0], {
+      types: ['geocode']
+    }
+    google.maps.event.addListener @autocomplete, 'place_changed', =>
+      place = @autocomplete.getPlace()   
+
+      if !place.geometry
+        @addressPrediction(place.name)
+      else
+        @handlePlaceChaged(place)
+  
+
+  handlePlaceChaged: (place) ->
+    location = place.geometry.location
+    @moveToLocation(location)
+    @zoomIn()
+    
+
+
+  moveToLocation: (location)->
+    @map.panTo(location)
+  
+  zoomIn: ->
+    that = this
+
+    setTimeout (->
+      that.map.setZoom(16)
+    ), 500
 
   # showSideBar: ->
   #   @mapContainer.addClass("active")
