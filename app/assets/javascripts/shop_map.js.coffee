@@ -113,14 +113,23 @@ class LandingMap
     }
 
   handleSwitchChange: ->
-    filterOption = {
-      is_wifi_free: @freeWifiSwitch.bootstrapSwitch("status")
-      power_outlets: @freePowerOutlets.bootstrapSwitch("status")
-    }
+    filterOption = {}
 
+    if @freeWifiSwitch.bootstrapSwitch("status") == true
+      filterOption.is_wifi_free = true
 
-    return
+    if @freePowerOutlets.bootstrapSwitch("status") == true
+      filterOption.power_outlets = true
 
+    if _.size(filterOption) > 0
+      result = _.where(@markers(), filterOption);
+      @hiddenAllMarkers()
+      for marker in result
+        marker.setVisible(true)
+    else
+      @showAllMarkers()
+
+    @repaint()
 
 
   addressPrediction: (address_name)=>
@@ -194,10 +203,12 @@ class LandingMap
   markers: ->
     @markerClusterer.getMarkers()
 
-  showAllMarkers: ->
+  hiddenAllMarkers: ->
     for marker in @markers()
       marker.setVisible(false)
-
+  showAllMarkers: ->
+    for marker in @markers()
+      marker.setVisible(true)
   repaint: -> 
     @markerClusterer.repaint()
 
