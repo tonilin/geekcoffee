@@ -82,7 +82,9 @@ class LandingMap
         map: @map,
         title: shop.name,
         icon: "/images/coffee.png",
-        id: shop.id
+        id: shop.id,
+        is_wifi_free: shop.is_wifi_free,
+        power_outlets: shop.power_outlets,
       }
 
       marker = new google.maps.Marker(markerOptions)
@@ -111,8 +113,14 @@ class LandingMap
     }
 
   handleSwitchChange: ->
+    filterOption = {
+      is_wifi_free: @freeWifiSwitch.bootstrapSwitch("status")
+      power_outlets: @freePowerOutlets.bootstrapSwitch("status")
+    }
+
 
     return
+
 
 
   addressPrediction: (address_name)=>
