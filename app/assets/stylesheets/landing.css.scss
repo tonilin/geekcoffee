@@ -28,13 +28,14 @@
     font-style: italic;
     margin-bottom: 60px;
     color: #BD0029;
-    @include single-text-shadow(#ffffff, 2px, 2px, 1px, false);
+    @include single-text-shadow(#000, 2px, 2px, 1px, false);
   }
 
   h2 {
     font-weight: normal;
-    color: #000000;
-    font-size: 26px;
+    color: #D4560B;
+    font-size: 22px;
+    @include single-text-shadow(#000, 1px, 1px, 0px, false);
   }
 
 }
