@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "compass/css3/transition";
+@import "compass/css3/border-radius";
 
 $sideBarColor: #d1c1cc;
 $sideBarWidth: 300px;
@@ -92,8 +93,11 @@ $searchBarWidth: 300px;
 .map-switches {
   z-index: 3;
   position: absolute;
-  bottom: 20px;
+  bottom: 30px;
   right: 20px;
+  padding: 0 10px;
+  background-color: transparentize(#ffffff, 0.2);
+  @include border-radius(5px);
 
   .dl-horizontal {
     margin-bottom: 0px;
