@@ -1,4 +1,3 @@
-//= require_self
 //= require common
 //= require font-awesome
 //= require bootstrap-switch
@@ -6,7 +5,7 @@
 //= require landing
 //= require shops
 //= require maps
-
+//= require_self
 
 body {
   background: image-url('background.png');
@@ -15,6 +14,10 @@ body {
 .navbar {
   h1 {
     display: none;
+  }
+
+  .brand {
+    font-size: 26px;
   }
 
 }
