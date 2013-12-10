@@ -1,11 +1,11 @@
 // puts your override variable here
 // $baseFontSize:  13px;
 // $navbarHeight:  50px;
+@import "compass/css3/text-shadow";
 @import "variables";
-$navbarBrandColor: $brandTextColor;
-$headingsFontFamily: $brandFontFamily;
+$navbarInverseBrandColor: lighten($brandTextColor, 10%);
 
 
 .navbar .brand {
- font-family: $brandFontFamily;
+  font-family: $brandFontFamily;
 }

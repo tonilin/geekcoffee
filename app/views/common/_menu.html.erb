@@ -1,4 +1,4 @@
-<div class="navbar navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
       <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -8,11 +8,6 @@
       </button>
       <a class="brand" href="/">Geek Coffee</a>
       <div class="nav-collapse collapse">
-        <ul class="nav">
-          <li class="<%= active_link_to_class(root_path, :active => :exclusive) %>">
-            <%= link_to("首頁", root_path) %>
-          </li>
-        </ul>
         <ul class="nav">
           <li class="<%= active_link_to_class(maps_path, :active => :inclusive) %>">
             <%= link_to("地圖", maps_path) %>
