@@ -1,31 +1,39 @@
 @import "compass/css3/text-shadow";
 @import "compass/css3/background-size";
 
+
 .header-image {
-  width: 100%;
+  position: absolute;
+  top:0;
+  left:0;
+  bottom:0; 
+  right:0; 
+
   text-align: center;
   background-color: #cccccc;
   margin-bottom: 0px;
-  color: #dd920d;
+  color: #dd920d; 
 
 
-
-  background: image-url('landing-image.jpg') no-repeat center 80.5%;
+  background: image-url('landing-image.jpg') no-repeat center 90.5%;
   @include background-size(cover);
 
   .headline {
-    padding: 80px 0 40px 0;
+    margin-top: 280px;
   }
 
   h1 {
     font-family: 'Playball', cursive;
     font-size: 100px;
     font-style: italic;
-    margin-bottom: 70px;
+    margin-bottom: 60px;
+    color: #BD0029;
     @include single-text-shadow(#ffffff, 2px, 2px, 1px, false);
   }
 
   h2 {
+    font-weight: normal;
+    color: #000000;
     font-size: 26px;
   }
 
