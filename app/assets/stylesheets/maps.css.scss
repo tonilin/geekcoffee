@@ -74,9 +74,16 @@ $searchBarWidth: 300px;
   margin-left: -$searchBarWidth/2;
   margin-top: 20px;
 
-  .map-search-input {
+  .search-icon {
+    position: absolute;
+    top: 7px;
+    left: 10px;
     font-size: 20px;
-    padding: 12px;
+  }
+
+  .map-search-input {
+    font-size: 18px;
+    padding: 8px 10px 8px 30px;
   }
 }
 
