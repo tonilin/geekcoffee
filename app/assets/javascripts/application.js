@@ -5,6 +5,7 @@
 //= require twitter/bootstrap/modal
 //= require handlebars
 //= require underscore-min
+//= require bootstrap-switch
 
 //= require map_previewer
 //= require shop_map
