@@ -26,7 +26,7 @@
     font-family: $brandFontFamily;
     font-size: 100px;
     font-style: italic;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     color: $brandTextColor;
     @include single-text-shadow(#000, 2px, 2px, 1px, false);
   }
@@ -36,6 +36,7 @@
     color: #D4560B;
     font-size: 22px;
     @include single-text-shadow(#000, 1px, 1px, 0px, false);
+    margin-bottom: 20px;
   }
 
 }
