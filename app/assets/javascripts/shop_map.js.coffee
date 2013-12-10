@@ -6,6 +6,9 @@ class LandingMap
     @mapContainer = $(".map-container")
     @mapSearchInput = $("#map-search-input")
 
+    @freeWifiSwitch = $("#free-wifi-switch")
+    @freePowerOutlets = $("#free-power-outlets")
+
 
     @initialMapElemant()
     @initialShopDetailTemplate()
@@ -21,6 +24,12 @@ class LandingMap
 
     google.maps.event.addListener @infowindow, 'closeclick', =>
       @stopBounceMarker()
+
+    @freeWifiSwitch.on "switch-change", =>
+      @handleSwitchChange()
+
+    @freePowerOutlets.on "switch-change", =>
+      @handleSwitchChange()
 
 
   initialMapElemant: ->
@@ -100,6 +109,10 @@ class LandingMap
 
         @infowindow.open(@map, marker);
     }
+
+  handleSwitchChange: ->
+
+    return
 
 
   addressPrediction: (address_name)=>
