@@ -7,8 +7,16 @@
 //= require shops
 //= require maps
 
+
 body {
   background: image-url('background.png');
+}
+
+.navbar {
+  h1 {
+    display: none;
+  }
+
 }
 
 
