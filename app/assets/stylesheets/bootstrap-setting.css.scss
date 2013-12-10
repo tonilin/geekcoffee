@@ -1,3 +1,11 @@
 // puts your override variable here
 // $baseFontSize:  13px;
 // $navbarHeight:  50px;
+@import "variables";
+$navbarBrandColor: $brandTextColor;
+$headingsFontFamily: $brandFontFamily;
+
+
+.navbar .brand {
+ font-family: $brandFontFamily;
+}

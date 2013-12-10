@@ -1,6 +1,6 @@
 @import "compass/css3/text-shadow";
 @import "compass/css3/background-size";
-
+@import "variables";
 
 .header-image {
   position: absolute;
@@ -23,11 +23,11 @@
   }
 
   h1 {
-    font-family: 'Playball', cursive;
+    font-family: $brandFontFamily;
     font-size: 100px;
     font-style: italic;
     margin-bottom: 60px;
-    color: #BD0029;
+    color: $brandTextColor;
     @include single-text-shadow(#000, 2px, 2px, 1px, false);
   }
 
