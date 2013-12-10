@@ -32,9 +32,9 @@ class LandingMap
     @map = new google.maps.Map(@container[0], mapOptions);
     @infowindow = new google.maps.InfoWindow
 
-
     cluster_options = {
       maxZoom: 18,
+      ignoreHidden: true,
       styles: [
         {
           anchorIcon: [32, 32],
@@ -137,7 +137,6 @@ class LandingMap
         @addressPrediction(place.name)
       else
         @handlePlaceChaged(place)
-  
 
   handlePlaceChaged: (place) ->
     location = place.geometry.location
@@ -173,6 +172,13 @@ class LandingMap
 
   markers: ->
     @markerClusterer.getMarkers()
+
+  showAllMarkers: ->
+    for marker in @markers()
+      marker.setVisible(false)
+
+  repaint: -> 
+    @markerClusterer.repaint()
 
 $ ->
   if $(".shop-map").length > 0
