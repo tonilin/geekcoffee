@@ -30,7 +30,7 @@ gem "carrierwave-meta"
 
 gem "settingslogic"
 
-gem "anjlab-bootstrap-rails", "2.3.1.2", :require => "bootstrap-rails"
+gem 'anjlab-bootstrap-rails', '~> 3.0.3.0', :require => 'bootstrap-rails'
 gem "simple_form", "~> 3.0.0.rc"
 gem "will_paginate", "3.0.3"
 

@@ -3,9 +3,10 @@
 // $navbarHeight:  50px;
 @import "compass/css3/text-shadow";
 @import "variables";
-$navbarInverseBrandColor: lighten($brandTextColor, 10%);
+$navbar-inverse-brand-color: lighten($brandTextColor, 10%);
 
 
-.navbar .brand {
+.navbar .navbar-brand {
   font-family: $brandFontFamily;
+  font-size: 26px;
 }

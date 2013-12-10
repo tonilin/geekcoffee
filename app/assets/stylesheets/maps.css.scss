@@ -24,7 +24,7 @@ $searchBarWidth: 300px;
 .map-sidebar {
   position: absolute;
   z-index: 2;
-  top: 40px;
+  top: 50px;
   bottom: 0px;
   left: -$sideBarWidth;
   width: $sideBarWidth;
@@ -73,18 +73,17 @@ $searchBarWidth: 300px;
   left: 50%;
   width: $searchBarWidth;
   margin-left: -$searchBarWidth/2;
-  margin-top: 20px;
+  margin-top: 25px;
 
   .search-icon {
     position: absolute;
-    top: 7px;
+    top: 11px;
     left: 10px;
     font-size: 20px;
   }
 
   .map-search-input {
-    font-size: 18px;
-    padding: 8px 10px 8px 30px;
+    padding-left: 35px;
   }
 }
 
@@ -95,7 +94,7 @@ $searchBarWidth: 300px;
   position: absolute;
   bottom: 30px;
   right: 20px;
-  padding: 0 10px;
+  padding: 10px 10px 0 10px;
   background-color: transparentize(#ffffff, 0.2);
   @include border-radius(5px);
 
@@ -120,7 +119,7 @@ $searchBarWidth: 300px;
   position: absolute;
   left: 0px;
   right: 0px;
-  top: 40px;
+  top: 50px;
   bottom: 0px;
 
   @include transition(left 0.3s);

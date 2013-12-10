@@ -32,7 +32,7 @@ GEM
     airbrake (3.1.14)
       builder
       json
-    anjlab-bootstrap-rails (2.3.1.2)
+    anjlab-bootstrap-rails (3.0.3.0)
       railties (>= 3.0)
       sass (>= 3.2)
     annotate (2.5.0)
@@ -262,7 +262,7 @@ DEPENDENCIES
   active_link_to
   active_model_serializers
   airbrake
-  anjlab-bootstrap-rails (= 2.3.1.2)
+  anjlab-bootstrap-rails (~> 3.0.3.0)
   annotate
   better_errors (~> 0.9.0)
   binding_of_caller
