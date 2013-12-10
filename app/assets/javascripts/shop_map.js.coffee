@@ -6,10 +6,6 @@ class LandingMap
     @mapContainer = $(".map-container")
     @mapSearchInput = $("#map-search-input")
 
-    @markers = []
-
-
-
 
     @initialMapElemant()
     @initialShopDetailTemplate()
@@ -76,18 +72,13 @@ class LandingMap
         position: new google.maps.LatLng(shop.lat, shop.lng),
         map: @map,
         title: shop.name,
-        icon: "/images/coffee.png"
+        icon: "/images/coffee.png",
+        id: shop.id
       }
 
       marker = new google.maps.Marker(markerOptions)
-      marker.setValues({
-        id: shop.id
-      });
 
       @markerClusterer.addMarker(marker)
-
-
-
 
       google.maps.event.addListener marker, 'click', ->
         that.handleMarkerClick(this)
@@ -179,6 +170,9 @@ class LandingMap
 
   stopBounceMarker: ->
     @animationMarker.setAnimation(null) if @animationMarker
+
+  markers: ->
+    @markerClusterer.getMarkers()
 
 $ ->
   if $(".shop-map").length > 0
