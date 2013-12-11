@@ -66,8 +66,8 @@ class MapPreviewer
   handlePlaceChaged: (place)->
     location = place.geometry.location
     viewPort = place.geometry.viewport
-    lat = location.ob
-    lng = location.pb
+    lat = location.lat()
+    lng = location.lng()
     address = place.formatted_address
 
     @fill_address_input(address)
