@@ -1,26 +1,27 @@
-<div class="span12 new-shop-page">
+<div class="col-md-10 col-md-offset-1 new-shop-page">
+  <div class="well">
+    <h2>建立新咖啡館</h2>
 
-  <div class="row">
-    <div class="hero-unit">
-      <h2>建立新咖啡館</h2>
+    <%= simple_form_for @shop, :url => new_step2_shops_path, :html => {:class => "form-horizontal shop-location-form"}  do |f| %>
 
-      <%= simple_form_for @shop, :url => new_step2_shops_path, :html => {:class => "form-horizontal"} do |f| %>
-      <div class="shop-location-form">
+      <%= f.hidden_field :lat %>
+      <%= f.hidden_field :lng %>
+      <%= f.hidden_field :address %>
 
-          <%= f.hidden_field :lat %>
-          <%= f.hidden_field :lng %>
-          <%= f.hidden_field :address %>
-
-          <div class="input-append">
-            <input id="address-search-input" class="input-append span4" type="text">
-            <%= button_tag "搜尋", :class => "btn btn-primary" %>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="input-group">
+            <input id="address-search-input" class="form-control" type="text">
+            <span class="input-group-btn">
+              <%= button_tag "搜尋", :class => "btn btn-primary" %>
+            </span>
           </div>
+        </div>
       </div>
 
       <div class="map map-preview"></div>
-      <% end %>
+    <% end %>
 
-    </div>
   </div>
 </div>
 
