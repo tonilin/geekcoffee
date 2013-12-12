@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= render_page_title_tag %>
+  <%= render_page_description_meta_tag %>
+  <%= render_page_keywords_meta_tag %>
+  <%= render_page_image_link_tag %>
+  <%= csrf_meta_tag %>
+
+  <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag "admin" %>
+  
+  <%= yield :stylesheets %>
+</head>
+<body>
+
+  <%= render :partial => "admin/common/menu" %>
+
+  <%= notice_message %>
+
+  <div class="container">
+      <div class="content">
+        <div class="row">
+          <%= yield %>
+        </div> 
+      </div>
+  </div>
+
+
+  <%= render :partial => "common/bootstrap_modal" %>    
+  <%= render :partial => "common/facebook_js" %>
+  <%= render :partial => "common/google_analytics" %>
+  <%= render :partial => "common/javascript_settings"%>
+
+  <%= javascript_include_tag "admin" %>
+
+  <%= yield :javascripts %>
+
+
+</body>
+</html>
