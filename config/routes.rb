@@ -4,6 +4,11 @@ Geekcoffee::Application.routes.draw do
 
   resources :maps
 
+
+  namspace :admin do
+    resources :shops
+  end
+
   resources :shops do
     collection do
       post :new_step2
