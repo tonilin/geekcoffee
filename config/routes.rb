@@ -6,6 +6,7 @@ Geekcoffee::Application.routes.draw do
 
 
   namespace :admin do
+    root :to => "shops#index"
     resources :shops
   end
 
