@@ -3,7 +3,7 @@ defaults: &defaults
   domain: "http://geekcoffee.dev"    
   admin_emails: <%= ENV['admin_emails'] %>
   google_analytics_key: ""
-  default_logo_url: "/logo.png"
+  default_logo_url: "/images/logo.png"
   email_sender: ""
   google_map_key: <%= ENV['google_map_key'] %>
   facebook_app_id:  <%= ENV['facebook_app_id'] %>
