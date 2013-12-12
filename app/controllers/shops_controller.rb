@@ -27,7 +27,7 @@ class ShopsController < ApplicationController
     @shop.user = current_user
 
     if @shop.save
-      redirect_to root_path,  :flash => { :success => "成功建立咖啡館" }
+      redirect_to maps_path,  :flash => { :success => "成功建立咖啡館" }
     else
       render :new_step2
     end
