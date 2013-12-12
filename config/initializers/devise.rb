@@ -93,7 +93,7 @@ Devise.setup do |config|
 
   # Setup a pepper to generate the encrypted password.
   # config.pepper = "8b6d902935867d957427d8c8ba9c8cf6b6caf92caeff505102ba926f61afdea84a4f91bc2d28df4b34f6068f4f9b95e1125de58239969776b457475c5119c8b4"
-  config.secret_key = Setting.devise_secre_key
+  config.secret_key = ENV['devise_secre_key']
 
 
   # ==> Configuration for :confirmable
