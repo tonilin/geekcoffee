@@ -1,0 +1,31 @@
+<table class="table table-bordered" >
+  <tr>
+    <td> ID </td>
+    <td> Name </td>
+    <td> Address </td>
+    <td> hours </td>
+    <td> free wifi </td>
+    <td> free plug </td>
+    <td> lat </td>
+    <td> lng </td>
+    <td> User </td>
+    <td> Created </td>
+  </tr>
+  <% @shops.each do |shop| %>
+  <tr>
+    <td> <%= shop.id %> </td>
+    <td> <%= render_admin_shop_name(shop) %> </td>
+    <td> <%= render_admin_shop_address(shop) %> </td>
+    <td> <%= render_admin_shop_hours(shop) %> </td>
+    <td> <%= render_admin_shop_is_wifi_free(shop) %> </td>
+    <td> <%= render_admin_shop_power_outlets(shop) %> </td>
+    <td> <%= shop.lat %> </td>
+    <td> <%= shop.lng %> </td>
+    <td> <%= render_admin_user_name(shop.user) %> </td>
+    <td> <%= shop.created_at.to_s(:long) %> </td>
+  </tr>
+  <% end %>
+
+</table>
+
+<%= will_paginate(@posts) %>
