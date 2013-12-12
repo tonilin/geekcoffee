@@ -1,0 +1,21 @@
+defaults: &defaults
+  app_name: "Geek Coffee"
+  domain: "http://geekcoffee.dev"    
+  admin_emails: 
+    - ""
+  google_analytics_key: ""
+  default_logo_url: "/logo.png"
+  email_sender: ""
+  google_map_key: <%= ENV['google_map_key'] %>
+  facebook_app_id:  <%= ENV['facebook_app_id'] %>
+  facebook_secret: <%= ENV['facebook_secret'] %>
+  devise_secre_key: <%= ENV['devise_secre_key'] %>
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
