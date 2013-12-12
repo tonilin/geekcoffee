@@ -35,4 +35,9 @@ class User < ActiveRecord::Base
     uid = response["uid"]                                                       
     authorizations.create(:provider => provider , :uid => uid )                 
   end
+
+  def admin?
+    Setting.admin_emails.include?(email)
+  end
+
 end

@@ -1,8 +1,7 @@
 defaults: &defaults
   app_name: "Geek Coffee"
   domain: "http://geekcoffee.dev"    
-  admin_emails: 
-    - ""
+  admin_emails: <%= ENV['admin_emails'] %>
   google_analytics_key: ""
   default_logo_url: "/logo.png"
   email_sender: ""
