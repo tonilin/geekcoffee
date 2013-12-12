@@ -49,7 +49,7 @@ gem "hipchat"
 # Cache
 gem "dalli"
 
-gem "compass-rails", "~> 2.0.alpha.0"
+gem "compass-rails"
 
 gem "unicorn"
 
