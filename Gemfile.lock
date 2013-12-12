@@ -98,6 +98,9 @@ GEM
       i18n (~> 0.5)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     font-awesome-rails (4.0.3.0)
       railties (>= 3.2, < 5.0)
     fssm (0.2.10)
@@ -280,6 +283,7 @@ DEPENDENCIES
   devise (= 3.2.2)
   fabrication
   faker
+  figaro
   font-awesome-rails (~> 4.0.0)
   geocoder
   high_voltage
