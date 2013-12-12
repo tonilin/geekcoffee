@@ -5,7 +5,7 @@ Geekcoffee::Application.routes.draw do
   resources :maps
 
 
-  namspace :admin do
+  namespace :admin do
     resources :shops
   end
 
