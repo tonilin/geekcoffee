@@ -5,6 +5,7 @@ class LandingMap
     @shopDetail = $(".shop-detail") 
     @mapContainer = $(".map-container")
     @mapSearchInput = $("#map-search-input")
+    @geolocationBtn = $(".geolocation-btn")
 
     @freeWifiSwitch = $("#free-wifi-switch")
     @freePowerOutlets = $("#free-power-outlets")
@@ -15,6 +16,13 @@ class LandingMap
     @queryShops()
     @searchAutoComplete()
     @bindEvents()
+
+    @init()
+
+  init: ->
+    if @isBrowserSupportGeoLocation()
+      @geolocationBtn.hide()
+
   bindEvents: ->
 
     google.maps.event.addListener @map, 'click', =>
@@ -30,6 +38,8 @@ class LandingMap
     @freePowerOutlets.on "switch-change", =>
       @handleSwitchChange()
 
+    @geolocationBtn.on "click", =>
+      @geoLocation()
 
   initialMapElemant: ->
     style = [
@@ -385,9 +395,13 @@ class LandingMap
     if @isBrowserSupportGeoLocation()
       geoPosition.getCurrentPosition(@handleGeoLocationSuccess, @handleGeoLocationError,{enableHighAccuracy:true})
 
-  handleGeoLocationSuccess: ->
+  handleGeoLocationSuccess: (p)=>
+    lat = p.coords.latitude
+    lng = p.coords.longitude
+    location = new google.maps.LatLng(lat, lng)
 
-
+    @moveToLocation(location)
+    @zoomIn()
   handleGeoLocationError: ->
 
 
