@@ -300,6 +300,16 @@ class LandingMap
 
     @bounceMarker(marker)
 
+    # Preload 
+    @infowindow.setOptions {
+      content: @shop_detail_template({
+        name: marker.title
+        is_wifi_free: marker.is_wifi_free
+        power_outlets: marker.power_outlets
+      })
+    }
+    @infowindow.open(@map, marker);
+
     $.ajax {
       url: "#{@shop_api_endpoint}/#{marker_id}",
       data: {},
