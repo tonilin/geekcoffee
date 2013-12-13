@@ -81,7 +81,21 @@ $searchBarWidth: 380px;
     top: 0;
     left:100%;
     margin-left:10px;
+
+    .fa-spin {
+      display: none;
+    }
   }
+
+  .geolocation-btn.loading {
+    .fa-spin {
+      display: inline-block;
+    }
+    .fa-location-arrow {
+      display: none;
+    }
+  }
+
 }
 
 
