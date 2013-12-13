@@ -269,6 +269,8 @@ class LandingMap
     }
     @markerClusterer = new MarkerClusterer(@map, [], cluster_options)
 
+    @hereMarker = new google.maps.Marker
+
   initialShopDetailTemplate: ->
     source   = $("#shop-detail-template").html();
     @shop_detail_template = Handlebars.compile(source);
@@ -406,6 +408,7 @@ class LandingMap
     lng = p.coords.longitude
     location = new google.maps.LatLng(lat, lng)
 
+    @placeHereMarker(location)
     @moveToLocation(location)
     @zoomIn()
   handleGeoLocationError: =>
@@ -434,6 +437,13 @@ class LandingMap
 
   # hideSideBar: ->
   #   @mapContainer.removeClass("active")
+  placeHereMarker: (location)->
+    @hereMarker.setOptions({
+      position: location,
+      map: @map,
+      title: "You are here!",
+      icon: "/images/here-icon.png"
+    })
 
   bounceMarker: (marker)->
     @animationMarker.setAnimation(null) if @animationMarker
