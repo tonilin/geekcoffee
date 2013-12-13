@@ -24,6 +24,9 @@ class MapPreviewer
     @info_window_template = Handlebars.compile(source);
 
   bindEvents: ->
+    $(".search-submit-btn").on "click", =>
+      @addressPrediction(@shopAddressInput.val())
+
     return 
 
 
