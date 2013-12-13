@@ -4,10 +4,17 @@
     <div class="shop-detail"></div>
 
   </div>
-  <div class="map-search-bar">
-    <%= fa_icon("search", :class => "search-icon") %>
-    <input type="text" class="form-control input-lg map-search-input" id="map-search-input" >
+  <div class="map-search-bar form-inline">
+    <div class="form-group">
+      <%= fa_icon("search", :class => "search-icon") %>
+      <input type="text" class="form-control input-lg map-search-input" id="map-search-input" >
+    </div>
+    <button type="button" class="btn btn-lg btn-default geolocation-btn">
+      偵測位置 <%= fa_icon("location-arrow") %>
+    </button>
   </div>
+
+
 
   <div class="map-switches">
     <dl class="dl-horizontal">
