@@ -6,8 +6,10 @@
 //= require handlebars
 //= require underscore
 //= require bootstrap-switch
+//= require geoPosition
+//= require markerclusterer
 
 //= require map_previewer
 //= require shop_map
-//= require markerclusterer
-//= require geoPosition
+
+
