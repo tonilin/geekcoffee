@@ -391,11 +391,17 @@ class LandingMap
   isBrowserSupportGeoLocation: ->
     geoPosition.init()
 
+  geoLocationLoading: ->
+    @geolocationBtn.addClass("loading")
+
   geoLocation: ->
     if @isBrowserSupportGeoLocation()
+      @geoLocationLoading()
       geoPosition.getCurrentPosition(@handleGeoLocationSuccess, @handleGeoLocationError,{enableHighAccuracy:true})
 
   handleGeoLocationSuccess: (p)=>
+    @geolocationBtn.removeClass("loading")
+    
     lat = p.coords.latitude
     lng = p.coords.longitude
     location = new google.maps.LatLng(lat, lng)
@@ -403,7 +409,7 @@ class LandingMap
     @moveToLocation(location)
     @zoomIn()
   handleGeoLocationError: ->
-
+    @geolocationBtn.removeClass("loading")
 
 
   handlePlaceChaged: (place) ->
