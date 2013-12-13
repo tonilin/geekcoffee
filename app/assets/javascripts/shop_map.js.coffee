@@ -401,14 +401,14 @@ class LandingMap
 
   handleGeoLocationSuccess: (p)=>
     @geolocationBtn.removeClass("loading")
-    
+
     lat = p.coords.latitude
     lng = p.coords.longitude
     location = new google.maps.LatLng(lat, lng)
 
     @moveToLocation(location)
     @zoomIn()
-  handleGeoLocationError: ->
+  handleGeoLocationError: =>
     @geolocationBtn.removeClass("loading")
 
 
