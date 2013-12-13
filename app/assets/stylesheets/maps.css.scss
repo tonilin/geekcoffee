@@ -76,15 +76,11 @@ $searchBarWidth: 380px;
   top: 70px;
   text-align: center;
 
-  .search-icon {
+  .geolocation-btn {
     position: absolute;
-    top: 11px;
-    left: 10px;
-    font-size: 20px;
-  }
-
-  .map-search-input {
-    padding-left: 35px;
+    top: 0;
+    left:100%;
+    margin-left:10px;
   }
 }
 

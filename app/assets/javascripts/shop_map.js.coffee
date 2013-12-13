@@ -20,7 +20,7 @@ class LandingMap
     @init()
 
   init: ->
-    if @isBrowserSupportGeoLocation()
+    if !@isBrowserSupportGeoLocation()
       @geolocationBtn.hide()
 
   bindEvents: ->
