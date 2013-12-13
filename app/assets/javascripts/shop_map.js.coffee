@@ -15,7 +15,6 @@ class LandingMap
     @queryShops()
     @searchAutoComplete()
     @bindEvents()
-
   bindEvents: ->
 
     google.maps.event.addListener @map, 'click', =>
@@ -378,6 +377,20 @@ class LandingMap
         @addressPrediction(place.name)
       else
         @handlePlaceChaged(place)
+  
+  isBrowserSupportGeoLocation: ->
+    geoPosition.init()
+
+  geoLocation: ->
+    if @isBrowserSupportGeoLocation()
+      geoPosition.getCurrentPosition(@handleGeoLocationSuccess, @handleGeoLocationError,{enableHighAccuracy:true})
+
+  handleGeoLocationSuccess: ->
+
+
+  handleGeoLocationError: ->
+
+
 
   handlePlaceChaged: (place) ->
     location = place.geometry.location
