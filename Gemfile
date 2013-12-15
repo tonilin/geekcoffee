@@ -68,6 +68,9 @@ gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 
 gem "figaro"
 
+gem 'activerecord-reputation-system'
+
+
 group :development do
   gem "capistrano"
   gem "capistrano-ext"
