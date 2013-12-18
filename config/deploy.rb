@@ -57,6 +57,7 @@ namespace :my_tasks do
     
     symlink_hash = {
       "#{shared_path}/config/database.yml"   => "#{release_path}/config/database.yml",
+      "#{shared_path}/config/application.yml"   => "#{release_path}/config/application.yml",
       "#{shared_path}/config/s3.yml"   => "#{release_path}/config/s3.yml",
       "#{shared_path}/uploads"              => "#{release_path}/public/uploads",
     }
