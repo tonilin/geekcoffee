@@ -30,9 +30,9 @@ set :hipchat_token, APP_CONFIG["production"]["hipchat_token"]
 set :hipchat_room_name, APP_CONFIG["production"]["hipchat_room_name"]
 set :hipchat_announce, false # notify users?
 
-role :web, "geekcoffee.com"                          # Your HTTP server, Apache/etc
-role :app, "geekcoffee.com"                         # This may be the same as your `Web` server
-role :db,  "geekcoffee.com"   , :primary => true # This is where Rails migrations will run
+role :web, "roachking.net"                          # Your HTTP server, Apache/etc
+role :app, "roachking.net"                         # This may be the same as your `Web` server
+role :db,  "roachking.net"   , :primary => true # This is where Rails migrations will run
 
 set :deploy_env, "production"
 set :rails_env, "production"
