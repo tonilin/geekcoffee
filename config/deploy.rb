@@ -10,7 +10,7 @@ require "rvm/capistrano"
 default_environment["PATH"] = "/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin"
 
 set :application, "geekcoffee"
-set :repository,  "git@github.com:example/#{application}.git"
+set :repository,  "git@github.com:tonilin/geekcoffee.git"
 set :deploy_to, "/home/apps/#{application}"
 
 set :branch, "master"
