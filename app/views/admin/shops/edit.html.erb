@@ -1,0 +1,18 @@
+<h2>建立新咖啡館</h2>
+
+<%= simple_form_for [:admin, @shop]  do |f| %>
+
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :hours %>
+  <%= f.input :lat %>
+  <%= f.input :lng %>
+  <%= f.input :is_wifi_free %>
+  <%= f.input :power_outlets %>
+  <%= f.input :website_url %>
+  <%= f.input :description %>
+  <%= f.submit :class => "btn btn-primary pull-right" %>
+
+<% end %>
+
+</div>

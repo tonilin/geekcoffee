@@ -1,3 +1,5 @@
+<h3>Shop list</h3>
+
 <table class="table table-bordered" >
   <tr>
     <td> ID </td>
@@ -10,6 +12,7 @@
     <td> lng </td>
     <td> User </td>
     <td> Created </td>
+    <td> Edit </td>
   </tr>
   <% @shops.each do |shop| %>
   <tr>
@@ -23,6 +26,7 @@
     <td> <%= shop.lng %> </td>
     <td> <%= render_admin_user_name(shop.user) %> </td>
     <td> <%= shop.created_at.to_s(:long) %> </td>
+    <td> <%= render_admin_shop_edit_btn(shop) %> </td>
   </tr>
   <% end %>
 

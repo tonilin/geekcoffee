@@ -31,7 +31,7 @@ SimpleForm.setup do |config|
   config.wrappers :bootstrap3, tag: 'div', class: 'form-group', error_class: 'has-error',
       defaults: { input_html: { class: 'default_class' } } do |b|
     
-    b.use :html5
+    #b.use :html5
     b.use :min_max
     b.use :maxlength
     b.use :placeholder
