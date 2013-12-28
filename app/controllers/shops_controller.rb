@@ -43,8 +43,14 @@ class ShopsController < ApplicationController
 
   def rating
     @shop = Shop.find(params[:id])
-    current_user.evaluate_shop(@shop)
+    
+    score = params[:score]
 
+    if score.present?
+      current_user.evaluate_shop(@shop, score)
+    end
+
+    head :no_content
   end
 
 
