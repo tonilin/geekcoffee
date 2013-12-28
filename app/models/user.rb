@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
     if evaluated_record
       evaluated_record.value
     else
-      0
+      nil
     end
   end
 
