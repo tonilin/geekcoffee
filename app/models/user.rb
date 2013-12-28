@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
     shop.add_or_update_evaluation(:avg_rating, value, self)
   end
 
-  def delete_shop_evaluation(shop, value)
+  def delete_shop_evaluation(shop)
     shop.delete_evaluation(:avg_rating, self)
   end
 
