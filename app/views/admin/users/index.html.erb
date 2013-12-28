@@ -1,0 +1,25 @@
+<h3>User list</h3>
+
+<table class="table table-bordered" >
+  <tr>
+    <td> ID </td>
+    <td> Email </td>
+    <td> Name </td>
+    <td> Last Sign in Date </td>
+    <td> Sign in count </td>
+    <td> Create Date </td>
+  </tr>
+  <% @users.each do |user| %>
+  <tr>
+    <td> <%= user.id %> </td>
+    <td> <%= render_admin_user_email(user) %> </td>
+    <td> <%= render_admin_user_name(user) %> </td>
+    <td> <%= user.last_sign_in_at %> </td>
+    <td> <%= user.sign_in_count %> </td>
+    <td> <%= user.created_at %> </td>
+  </tr>
+  <% end %>
+
+</table>
+
+<%= will_paginate(@users) %>
