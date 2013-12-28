@@ -334,11 +334,24 @@ class LandingMap
         }
 
         @infowindow.open(@map, marker);
-        $(".rating-container").raty({
+
+
+        $(".avg-rating-container").raty({
+          half: true
+          number: 5,
+          path: "assets/raty/",
+          readOnly  : true,
+          score: data.avg_rating
+        })
+
+
+        $(".user-rating-container").raty({
           half: true
           number: 5,
           path: "assets/raty/",
           cancel: true
+          score: data.user_rating,
+          cancelPlace: 'right'
           click: (score)=>
             console.log(score)
             if score == null
