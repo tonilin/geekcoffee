@@ -5,5 +5,9 @@ module Admin::UsersHelper
   end
 
 
+  def render_admin_user_email(user)
+    user.email
+  end
+
 
 end
