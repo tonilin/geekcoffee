@@ -339,7 +339,7 @@ class LandingMap
         $(".avg-rating-container").raty({
           half: true
           number: 5,
-          path: "assets/raty/",
+          path: "images/raty/",
           readOnly  : true,
           score: data.avg_rating
         })
@@ -348,7 +348,7 @@ class LandingMap
         $(".user-rating-container").raty({
           half: true
           number: 5,
-          path: "assets/raty/",
+          path: "images/raty/",
           cancel: true
           score: data.user_rating,
           cancelPlace: 'right'
