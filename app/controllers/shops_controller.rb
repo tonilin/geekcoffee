@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-  before_filter :login_required, :only => [:create, :new, :new_step2, :rating]
+  before_filter :login_required, :only => [:create, :new, :new_step2, :rating, :cancal_rating]
 
 
   def show
