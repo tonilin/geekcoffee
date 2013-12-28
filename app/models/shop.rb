@@ -40,6 +40,9 @@ class Shop < ActiveRecord::Base
     end
   end
 
+  def avg_rating
+    self.reputation_for(:avg_rating)
+  end
 
 
 end
