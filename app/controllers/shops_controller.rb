@@ -47,7 +47,11 @@ class ShopsController < ApplicationController
     score = params[:score]
 
     if score.present?
-      current_user.evaluate_shop(@shop, score)
+      score = score.to_i
+
+      if score <= 5 && score >= 0
+        current_user.evaluate_shop(@shop, score)
+      end
     end
 
     head :no_content
