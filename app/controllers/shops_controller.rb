@@ -53,6 +53,15 @@ class ShopsController < ApplicationController
     head :no_content
   end
 
+  def cancel_rating
+    @shop = Shop.find(params[:id])
+  
+    current_user.delete_shop_evaluation(@shop)
+
+
+    head :no_content
+  end
+
 
   private
 
