@@ -20,7 +20,9 @@ module Admin::ShopsHelper
     shop.power_outlets
   end
 
-
+  def render_admin_shop_edit_btn(shop)
+    link_to("Edit", edit_admin_shop_path(shop))
+  end
 
 
 end
