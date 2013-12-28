@@ -8,6 +8,7 @@
 //= require bootstrap-switch
 //= require geoPosition
 //= require markerclusterer
+//= require jquery.raty
 
 //= require map_previewer
 //= require shop_map
