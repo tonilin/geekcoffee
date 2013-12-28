@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   def login_required
     if current_user.blank?
+      store_location
+
       respond_to do |format|
         format.html  {
           authenticate_user!
@@ -23,6 +25,25 @@ class ApplicationController < ActionController::Base
     unless (current_user && current_user.admin?)
       redirect_to root_path, :flash => { :error => "no permission" }
     end
+  end
+
+
+  private
+
+  def store_location
+    # store last url - this is needed for post-login redirect to whatever the user last visited.
+    if (request.fullpath != "/users/sign_in" &&
+        request.fullpath != "/users/sign_up" &&
+        request.fullpath != "/users/password" &&
+        !request.xhr?) # don't store ajax calls
+      session[:previous_url] = request.fullpath 
+    end
+  end
+
+  def after_sign_out_path_for(resource)
+    session[:previous_url] = nil
+
+    session[:previous_url] || maps_path
   end
   
 end
