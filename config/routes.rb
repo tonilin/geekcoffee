@@ -16,7 +16,8 @@ Geekcoffee::Application.routes.draw do
     end
 
     member do
-      put  :rating
+      put     :rating
+      delete  :cancel_rating
     end
   end
 
