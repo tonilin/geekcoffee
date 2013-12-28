@@ -48,8 +48,18 @@ class User < ActiveRecord::Base
     shop.delete_evaluation(:avg_rating, self)
   end
 
-  def evaludated_shop?(shop)
+  def evaluated_shop?(shop)
     shop.has_evaluation?(:avg_rating, self)
+  end
+
+  def evaluated_value(shop)
+    evaluated_record = shop.evaluations(:avg_rating).where(:source => self).first
+  
+    if evaluated_record
+      evaluated_record.value
+    else
+      0
+    end
   end
 
 end
