@@ -1,7 +1,6 @@
-<div class="col-md-8">
-  <h2>建立新咖啡館</h2>
+<h2>建立新咖啡館</h2>
 
-  <%= simple_form_for [:admin, @shop]  do |f| %>
+<%= simple_form_for [:admin, @shop]  do |f| %>
 
   <%= f.input :name %>
   <%= f.input :address %>
@@ -15,7 +14,5 @@
   <%= f.submit :class => "btn btn-primary pull-right" %>
 
 <% end %>
-
-</div>
 
 </div>
