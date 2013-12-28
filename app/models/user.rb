@@ -30,6 +30,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
+  scope :recent, -> { order("id DESC") }
+
   def bind_service(response)                                                    
     provider = response["provider"]                                             
     uid = response["uid"]                                                       
