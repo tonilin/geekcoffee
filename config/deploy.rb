@@ -80,6 +80,4 @@ end
 
 after "deploy:finalize_update", "my_tasks:symlink"
 
-after 'deploy:restart', 'unicorn:reload' # app IS NOT preloaded
 after 'deploy:restart', 'unicorn:restart'  # app preloaded
-after 'deploy:restart', 'unicorn:duplicate' # before_fork hook implemented (zero downtime deployments)
