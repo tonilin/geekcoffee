@@ -40,4 +40,26 @@ class User < ActiveRecord::Base
     Setting.admin_emails.include?(email)
   end
 
+  def evaluate_shop(shop, value)
+    shop.add_or_update_evaluation(:avg_rating, value, self)
+  end
+
+  def delete_shop_evaluation(shop)
+    shop.delete_evaluation(:avg_rating, self)
+  end
+
+  def evaluated_shop?(shop)
+    shop.has_evaluation?(:avg_rating, self)
+  end
+
+  def evaluated_value(shop)
+    evaluated_record = shop.evaluations(:avg_rating).where(:source => self).first
+  
+    if evaluated_record
+      evaluated_record.value
+    else
+      nil
+    end
+  end
+
 end

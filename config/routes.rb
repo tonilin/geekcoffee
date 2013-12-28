@@ -14,6 +14,11 @@ Geekcoffee::Application.routes.draw do
     collection do
       post :new_step2
     end
+
+    member do
+      put     :rating
+      delete  :cancel_rating
+    end
   end
 
 end

@@ -27,6 +27,9 @@ class Shop < ActiveRecord::Base
 
   scope :recent, -> { order("id DESC") }
 
+  has_reputation :avg_rating,
+    :source => :user,
+    :aggregated_by => :average
 
   def website_url_validator
 
@@ -37,6 +40,9 @@ class Shop < ActiveRecord::Base
     end
   end
 
+  def avg_rating
+    self.reputation_for(:avg_rating)
+  end
 
 
 end

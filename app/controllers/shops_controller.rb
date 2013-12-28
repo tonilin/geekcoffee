@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-  before_filter :login_required, :only => [:create, :new, :new_step2]
+  before_filter :login_required, :only => [:create, :new, :new_step2, :rating, :cancal_rating]
 
 
   def show
@@ -39,6 +39,27 @@ class ShopsController < ApplicationController
         render :json => Shop.all, :each_serializer => ShopSimpleSerializer
       end
     end
+  end
+
+  def rating
+    @shop = Shop.find(params[:id])
+    
+    score = params[:score]
+
+    if score.present?
+      current_user.evaluate_shop(@shop, score)
+    end
+
+    head :no_content
+  end
+
+  def cancel_rating
+    @shop = Shop.find(params[:id])
+  
+    current_user.delete_shop_evaluation(@shop)
+
+
+    head :no_content
   end
 
 
