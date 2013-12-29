@@ -3,6 +3,6 @@ class ShopDetailSerializer < ActiveModel::Serializer
 
 
   def user_rating
-    current_user.evaluated_value(object)
+    current_user.evaluated_value(object) if current_user
   end
 end
