@@ -34,7 +34,7 @@ namespace :dev do
 
   desc "fix_starbucks_data"
   task :fix_starbucks_data => :environment do
-    starbucks = Shop.where("is_starbucks = ?", true)
+    starbucks = Shop.where("is_starbucks = ?", 1)
 
     starbucks.each do |starbuck|
       starbuck.name = "統一星巴克 #{starbuck.name}"
