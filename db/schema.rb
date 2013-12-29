@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20131229090412) do
     t.integer  "user_id"
     t.string   "website_url"
     t.string   "formatted_address"
-    t.integer  "is_starbucks"
+    t.integer  "is_starbucks",      default: 0
   end
 
   create_table "users", force: true do |t|

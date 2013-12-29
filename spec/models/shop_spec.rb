@@ -17,7 +17,7 @@
 #  user_id           :integer
 #  website_url       :string(255)
 #  formatted_address :string(255)
-#  is_starbucks      :integer
+#  is_starbucks      :integer          default(0)
 #
 
 require 'spec_helper'
