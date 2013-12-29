@@ -71,6 +71,7 @@ gem "figaro"
 
 gem 'activerecord-reputation-system', :github => 'NARKOZ/activerecord-reputation-system', :branch => 'rails4'
 
+gem 'will_paginate-bootstrap'
 
 group :development do
   gem "capistrano"
