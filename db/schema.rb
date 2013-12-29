@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131215110343) do
+ActiveRecord::Schema.define(version: 20131229090412) do
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -72,13 +72,15 @@ ActiveRecord::Schema.define(version: 20131215110343) do
     t.string   "hours"
     t.float    "lat"
     t.float    "lng"
-    t.boolean  "is_wifi_free",  default: false
-    t.boolean  "power_outlets", default: false
+    t.boolean  "is_wifi_free",      default: false
+    t.boolean  "power_outlets",     default: false
     t.integer  "plug_price"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "website_url"
+    t.string   "formatted_address"
+    t.integer  "is_starbucks"
   end
 
   create_table "users", force: true do |t|
