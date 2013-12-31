@@ -4,6 +4,10 @@ Geekcoffee::Application.routes.draw do
 
   resources :maps
 
+  namespace :api do
+    resources :shops
+  end
+
 
   namespace :admin do
     root :to => "shops#index"
