@@ -1,2 +1,5 @@
-class Api::ShopsController < ApplicationController
+class Api::ShopsController < APIController
+
+
+  
 end
