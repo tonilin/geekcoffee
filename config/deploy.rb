@@ -23,7 +23,7 @@ set :group, "apps"
 set :deploy_to, "/home/apps/#{application}"
 set :runner, "apps"
 set :deploy_via, :remote_cache
-set :git_shallow_clone, 1
+
 set :use_sudo, false
 set :rvm_ruby_string, '2.1.0'
 
