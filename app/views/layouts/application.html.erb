@@ -17,7 +17,7 @@
   <meta property="og:title"       content="<%= page_title ||  SeoHelper.configuration.site_name %>"/>
   <meta property="og:description" content="<%= page_description || SeoHelper.configuration.default_page_description %>"/>
   <meta property="og:image"   content="<%= page_image ||  SeoHelper.configuration.default_page_image %>"/>
-
+  <%= render :partial => "common/google_analytics" %>
 </head>
 <body>
 
@@ -38,7 +38,6 @@
 
   <%= render :partial => "common/bootstrap_modal" %>    
   <%= render :partial => "common/facebook_js" %>
-  <%= render :partial => "common/google_analytics" %>
   <%= render :partial => "common/javascript_settings"%>
 
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=zh-TW&libraries=places"></script>
