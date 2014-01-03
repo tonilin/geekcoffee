@@ -68,14 +68,6 @@ namespace :my_tasks do
 end
 
 
-
-namespace :remote_rake do
-  desc "Run a task on remote servers, ex: cap staging rake:invoke task=cache:clear"
-  task :invoke do
-    run "cd #{deploy_to}/current; RAILS_ENV=#{rails_env} bundle exec rake #{ENV['task']}"
-  end
-end
-
 after "deploy:finalize_update", "my_tasks:symlink"
 
 after 'deploy:restart', 'unicorn:restart'  # app preloaded
