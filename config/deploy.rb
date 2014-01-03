@@ -40,13 +40,13 @@ set :rails_env, "production"
 set :scm_verbose, true
 
 
-namespace :deploy do
+# namespace :deploy do
 
-  desc "Restart passenger process"
-  task :restart, :roles => [:web], :except => { :no_release => true } do
-    run "touch #{current_path}/tmp/restart.txt"
-  end
-end
+#   desc "Restart passenger process"
+#   task :restart, :roles => [:web], :except => { :no_release => true } do
+#     run "touch #{current_path}/tmp/restart.txt"
+#   end
+# end
 
 
 namespace :my_tasks do
