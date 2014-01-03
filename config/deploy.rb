@@ -38,7 +38,6 @@ role :db,  "geekcoffee.roachking.net"   , :primary => true # This is where Rails
 set :deploy_env, "production"
 set :rails_env, "production"
 set :scm_verbose, true
-set :use_sudo, false
 
 
 namespace :deploy do
