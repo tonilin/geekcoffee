@@ -252,7 +252,7 @@ class LandingMap
     @infowindow = new google.maps.InfoWindow
 
     cluster_options = {
-      maxZoom: 18,
+      maxZoom: 15,
       ignoreHidden: true,
       styles: [
         {
