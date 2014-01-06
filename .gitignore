@@ -19,7 +19,6 @@
 .env
 public/uploads
 vendor/bundler_gems
-config/database.yml
 
 # Ignore application configuration
 /config/application.yml

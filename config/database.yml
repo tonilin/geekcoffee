@@ -1,0 +1,21 @@
+development: &default
+  adapter: mysql2
+  encoding: utf8
+  database: geekcoffee_development
+  host: localhost
+  username: <%= ENV['db_username'] %>
+  password: <%= ENV['db_password'] %>
+
+production: &default
+  adapter: mysql2
+  encoding: utf8
+  database: geekcoffee_development
+  host: localhost
+  username: <%= ENV['db_username'] %>
+  password: <%= ENV['db_password'] %>
+
+test: &TEST
+  database: geekcoffee_test
+  adapter: sqlite3
+  database: ":memory:"
+  timeout: 500
