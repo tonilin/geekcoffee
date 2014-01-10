@@ -77,6 +77,9 @@ gem 'activerecord-reputation-system', :github => 'NARKOZ/activerecord-reputation
 
 gem 'will_paginate-bootstrap'
 
+gem 'grape'
+gem 'grape-entity'
+
 group :development do
   gem "capistrano"
   gem "capistrano-ext"
