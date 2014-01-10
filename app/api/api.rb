@@ -6,6 +6,6 @@ class API < Grape::API
 
 
 
-  add_swagger_documentation :hide_documentation_path => true, :api_version => "v1", :base_path => "#{ENV["BASE_URL"]}/api"
+  add_swagger_documentation :hide_documentation_path => true, :api_version => "v1", :base_path => "#{ENV["BASE_URL"]}/api", :hide_format => true
 
 end
