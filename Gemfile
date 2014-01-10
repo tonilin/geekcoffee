@@ -79,6 +79,7 @@ gem 'will_paginate-bootstrap'
 
 gem 'grape'
 gem 'grape-entity'
+gem 'grape-swagger'
 
 group :development do
   gem "capistrano"
