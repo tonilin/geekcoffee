@@ -1,7 +1,11 @@
 class Versions::V1 < Grape::API
   version 'v1', :using => :path
 
-
+  before do
+    header "Access-Control-Allow-Origin", "*"
+    header "Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT"
+    header "Access-Control-Max-Age", "1728000"
+  end
 
   resource :shops do
 
