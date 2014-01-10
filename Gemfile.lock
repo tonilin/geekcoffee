@@ -212,7 +212,6 @@ GEM
       rack (>= 0.4)
     rack-contrib (1.1.0)
       rack (>= 0.9.1)
-    rack-cors (0.2.9)
     rack-mount (0.8.3)
       rack (>= 1.0.0)
     rack-test (0.6.2)
@@ -350,7 +349,6 @@ DEPENDENCIES
   powder
   pry-nav
   pry-remote
-  rack-cors
   rails (= 4.0.0)
   rails-i18n (~> 4.0.0)
   rmagick
