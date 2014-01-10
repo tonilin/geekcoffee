@@ -80,6 +80,7 @@ gem 'will_paginate-bootstrap'
 gem 'grape'
 gem 'grape-entity'
 gem 'grape-swagger'
+gem 'swagger-ui', :require => 'swagger'
 
 group :development do
   gem "capistrano"
