@@ -18,6 +18,9 @@
   <meta property="og:description" content="<%= page_description || SeoHelper.configuration.default_page_description %>">
   <meta property="og:image"   content="<%= page_image ||  SeoHelper.configuration.default_page_image %>">
   <meta property="og:url" content="<%= request.original_url %>">
+  <meta property="og:type" content="<%= @page_type || "website" %>">
+  <meta property="fb:app_id" content="<%= Setting.facebook_app_id %>">
+
   <%= render :partial => "common/google_analytics" %>
 </head>
 <body>
