@@ -47,7 +47,15 @@ class Shop < ActiveRecord::Base
   end
 
   def to_param
-    "#{id}-#{name}"
+    "#{id}-#{name_param}"
+  end
+
+  def name_param
+    name.strip
+      .gsub(/\s*@\s*/, " at ")
+      .gsub(/\s*&\s*/, " and ")
+      .gsub(/\s*[\s]/, '-')
+      .gsub(/-+/,"-")
   end
 
   def slug
