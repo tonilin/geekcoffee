@@ -5,8 +5,6 @@ class ShopsController < ApplicationController
   def show
     @shop = Shop.find(params[:id])
 
-
-
     respond_to do |format|
       format.html do
         set_page_title @shop.name
