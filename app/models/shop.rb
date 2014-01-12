@@ -62,5 +62,20 @@ class Shop < ActiveRecord::Base
     to_param
   end
 
+  def facebook_page?
+    # https://gist.github.com/marcgg/733592
+
+    facebook_id.present?
+  end
+
+  def facebook_id
+    matching = website_url.match(/(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*?(\/)?([\w\-\.]*)/)
+
+    return matching[2] if matching && matching[2].present?
+  end
+
+  def facebook_avatar
+    "http://graph.facebook.com/#{facebook_id}/picture?type=large"
+  end
 
 end
