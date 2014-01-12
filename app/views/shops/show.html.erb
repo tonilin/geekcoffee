@@ -4,6 +4,8 @@
       <h1><%= render_shop_name(@shop, :link => false) %></h1>
       <h2><%= render_shop_address(@shop) %></h2>
 
+
+
       <dl class="dl-horizontal">
 
       <dt class="hours">平均評價</dt>
@@ -51,6 +53,13 @@
     </div>
   </div>
   <div class="col-md-4">
+
+    <% if @shop.facebook_page? %>
+      <div class="well">
+        <%= image_tag @shop.facebook_avatar, :class => "img-rounded center-block" %>
+      </div>
+    <% end %>
+
     <div class="well">
       <%= render_shop_static_map(@shop) %>
     </div>

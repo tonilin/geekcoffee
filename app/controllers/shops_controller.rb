@@ -10,7 +10,7 @@ class ShopsController < ApplicationController
       format.html do
         set_page_title @shop.name
         set_page_description @shop.description if @shop.description.present?
-
+        set_page_image @shop.facebook_avatar if @shop.facebook_page?
       end
       format.json do
         render :json => @shop, :serializer => ShopDetailSerializer, :root => false
