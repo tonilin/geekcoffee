@@ -1,9 +1,10 @@
-<h2>建立新咖啡館</h2>
+<h2>編輯咖啡館</h2>
 
 <%= simple_form_for [:admin, @shop]  do |f| %>
 
   <%= f.input :name %>
   <%= f.input :address %>
+  <%= f.input :phone %>
   <%= f.input :hours %>
   <%= f.input :lat %>
   <%= f.input :lng %>
