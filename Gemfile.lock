@@ -265,6 +265,8 @@ GEM
     simple_form (3.0.0)
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
+    sitemap_generator (4.3.1)
+      builder
     slop (3.4.7)
     sprockets (2.10.1)
       hike (~> 1.2)
@@ -362,6 +364,7 @@ DEPENDENCIES
   settingslogic
   shoulda-matchers
   simple_form (~> 3.0.0.rc)
+  sitemap_generator
   sqlite3
   swagger-ui
   timecop

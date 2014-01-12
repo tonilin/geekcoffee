@@ -82,6 +82,9 @@ gem 'grape-entity'
 gem 'grape-swagger'
 gem 'swagger-ui', :require => 'swagger'
 
+gem "sitemap_generator"
+
+
 group :development do
   gem "capistrano"
   gem "capistrano-ext"
