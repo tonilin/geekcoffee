@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131229090412) do
+ActiveRecord::Schema.define(version: 20140112150921) do
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20131229090412) do
     t.string   "website_url"
     t.string   "formatted_address"
     t.integer  "is_starbucks",      default: 0
+    t.string   "phone"
   end
 
   create_table "users", force: true do |t|
