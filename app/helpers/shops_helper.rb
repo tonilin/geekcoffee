@@ -32,5 +32,16 @@ module ShopsHelper
     shop.description
   end
 
+  def render_shop_static_map(shop)
+    base_url = "http://maps.googleapis.com/maps/api/staticmap?"
+
+    parameters = "zoom=14&center=#{shop.lat},#{shop.lng}&sensor=false&size=320x320&"
+    marker = "markers=color:red%7Clabel:S%7C#{shop.lat},#{shop.lng}"
+
+    image_tag("#{base_url}#{parameters}#{marker}")
+
+  end
+
+
 
 end
