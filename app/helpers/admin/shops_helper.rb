@@ -1,7 +1,7 @@
 module Admin::ShopsHelper
 
   def render_admin_shop_name(shop)
-    shop.name
+    link_to shop.name, shop_path(shop)
   end
 
   def render_admin_shop_address(shop)
