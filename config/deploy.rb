@@ -39,14 +39,23 @@ set :deploy_env, "production"
 set :rails_env, "production"
 set :scm_verbose, true
 
+namespace :sitemap do
 
-# namespace :deploy do
+  desc "refresh sitemap"
+  task :refresh do
+    run "cd #{latest_release} && RAILS_ENV=#{rails_env} bundle exec rake sitemap:refresh"
+  end
 
-#   desc "Restart passenger process"
-#   task :restart, :roles => [:web], :except => { :no_release => true } do
-#     run "touch #{current_path}/tmp/restart.txt"
-#   end
-# end
+  desc "refresh sitemap without ping"
+  task :refresh_without_ping do
+    run "cd #{latest_release} && RAILS_ENV=#{rails_env} bundle exec rake -s sitemap:refresh"
+  end
+
+  desc "copy_old_sitemap"
+  task :copy_old_sitemap do
+    run "if [ -e #{previous_release}/public/sitemap.xml.gz ]; then cp #{previous_release}/public/sitemap*.xml.gz #{current_release}/public/; fi"
+  end
+end
 
 
 namespace :my_tasks do
@@ -69,5 +78,6 @@ end
 
 
 after "deploy:finalize_update", "my_tasks:symlink"
+after "deploy:finalize_update", "sitemap:refresh"
 
 after 'deploy:restart', 'unicorn:restart'  # app preloaded
