@@ -5,7 +5,14 @@ class ShopsController < ApplicationController
   def show
     @shop = Shop.find(params[:id])
 
+
+
     respond_to do |format|
+      format.html do
+        set_page_title @shop.name
+        set_page_description @shop.description if @shop.description.present?
+
+      end
       format.json do
         render :json => @shop, :serializer => ShopDetailSerializer, :root => false
       end

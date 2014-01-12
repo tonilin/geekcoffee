@@ -1,5 +1,7 @@
 <div class="shop-detail">
-  <h3><%= fa_icon("coffee") %> {{name}}</h3>
+  <h3>
+    <a href="<%= shops_path %>/{{id}}" target="_target" class="shop-name"><%= fa_icon("coffee") %> {{name}}</a>
+  </h3>
 
 
   <div class="address">{{address}}</div>
@@ -12,7 +14,7 @@
     <dd><span class="user-rating-container"></span></dd>
 
     {{#if website_url}}
-      <dt class="hours"><%= fa_icon("globe") %> 網站</dt>
+      <dt class="website"><%= fa_icon("globe") %> 網站</dt>
       <dd><a href="{{website_url}}" target="_blank"><%= fa_icon("external-link") %></a></dd>
     {{/if}}
 
@@ -33,7 +35,7 @@
     </dd>
 
 
-    <dt class="is-wifi-free"><%= fa_icon("bolt") %> 有無插座</dt>
+    <dt class="has_power_outlets"><%= fa_icon("bolt") %> 有無插座</dt>
     <dd>
       {{#if power_outlets}}
         有
@@ -43,7 +45,7 @@
     </dd>
 
     {{#if description}}
-      <dt class="hours">描述</dt>
+      <dt class="description">描述</dt>
       <dd>{{description}}</dd>
     {{/if}}
 

@@ -46,6 +46,11 @@ $searchBarWidth: 380px;
 
   h3 {
     text-align: center;
+  
+    .shop-name {
+      color: inherit;
+      font-size: 24px;
+    }
   }
 
   .address {

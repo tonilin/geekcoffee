@@ -1,0 +1,49 @@
+<div class="shop-show">
+  <div class="col-md-8">
+    <div class="well shop-information">
+      <h1><%= render_shop_name(@shop, :link => false) %></h1>
+      <h2><%= render_shop_address(@shop) %></h2>
+
+      <dl class="dl-horizontal">
+      <% if @shop.website_url.present? %>
+        <dt class="website"><%= fa_icon("globe") %> 網站</dt>
+        <dd>
+          <%= render_shop_website(@shop) %>
+        </dd>
+      <% end %>
+
+      <% if @shop.hours.present? %>
+        <dt class="hours"><%= fa_icon("clock-o") %> 營業時間</dt>
+        <dd>
+          <%= render_shop_hours(@shop) %>
+        </dd>   
+      <% end %>
+
+      <dt class="is-wifi-free"><%= fa_icon("signal") %> 免費 wifi</dt>
+      <dd>
+        <%= render_shop_if_wifi_free(@shop) %>
+      </dd>
+
+      <dt class="has_power_outlets"><%= fa_icon("bolt") %> 有無插座</dt>
+      <dd>
+        <%= render_shop_has_power_outlets(@shop) %>
+      </dd>
+
+      <% if @shop.description.present? %>
+        <dt class="description">描述</dt>
+        <dd>
+          <%= render_shop_description(@shop) %>
+        </dd>
+      <% end %>
+
+      </dl>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="well">
+      <%= render_shop_static_map(@shop) %>
+    </div>
+  </div>
+
+
+</div>
