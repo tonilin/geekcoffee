@@ -339,7 +339,7 @@ class LandingMap
         $(".avg-rating-container").raty({
           half: true
           number: 5,
-          path: "images/raty/",
+          path: "/images/raty/",
           readOnly  : true,
           score: data.avg_rating
         })
@@ -348,12 +348,11 @@ class LandingMap
         $(".user-rating-container").raty({
           half: true
           number: 5,
-          path: "images/raty/",
+          path: "/images/raty/",
           cancel: true
           score: data.user_rating,
-          cancelPlace: 'right'
+          cancelPlace: 'right',
           click: (score)=>
-            console.log(score)
             if score == null
               $.ajax {
                 type: "delete"
