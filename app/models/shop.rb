@@ -46,5 +46,13 @@ class Shop < ActiveRecord::Base
     self.reputation_for(:avg_rating)
   end
 
+  def to_param
+    "#{id}-#{name}"
+  end
+
+  def slug
+    to_param
+  end
+
 
 end
