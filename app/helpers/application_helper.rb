@@ -11,4 +11,8 @@ module ApplicationHelper
     flash_messages.join("\n").html_safe
   end
 
+  def render_site_name
+    Setting.app_name
+  end
+
 end
