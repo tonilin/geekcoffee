@@ -1,5 +1,5 @@
 SitemapGenerator::Sitemap.default_host = Setting.domain
-SitemapGenerator::Sitemap.create_index = true
+SitemapGenerator::Sitemap.create_index = :auto
 
 
 SitemapGenerator::Sitemap.create do
