@@ -75,7 +75,7 @@ class Shop < ActiveRecord::Base
   end
 
   def facebook_avatar
-    "http://graph.facebook.com/#{facebook_id}/picture?type=large"
+    "http://graph.facebook.com/#{facebook_id}/picture?width=320&height=320"
   end
 
 end
