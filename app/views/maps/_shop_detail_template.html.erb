@@ -1,5 +1,7 @@
 <div class="shop-detail">
-  <h3><%= fa_icon("coffee") %> {{name}}</h3>
+  <h3>
+    <a href="<%= shops_path %>/{{id}}" target="_target" class="shop-name"><%= fa_icon("coffee") %> {{name}}</a>
+  </h3>
 
 
   <div class="address">{{address}}</div>
