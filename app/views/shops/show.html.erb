@@ -5,6 +5,14 @@
       <h2><%= render_shop_address(@shop) %></h2>
 
       <dl class="dl-horizontal">
+
+      <dt class="hours">平均評價</dt>
+      <dd><span class="avg-rating-container"></span></dd>
+
+      <dt class="hours">你的評價</dt>
+      <dd><span class="user-rating-container"></span></dd>
+
+
       <% if @shop.website_url.present? %>
         <dt class="website"><%= fa_icon("globe") %> 網站</dt>
         <dd>
@@ -44,6 +52,50 @@
       <%= render_shop_static_map(@shop) %>
     </div>
   </div>
-
-
 </div>
+
+
+<%= content_for :javascripts do %>
+<script>  
+  $(".avg-rating-container").raty({
+    half: true,
+    number: 5,
+    path: "/images/raty/",
+    readOnly: true,
+    score: <%= @shop.avg_rating %>
+  })
+
+  $(".user-rating-container").raty({
+    half: true,
+    number: 5,
+    path: "/images/raty/",
+    cancel: true,
+    score: <%= (current_user ? current_user.evaluated_value(@shop) : 0.0).to_json %>,
+    cancelPlace: 'right',
+    click: function(score) {
+      if (score == null) {
+        $.ajax({
+          type: "delete",
+          url: "<%= cancel_rating_shop_path(@shop.id) %>",
+          dataType: "script"
+        })
+      } else {
+        $.ajax({
+          type: "put",
+          url: "<%= rating_shop_path(@shop.id) %>",
+          data: {score: score},
+          dataType: "script"
+        })
+      }
+    }
+  });
+</script>
+<% end %>
+
+
+
+
+
+
+
+
