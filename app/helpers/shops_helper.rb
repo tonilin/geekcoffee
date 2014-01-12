@@ -13,7 +13,7 @@ module ShopsHelper
   end
 
   def render_shop_website(shop)
-    link_to(shop.website_url, shop.website_url)
+    link_to("#{shop.website_url} #{fa_icon("external-link")}".html_safe, shop.website_url, :target => :_blank)
   end
 
   def render_shop_hours(shop)
