@@ -20,6 +20,7 @@
   <meta property="og:url" content="<%= request.original_url %>">
   <meta property="og:type" content="<%= @page_type || "website" %>">
   <meta property="fb:app_id" content="<%= Setting.facebook_app_id %>">
+  <%= yield :meta_tags %>
 
   <%= render :partial => "common/google_analytics" %>
 </head>

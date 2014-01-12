@@ -96,7 +96,11 @@
 <% end %>
 
 
+<%= content_for :meta_tags do %>  
+  <meta property="place:location:latitude"  content="<%= @shop.lat %>"> 
+  <meta property="place:location:longitude" content="<%= @shop.lng %>"> 
 
+<% end %>
 
 
 
