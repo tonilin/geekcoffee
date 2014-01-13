@@ -40,7 +40,21 @@ namespace :dev do
       starbuck.name = "統一星巴克 #{starbuck.name}"
       starbuck.save
     end
+  end
+
+  desc "Save facebook id"
+  task :save_facebook_id => :environment do
+    Shop.find_each do |shop|
+      if shop.parse_facebook_id.present?
+        shop.facebook_id = shop.parse_facebook_id
+        shop.save
+        puts shop.id
+      end
+    end
 
   end
+
+
+
 
 end
