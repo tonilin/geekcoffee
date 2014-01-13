@@ -18,6 +18,7 @@
 #  website_url       :string(255)
 #  formatted_address :string(255)
 #  is_starbucks      :integer          default(0)
+#  phone             :string(255)
 #
 
 require 'spec_helper'
