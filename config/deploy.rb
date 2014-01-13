@@ -81,3 +81,5 @@ after "deploy:finalize_update", "my_tasks:symlink"
 after "deploy:finalize_update", "sitemap:copy_old_sitemap"
 
 after 'deploy:restart', 'unicorn:restart'  # app preloaded
+
+require 'airbrake/capistrano'
