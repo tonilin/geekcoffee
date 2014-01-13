@@ -34,6 +34,8 @@ class Shop < ActiveRecord::Base
     :source => :user,
     :aggregated_by => :average
 
+  before_create :save_facebook_id
+
   def website_url_validator
 
     if website_url.present?
@@ -69,14 +71,22 @@ class Shop < ActiveRecord::Base
     facebook_id.present?
   end
 
-  def facebook_id
+  def facebook_avatar
+    "http://graph.facebook.com/#{facebook_id}/picture?width=320&height=320"
+  end
+
+  def parse_facebook_id
+    return if website_url.blank?
+
     matching = website_url.match(/(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*?(\/)?([\w\-\.]*)/)
 
     return matching[2] if matching && matching[2].present?
   end
 
-  def facebook_avatar
-    "http://graph.facebook.com/#{facebook_id}/picture?width=320&height=320"
+  private
+
+  def save_facebook_id
+    self.facebook_id = parse_facebook_id || nil
   end
 
 end
