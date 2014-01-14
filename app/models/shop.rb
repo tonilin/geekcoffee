@@ -26,7 +26,7 @@ class Shop < ActiveRecord::Base
 
   validate :website_url_validator
   validates_presence_of :name, :address, :lat, :lng
-  geocoded_by :latitude  => :lat, :longitude => :lng
+  geocoded_by :address, :latitude  => :lat, :longitude => :lng
 
   scope :recent, -> { order("id DESC") }
 
