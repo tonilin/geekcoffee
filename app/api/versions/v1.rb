@@ -33,11 +33,13 @@ class Versions::V1 < Grape::API
       present @shops, :with => Entities::Shops
     end
 
+
+    params do
+      requires :id, :type => Integer
+    end
     route_param :id do
       desc "Return Shop"
-      params do
-        requires :id, :type => Integer
-      end
+
       get do
         @shop = Shop.find(params[:id])
 
