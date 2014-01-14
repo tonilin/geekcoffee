@@ -47,8 +47,6 @@ gem "will_paginate", "3.0.3"
 
 gem "high_voltage"
 
-gem "airbrake"
-
 gem "rvm-capistrano"
 
 gem "omniauth"
