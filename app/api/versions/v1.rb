@@ -19,15 +19,33 @@ class Versions::V1 < Grape::API
       present @shops, :with => Entities::Shops
     end
 
-    desc "Return Shop"
+    desc "Return Shop by near"
     params do
-        requires :id, :type => Integer
+      requires :lat, :type => Integer
+      requires :lng, :type => Integer
+      requires :distance, :type => Integer, :desc => "kilometres"
+      optional :per_page, :type => Integer, :default => 100
+      optional :page, :type => Integer, :default => 1
     end
-    get ":id" do
-      @shop = Shop.find(params[:id])
+    get "near" do
+      @shops = Shop.near([params[:lat], params[:lng]], params[:distance], :units => :km)
 
-      present @shop, :with => Entities::Shop
+      present @shops, :with => Entities::Shops
     end
+
+    route_param :id do
+      desc "Return Shop"
+      params do
+        requires :id, :type => Integer
+      end
+      get do
+        @shop = Shop.find(params[:id])
+
+        present @shop, :with => Entities::Shop
+      end
+    end
+
+
 
   end
 
