@@ -8,8 +8,6 @@ class Versions::V1 < Grape::API
   end
 
   resource :shops do
-
-
     desc "Return Shops"
     params do
       optional :per_page, :type => Integer, :default => 100
@@ -20,6 +18,17 @@ class Versions::V1 < Grape::API
 
       present @shops, :with => Entities::Shops
     end
+
+    desc "Return Shop"
+    params do
+        requires :id, :type => Integer
+    end
+    get ":id" do
+      @shop = Shop.find(params[:id])
+
+      present @shop, :with => Entities::Shop
+    end
+
   end
 
 end
