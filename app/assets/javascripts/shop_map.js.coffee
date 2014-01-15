@@ -33,12 +33,11 @@ class LandingMap
     google.maps.event.addListener @infowindow, 'closeclick', =>
       @stopBounceMarker()
 
-
-    
-    
-
-    google.maps.event.addListener @markerClusterer, 'clusteringend', =>
+    google.maps.event.addListener @map, 'idle', =>
       @renderSideBar()
+
+    @shopList.on "mouseover", ".shop-list-item", (event)=>
+      @handleMouseOverShopListItem(event.currentTarget)
 
 
     @freeWifiSwitch.on "switch-change", =>
@@ -521,6 +520,11 @@ class LandingMap
         counter++
       else
         break
+  handleMouseOverShopListItem: (target)->
+    $target = $(target)
+    marker_id = $target.data("id") * 1 
+
+    marker = @findMarkerById(marker_id)
 
   markers: ->
     @markerClusterer.getMarkers()
@@ -534,6 +538,11 @@ class LandingMap
       result = _.union(result, cluster.getMarkers()) 
 
     return result
+
+  findMarkerById: (id)->
+    for marker in @markers()
+      return marker if marker.id == id
+
 
   hiddenAllMarkers: ->
     for marker in @markers()
