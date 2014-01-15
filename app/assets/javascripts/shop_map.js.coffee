@@ -523,8 +523,10 @@ class LandingMap
 
     if marker && !marker.map
       cluster = @markerCluster(marker)
-      $clusterIcon = $(cluster.clusterIcon_.div_)
-      $clusterIcon.removeClass("hover")
+
+      if cluster
+        $clusterIcon = $(cluster.clusterIcon_.div_)
+        $clusterIcon.removeClass("hover")
 
   renderSideBar: ->
 
@@ -559,6 +561,7 @@ class LandingMap
     marker = $target.data("marker")
 
     if marker.map
+      @moveToLocation(marker.getPosition())
       @handleMarkerClick(marker)
     else
       @moveToLocation(marker.getPosition())
