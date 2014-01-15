@@ -2,6 +2,7 @@ class LandingMap
   constructor: (@container) ->
     @shop_api_endpoint = Setting.shop_api_endpoint
     @mapSideBar = $(".map-sidebar")
+    @shopList = @mapSideBar.find(".shop-list")
     @shopDetail = $(".shop-detail") 
     @mapContainer = $(".map-container")
     @mapSearchInput = $("#map-search-input")
@@ -507,14 +508,14 @@ class LandingMap
     @animationMarker.setAnimation(null) if @animationMarker
 
   renderSideBar: ->
-    shopList = @mapSideBar.find(".shop-lists")
-    shopList.html("")
+
+    @shopList.html("")
 
     counter = 1
 
     for marker in @markersInView()
       html = @shop_list_item_template(marker)
-      shopList.append(html)
+      @shopList.append(html)
 
       if counter < 20
         counter++
