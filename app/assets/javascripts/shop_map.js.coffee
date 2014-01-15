@@ -39,7 +39,8 @@ class LandingMap
 
     @shopList.on "mouseover", ".shop-list-item", (event)=>
       @handleMouseOverShopListItem(event.currentTarget)
-
+    @shopList.on "mouseleave", ".shop-list-item", (event)=>
+      @handleMouseLeaveShopListItem(event.currentTarget)
 
     @freeWifiSwitch.on "switch-change", =>
       @handleSwitchChange()
@@ -526,6 +527,16 @@ class LandingMap
     marker_id = $target.data("id") * 1 
 
     marker = @findMarkerById(marker_id)
+
+    @bounceMarker(marker)
+  handleMouseLeaveShopListItem: (target)->
+    $target = $(target)
+    marker_id = $target.data("id") * 1 
+
+    marker = @findMarkerById(marker_id)
+
+    @stopBounceMarker(marker)
+
 
   markers: ->
     @markerClusterer.getMarkers()
