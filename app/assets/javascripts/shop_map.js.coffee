@@ -515,8 +515,9 @@ class LandingMap
     counter = 1
 
     for marker in @markersInView()
-      html = @shop_list_item_template(marker)
-      @shopList.append(html)
+      $html = $(@shop_list_item_template(marker))
+      $html.data("marker", marker)
+      @shopList.append($html)
 
       if counter < 20
         counter++
@@ -524,16 +525,11 @@ class LandingMap
         break
   handleMouseOverShopListItem: (target)->
     $target = $(target)
-    marker_id = $target.data("id") * 1 
-
-    marker = @findMarkerById(marker_id)
-
+    marker = $target.data("marker")
     @bounceMarker(marker)
   handleMouseLeaveShopListItem: (target)->
     $target = $(target)
-    marker_id = $target.data("id") * 1 
-
-    marker = @findMarkerById(marker_id)
+    marker = $target.data("marker")
 
     @stopBounceMarker(marker)
 
