@@ -482,11 +482,12 @@ class LandingMap
   moveToLocation: (location)->
     @map.panTo(location)
   
-  zoomIn: ->
+  zoomIn: (callback)->
     that = this
 
     setTimeout (->
       that.map.setZoom(16)
+      callback.call() if callback
     ), 500
 
   # showSideBar: ->
@@ -510,8 +511,10 @@ class LandingMap
       marker.setAnimation(google.maps.Animation.BOUNCE)
     else
       cluster = @markerCluster(marker)
-      $clusterIcon = $(cluster.clusterIcon_.div_)
-      $clusterIcon.addClass("hover")
+
+      if cluster
+        $clusterIcon = $(cluster.clusterIcon_.div_)
+        $clusterIcon.addClass("hover")
 
 
   stopBounceMarker: (marker)->
@@ -554,8 +557,12 @@ class LandingMap
     $target = $(target)
     marker = $target.data("marker")
 
-    @handleMarkerClick(marker)
-
+    if marker.map
+      @handleMarkerClick(marker)
+    else
+      @moveToLocation(marker.getPosition())
+      @zoomIn =>
+        @handleMarkerClick(marker)
     
   markers: ->
     @markerClusterer.getMarkers()
