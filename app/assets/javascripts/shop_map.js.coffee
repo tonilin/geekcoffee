@@ -33,6 +33,7 @@ class LandingMap
     google.maps.event.addListener @infowindow, 'closeclick', =>
       @stopBounceMarker()
 
+
     google.maps.event.addListener @map, 'idle', =>
       @renderSideBar()
 
@@ -531,11 +532,10 @@ class LandingMap
 
   markersInView: ->
     result = []
-
-    clusters = @markerClusterer.getClusters()
-
-    for cluster in clusters
-      result = _.union(result, cluster.getMarkers()) 
+    bounds = @map.getBounds()
+    
+    for marker in @markers()
+      result.push(marker) if bounds.contains(marker.getPosition())
 
     return result
 
