@@ -500,13 +500,24 @@ class LandingMap
     })
 
   bounceMarker: (marker)->
-    @animationMarker.setAnimation(null) if @animationMarker
+    @stopBounceMarker()
     
-    @animationMarker = marker
-    marker.setAnimation(google.maps.Animation.BOUNCE)
+    if marker.map
+      @animationMarker = marker
+      marker.setAnimation(google.maps.Animation.BOUNCE)
+    else
+      cluster = @markerCluster(marker)
+      $clusterIcon = $(cluster.clusterIcon_.div_)
+      $clusterIcon.addClass("hover")
 
-  stopBounceMarker: ->
+
+  stopBounceMarker: (marker)->
     @animationMarker.setAnimation(null) if @animationMarker
+
+    if marker && !marker.map
+      cluster = @markerCluster(marker)
+      $clusterIcon = $(cluster.clusterIcon_.div_)
+      $clusterIcon.removeClass("hover")
 
   renderSideBar: ->
 
@@ -527,27 +538,16 @@ class LandingMap
     $target = $(target)
     marker = $target.data("marker")
 
-    if marker.map
-      @bounceMarker(marker)
-    else
-      cluster = @markerCluster(marker)
-      $clusterIcon = $(cluster.clusterIcon_.div_)
-      $clusterIcon.addClass("hover")
+
+    @bounceMarker(marker)
 
   handleMouseLeaveShopListItem: (target)->
     $target = $(target)
     marker = $target.data("marker")
 
-    if marker.map
-      @stopBounceMarker(marker)
-    else
-      cluster = @markerCluster(marker)
-      $clusterIcon = $(cluster.clusterIcon_.div_)
-      $clusterIcon.removeClass("hover")
+    @stopBounceMarker(marker)
 
     
-
-
   markers: ->
     @markerClusterer.getMarkers()
 
