@@ -539,7 +539,7 @@ class LandingMap
       $html.data("marker", marker)
       @shopList.append($html)
 
-      if counter < 20
+      if counter < 15
         counter++
       else
         break
