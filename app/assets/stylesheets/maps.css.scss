@@ -4,39 +4,61 @@
 @import "compass/css3/transition";
 @import "compass/css3/border-radius";
 
-$sideBarColor: #d1c1cc;
+
+
+$sideBarColor: #333333;
 $sideBarWidth: 300px;
 $searchBarWidth: 380px;
 
 
-.map-container.active {
-
-  .map-sidebar {
-    left: 0px
-  }
-
-  .shop-map {
-    left: $sideBarWidth;
-  }
-
-}
 
 .map-sidebar {
   position: absolute;
   z-index: 2;
   top: 50px;
   bottom: 0px;
-  left: -$sideBarWidth;
+  left: 0px;
   width: $sideBarWidth;
   background-color: $sideBarColor;
   padding: 0px;
-
-  @include transition(left 0.3s);
+  overflow-y: auto;
 
   .close {
     margin: 5px;
   }
 }
+
+.shop-list {
+  padding: 20px 10px 20px 10px;
+
+  .shop-list-item {
+    padding: 5px 8px 5px 8px;
+    background-color: #eee;
+    margin-bottom: 5px;
+    @include border-radius(5px);
+    cursor: pointer;
+
+
+    .fa-coffee {
+      color: #888;
+      margin-right:3px;
+    }
+
+    &:hover {
+      background-color: #fff;
+
+      .fa-coffee {
+        color: #000;
+      }
+    }
+
+
+  }
+
+}
+
+
+
 
 
 .shop-detail {
@@ -133,11 +155,39 @@ $searchBarWidth: 380px;
 .shop-map {
   z-index: 1;
   position: absolute;
-  left: 0px;
+  left: 300px;
   right: 0px;
   top: 50px;
   bottom: 0px;
 
   @include transition(left 0.3s);
 }
+
+
+
+@-webkit-keyframes moveX {
+  from { margin-top: 0; } to { margin-top: -20px; }
+}
+@-moz-keyframes moveX {
+  from { margin-top: 0; } to { margin-top: -20px; }
+}
+@-o-keyframes moveX {
+  from { margin-top: 0; } to { margin-top: -20px; }
+}
+@keyframes moveX {
+  from { margin-top: 0; } to { margin-top: -20px; }
+}
+
+.cluster.hover {
+  margin-top: -30px;
+  -webkit-animation: moveX 0.4s ease-in-out 0s infinite alternate;
+  -moz-animation: moveX 0.4s ease-in-out 0s infinite alternate;
+  -o-animation: moveX 0.4s ease-in-out 0s infinite alternate;
+  animation: moveX 0.4s ease-in-out 0s infinite alternate;
+}
+
+.cluster{
+  @include transition(margin 0.3s);
+}
+
 

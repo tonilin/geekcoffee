@@ -2,7 +2,8 @@ class LandingMap
   constructor: (@container) ->
     @shop_api_endpoint = Setting.shop_api_endpoint
     @mapSideBar = $(".map-sidebar")
-    @shopDetail = $(".shop-detail") 
+    @shopList = @mapSideBar.find(".shop-list")
+    @shopDetail = $(".shop-detail")
     @mapContainer = $(".map-container")
     @mapSearchInput = $("#map-search-input")
     @geolocationBtn = $(".geolocation-btn")
@@ -12,7 +13,7 @@ class LandingMap
 
 
     @initialMapElemant()
-    @initialShopDetailTemplate()
+    @initialTemplates()
     @queryShops()
     @searchAutoComplete()
     @bindEvents()
@@ -32,11 +33,26 @@ class LandingMap
     google.maps.event.addListener @infowindow, 'closeclick', =>
       @stopBounceMarker()
 
+
+    google.maps.event.addListener @map, 'idle', =>
+      @renderSideBar()
+
+    @shopList.on "mouseover", ".shop-list-item", (event)=>
+      @handleMouseOverShopListItem(event.currentTarget)
+    @shopList.on "mouseleave", ".shop-list-item", (event)=>
+      @handleMouseLeaveShopListItem(event.currentTarget)
+    @shopList.on "click", ".shop-list-item", (event)=>
+      @handleClickShopListItem(event.currentTarget)
+
+
     @freeWifiSwitch.on "switch-change", =>
       @handleSwitchChange()
 
     @freePowerOutlets.on "switch-change", =>
       @handleSwitchChange()
+
+
+
 
     @geolocationBtn.on "click", =>
       @geoLocation()
@@ -248,7 +264,7 @@ class LandingMap
       styles: style
     }
 
-    @map = new google.maps.Map(@container[0], mapOptions);
+    @map = new google.maps.Map(@container[0], mapOptions)
     @infowindow = new google.maps.InfoWindow
 
     cluster_options = {
@@ -263,7 +279,7 @@ class LandingMap
           width: 64,
           textColor: "#FFFFFF",
           fontWeight: "normal",
-          fontFamily: 'Playball';
+          fontFamily: 'Playball'
         }
       ]
     }
@@ -271,9 +287,12 @@ class LandingMap
 
     @hereMarker = new google.maps.Marker
 
-  initialShopDetailTemplate: ->
-    source   = $("#shop-detail-template").html();
-    @shop_detail_template = Handlebars.compile(source);
+  initialTemplates: ->
+    source   = $("#shop-detail-template").html()
+    @shop_detail_template = Handlebars.compile(source)
+    source   = $("#shop-list-item-template").html()
+    @shop_list_item_template = Handlebars.compile(source)
+
 
   queryShops: ->
 
@@ -297,6 +316,7 @@ class LandingMap
         id: shop.id,
         is_wifi_free: shop.is_wifi_free,
         power_outlets: shop.power_outlets,
+        slug: shop.slug,
       }
 
       marker = new google.maps.Marker(markerOptions)
@@ -311,7 +331,7 @@ class LandingMap
 
     @bounceMarker(marker)
 
-    # Preload 
+    # Preload
     @infowindow.setOptions {
       content: @shop_detail_template({
         name: marker.title
@@ -319,7 +339,7 @@ class LandingMap
         power_outlets: marker.power_outlets
       })
     }
-    @infowindow.open(@map, marker);
+    @infowindow.open(@map, marker)
 
 
 
@@ -333,7 +353,7 @@ class LandingMap
           content: @shop_detail_template(data)
         }
 
-        @infowindow.open(@map, marker);
+        @infowindow.open(@map, marker)
 
 
         $(".avg-rating-container").raty({
@@ -366,7 +386,7 @@ class LandingMap
                 data: {score: score},
                 dataType: "script"
               }
-        });
+        })
     }
 
 
@@ -382,7 +402,7 @@ class LandingMap
       filterOption.power_outlets = true
 
     if _.size(filterOption) > 0
-      result = _.where(@markers(), filterOption);
+      result = _.where(@markers(), filterOption)
       @hiddenAllMarkers()
       for marker in result
         marker.setVisible(true)
@@ -421,7 +441,7 @@ class LandingMap
       types: ['geocode']
     }
     google.maps.event.addListener @autocomplete, 'place_changed', =>
-      place = @autocomplete.getPlace()   
+      place = @autocomplete.getPlace()
 
       if !place.geometry
         @addressPrediction(place.name)
@@ -463,11 +483,12 @@ class LandingMap
   moveToLocation: (location)->
     @map.panTo(location)
   
-  zoomIn: ->
+  zoomIn: (callback)->
     that = this
 
     setTimeout (->
       that.map.setZoom(16)
+      callback.call() if callback
     ), 500
 
   # showSideBar: ->
@@ -484,16 +505,92 @@ class LandingMap
     })
 
   bounceMarker: (marker)->
-    @animationMarker.setAnimation(null) if @animationMarker
+    @stopBounceMarker()
     
-    @animationMarker = marker
-    marker.setAnimation(google.maps.Animation.BOUNCE)
+    if marker.map
+      @animationMarker = marker
+      marker.setAnimation(google.maps.Animation.BOUNCE)
+    else
+      cluster = @markerCluster(marker)
 
-  stopBounceMarker: ->
+      if cluster
+        $clusterIcon = $(cluster.clusterIcon_.div_)
+        $clusterIcon.addClass("hover")
+
+
+  stopBounceMarker: (marker)->
     @animationMarker.setAnimation(null) if @animationMarker
 
+    if marker && !marker.map
+      cluster = @markerCluster(marker)
+
+      if cluster
+        $clusterIcon = $(cluster.clusterIcon_.div_)
+        $clusterIcon.removeClass("hover")
+
+  renderSideBar: ->
+
+    @shopList.html("")
+
+    counter = 1
+
+    for marker in @markersInView()
+      $html = $(@shop_list_item_template(marker))
+      $html.data("marker", marker)
+      @shopList.append($html)
+
+      if counter < 15
+        counter++
+      else
+        break
+  handleMouseOverShopListItem: (target)->
+    $target = $(target)
+    marker = $target.data("marker")
+
+
+    @bounceMarker(marker)
+
+  handleMouseLeaveShopListItem: (target)->
+    $target = $(target)
+    marker = $target.data("marker")
+
+    @stopBounceMarker(marker)
+
+  handleClickShopListItem: (target)->
+    $target = $(target)
+    marker = $target.data("marker")
+
+    if marker.map
+      @moveToLocation(marker.getPosition())
+      @handleMarkerClick(marker)
+    else
+      @moveToLocation(marker.getPosition())
+      @zoomIn =>
+        @handleMarkerClick(marker)
+    
   markers: ->
     @markerClusterer.getMarkers()
+
+  markersInView: ->
+    result = []
+    bounds = @map.getBounds()
+    
+    for marker in @markers()
+      result.push(marker) if bounds.contains(marker.getPosition())
+
+    return result
+
+  markerCluster: (marker)->
+    clusters = @markerClusterer.getClusters()
+    
+    for cluster in clusters
+      return cluster if cluster.isMarkerInClusterBounds(marker)
+
+
+  findMarkerById: (id)->
+    for marker in @markers()
+      return marker if marker.id == id
+
 
   hiddenAllMarkers: ->
     for marker in @markers()
@@ -501,9 +598,11 @@ class LandingMap
   showAllMarkers: ->
     for marker in @markers()
       marker.setVisible(true)
-  repaint: -> 
+  repaint: ->
     @markerClusterer.repaint()
 
 $ ->
   if $(".shop-map").length > 0
     mapPreviewer = new LandingMap($(".shop-map"))
+
+    window.c = mapPreviewer
