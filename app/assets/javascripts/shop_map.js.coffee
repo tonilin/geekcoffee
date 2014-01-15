@@ -3,7 +3,7 @@ class LandingMap
     @shop_api_endpoint = Setting.shop_api_endpoint
     @mapSideBar = $(".map-sidebar")
     @shopList = @mapSideBar.find(".shop-list")
-    @shopDetail = $(".shop-detail") 
+    @shopDetail = $(".shop-detail")
     @mapContainer = $(".map-container")
     @mapSearchInput = $("#map-search-input")
     @geolocationBtn = $(".geolocation-btn")
@@ -261,7 +261,7 @@ class LandingMap
       styles: style
     }
 
-    @map = new google.maps.Map(@container[0], mapOptions);
+    @map = new google.maps.Map(@container[0], mapOptions)
     @infowindow = new google.maps.InfoWindow
 
     cluster_options = {
@@ -276,7 +276,7 @@ class LandingMap
           width: 64,
           textColor: "#FFFFFF",
           fontWeight: "normal",
-          fontFamily: 'Playball';
+          fontFamily: 'Playball'
         }
       ]
     }
@@ -285,10 +285,10 @@ class LandingMap
     @hereMarker = new google.maps.Marker
 
   initialTemplates: ->
-    source   = $("#shop-detail-template").html();
-    @shop_detail_template = Handlebars.compile(source);
-    source   = $("#shop-list-item-template").html();
-    @shop_list_item_template = Handlebars.compile(source);
+    source   = $("#shop-detail-template").html()
+    @shop_detail_template = Handlebars.compile(source)
+    source   = $("#shop-list-item-template").html()
+    @shop_list_item_template = Handlebars.compile(source)
 
 
   queryShops: ->
@@ -327,7 +327,7 @@ class LandingMap
 
     @bounceMarker(marker)
 
-    # Preload 
+    # Preload
     @infowindow.setOptions {
       content: @shop_detail_template({
         name: marker.title
@@ -335,7 +335,7 @@ class LandingMap
         power_outlets: marker.power_outlets
       })
     }
-    @infowindow.open(@map, marker);
+    @infowindow.open(@map, marker)
 
 
 
@@ -349,7 +349,7 @@ class LandingMap
           content: @shop_detail_template(data)
         }
 
-        @infowindow.open(@map, marker);
+        @infowindow.open(@map, marker)
 
 
         $(".avg-rating-container").raty({
@@ -382,7 +382,7 @@ class LandingMap
                 data: {score: score},
                 dataType: "script"
               }
-        });
+        })
     }
 
 
@@ -398,7 +398,7 @@ class LandingMap
       filterOption.power_outlets = true
 
     if _.size(filterOption) > 0
-      result = _.where(@markers(), filterOption);
+      result = _.where(@markers(), filterOption)
       @hiddenAllMarkers()
       for marker in result
         marker.setVisible(true)
@@ -437,7 +437,7 @@ class LandingMap
       types: ['geocode']
     }
     google.maps.event.addListener @autocomplete, 'place_changed', =>
-      place = @autocomplete.getPlace()   
+      place = @autocomplete.getPlace()
 
       if !place.geometry
         @addressPrediction(place.name)
@@ -578,7 +578,7 @@ class LandingMap
   showAllMarkers: ->
     for marker in @markers()
       marker.setVisible(true)
-  repaint: -> 
+  repaint: ->
     @markerClusterer.repaint()
 
 $ ->
