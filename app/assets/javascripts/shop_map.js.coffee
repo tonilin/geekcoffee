@@ -316,6 +316,7 @@ class LandingMap
         id: shop.id,
         is_wifi_free: shop.is_wifi_free,
         power_outlets: shop.power_outlets,
+        slug: shop.slug,
       }
 
       marker = new google.maps.Marker(markerOptions)
