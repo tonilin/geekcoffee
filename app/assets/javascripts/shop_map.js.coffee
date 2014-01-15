@@ -526,12 +526,26 @@ class LandingMap
   handleMouseOverShopListItem: (target)->
     $target = $(target)
     marker = $target.data("marker")
-    @bounceMarker(marker)
+
+    if marker.map
+      @bounceMarker(marker)
+    else
+      cluster = @markerCluster(marker)
+      $clusterIcon = $(cluster.clusterIcon_.div_)
+      $clusterIcon.addClass("hover")
+
   handleMouseLeaveShopListItem: (target)->
     $target = $(target)
     marker = $target.data("marker")
 
-    @stopBounceMarker(marker)
+    if marker.map
+      @stopBounceMarker(marker)
+    else
+      cluster = @markerCluster(marker)
+      $clusterIcon = $(cluster.clusterIcon_.div_)
+      $clusterIcon.removeClass("hover")
+
+    
 
 
   markers: ->
@@ -545,6 +559,13 @@ class LandingMap
       result.push(marker) if bounds.contains(marker.getPosition())
 
     return result
+
+  markerCluster: (marker)->
+    clusters = @markerClusterer.getClusters()
+    
+    for cluster in clusters
+      return cluster if cluster.isMarkerInClusterBounds(marker)
+
 
   findMarkerById: (id)->
     for marker in @markers()

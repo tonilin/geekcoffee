@@ -151,3 +151,31 @@ $searchBarWidth: 380px;
   @include transition(left 0.3s);
 }
 
+
+
+@-webkit-keyframes moveX {
+  from { margin-top: 0; } to { margin-top: -20px; }
+}
+@-moz-keyframes moveX {
+  from { margin-top: 0; } to { margin-top: -20px; }
+}
+@-o-keyframes moveX {
+  from { margin-top: 0; } to { margin-top: -20px; }
+}
+@keyframes moveX {
+  from { margin-top: 0; } to { margin-top: -20px; }
+}
+
+.cluster.hover {
+  margin-top: -30px;
+  -webkit-animation: moveX 0.4s ease-in-out 0s infinite alternate;
+  -moz-animation: moveX 0.4s ease-in-out 0s infinite alternate;
+  -o-animation: moveX 0.4s ease-in-out 0s infinite alternate;
+  animation: moveX 0.4s ease-in-out 0s infinite alternate;
+}
+
+.cluster{
+  @include transition(margin 0.3s);
+}
+
+
