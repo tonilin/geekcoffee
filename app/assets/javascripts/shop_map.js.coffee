@@ -32,11 +32,18 @@ class LandingMap
     google.maps.event.addListener @infowindow, 'closeclick', =>
       @stopBounceMarker()
 
+    google.maps.event.addListener @map, 'idle', =>
+      @renderSideBar()
+
+
     @freeWifiSwitch.on "switch-change", =>
       @handleSwitchChange()
 
     @freePowerOutlets.on "switch-change", =>
       @handleSwitchChange()
+
+
+
 
     @geolocationBtn.on "click", =>
       @geoLocation()
@@ -491,6 +498,9 @@ class LandingMap
 
   stopBounceMarker: ->
     @animationMarker.setAnimation(null) if @animationMarker
+
+  renderSideBar: ->
+
 
   markers: ->
     @markerClusterer.getMarkers()
