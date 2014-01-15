@@ -38,9 +38,21 @@ $searchBarWidth: 380px;
     @include border-radius(5px);
     cursor: pointer;
 
+
+    .fa-coffee {
+      color: #888;
+      margin-right:3px;
+    }
+
     &:hover {
       background-color: #fff;
+
+      .fa-coffee {
+        color: #000;
+      }
     }
+
+
   }
 
 }
