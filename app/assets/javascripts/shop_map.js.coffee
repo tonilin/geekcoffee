@@ -12,7 +12,7 @@ class LandingMap
 
 
     @initialMapElemant()
-    @initialShopDetailTemplate()
+    @initialTemplates()
     @queryShops()
     @searchAutoComplete()
     @bindEvents()
@@ -278,9 +278,12 @@ class LandingMap
 
     @hereMarker = new google.maps.Marker
 
-  initialShopDetailTemplate: ->
+  initialTemplates: ->
     source   = $("#shop-detail-template").html();
     @shop_detail_template = Handlebars.compile(source);
+    source   = $("#shop-list-item-template").html();
+    @shop_list_item_template = Handlebars.compile(source);
+
 
   queryShops: ->
 
@@ -500,7 +503,19 @@ class LandingMap
     @animationMarker.setAnimation(null) if @animationMarker
 
   renderSideBar: ->
+    shopList = @mapSideBar.find(".shop-lists")
+    shopList.html("")
 
+    counter = 1
+
+    for marker in @markersInView()
+      html = @shop_list_item_template(marker)
+      shopList.append(html)
+
+      if counter < 20
+        counter++
+      else
+        break
 
   markers: ->
     @markerClusterer.getMarkers()
