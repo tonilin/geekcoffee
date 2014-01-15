@@ -41,6 +41,9 @@ class LandingMap
       @handleMouseOverShopListItem(event.currentTarget)
     @shopList.on "mouseleave", ".shop-list-item", (event)=>
       @handleMouseLeaveShopListItem(event.currentTarget)
+    @shopList.on "click", ".shop-list-item", (event)=>
+      @handleClickShopListItem(event.currentTarget)
+
 
     @freeWifiSwitch.on "switch-change", =>
       @handleSwitchChange()
@@ -546,6 +549,12 @@ class LandingMap
     marker = $target.data("marker")
 
     @stopBounceMarker(marker)
+
+  handleClickShopListItem: (target)->
+    $target = $(target)
+    marker = $target.data("marker")
+
+    @handleMarkerClick(marker)
 
     
   markers: ->
