@@ -32,7 +32,11 @@ class LandingMap
     google.maps.event.addListener @infowindow, 'closeclick', =>
       @stopBounceMarker()
 
-    google.maps.event.addListener @map, 'idle', =>
+
+    
+    
+
+    google.maps.event.addListener @markerClusterer, 'clusteringend', =>
       @renderSideBar()
 
 
