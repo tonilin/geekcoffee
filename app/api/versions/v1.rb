@@ -21,8 +21,8 @@ class Versions::V1 < Grape::API
 
     desc "Return Shops by near"
     params do
-      requires :lat, :type => Integer
-      requires :lng, :type => Integer
+      requires :lat, :type => Float
+      requires :lng, :type => Float
       requires :distance, :type => Integer, :desc => "kilometres"
       optional :per_page, :type => Integer, :default => 100
       optional :page, :type => Integer, :default => 1
