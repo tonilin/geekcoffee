@@ -495,6 +495,16 @@ class LandingMap
   markers: ->
     @markerClusterer.getMarkers()
 
+  markersInView: ->
+    result = []
+
+    clusters = @markerClusterer.getClusters()
+
+    for cluster in clusters
+      result = _.union(result, cluster.getMarkers()) 
+
+    return result
+
   hiddenAllMarkers: ->
     for marker in @markers()
       marker.setVisible(false)
@@ -507,3 +517,5 @@ class LandingMap
 $ ->
   if $(".shop-map").length > 0
     mapPreviewer = new LandingMap($(".shop-map"))
+
+    window.c = mapPreviewer
