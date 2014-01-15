@@ -19,7 +19,7 @@ class Versions::V1 < Grape::API
       present @shops, :with => Entities::Shops
     end
 
-    desc "Return Shop by near"
+    desc "Return Shops by near"
     params do
       requires :lat, :type => Integer
       requires :lng, :type => Integer
@@ -28,7 +28,7 @@ class Versions::V1 < Grape::API
       optional :page, :type => Integer, :default => 1
     end
     get "near" do
-      @shops = Shop.near([params[:lat], params[:lng]], params[:distance], :units => :km)
+      @shops = Shop.near([params[:lat], params[:lng]], params[:distance], :units => :km).order("distance ASC")
 
       present @shops, :with => Entities::Shops
     end
