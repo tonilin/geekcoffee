@@ -57,7 +57,7 @@ class Shop < ActiveRecord::Base
     name.strip
       .gsub(/\s*@\s*/, " at ")
       .gsub(/\s*&\s*/, " and ")
-      .gsub(/\s*[\s]/, '-')
+      .gsub(/\s*[\.\s]/, '-')
       .gsub(/-+/,"-")
   end
 
