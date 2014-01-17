@@ -21,7 +21,7 @@ class Account::SettingsController < AuthenticatedController
 
     if current_user.update(user_password_params)
       sign_in current_user, :bypass => true
-      redirect_to maps_path
+      redirect_to maps_path, :notice => "成功修改密碼"
     else
       render :edit_password
     end
