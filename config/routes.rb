@@ -1,5 +1,5 @@
 Geekcoffee::Application.routes.draw do
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations"  }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   mount API => '/api'
 
@@ -14,7 +14,13 @@ Geekcoffee::Application.routes.draw do
   end
 
   namespace :account do
-    resources :settings
+    resources :settings do
+      collection do
+        get :edit_password
+        put :update_password
+      end
+    end
+
   end
 
 
