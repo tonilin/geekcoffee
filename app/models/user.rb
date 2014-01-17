@@ -73,6 +73,19 @@ class User < ActiveRecord::Base
     end
   end
 
+  def ensure_authentication_token!
+    ensure_authentication_token
+    self.save
+  end
+
+  def reset_authentication_token
+    self.authentication_token = generate_authentication_token
+  end
+
+  def reset_authentication_token!
+    reset_authentication_token
+    self.save
+  end
 
   private
 
