@@ -7,12 +7,18 @@ Geekcoffee::Application.routes.draw do
 
   resources :maps
 
-
   namespace :admin do
     root :to => "shops#index"
     resources :shops
     resources :users
   end
+
+  namespace :account do
+    resources :settings
+  end
+
+
+
 
   resources :shops do
     collection do
