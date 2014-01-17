@@ -30,6 +30,9 @@ class Shop < ActiveRecord::Base
 
   scope :recent, -> { order("id DESC") }
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   has_reputation :avg_rating,
     :source => :user,
     :aggregated_by => :average
@@ -49,22 +52,6 @@ class Shop < ActiveRecord::Base
     self.reputation_for(:avg_rating)
   end
 
-  def to_param
-    "#{id}-#{name_param}"
-  end
-
-  def name_param
-    name.strip
-      .gsub(/\s*@\s*/, " at ")
-      .gsub(/\s*&\s*/, " and ")
-      .gsub(/\s*[\.\s]/, '-')
-      .gsub(/-+/,"-")
-  end
-
-  def slug
-    to_param
-  end
-
   def facebook_page?
     # https://gist.github.com/marcgg/733592
 
@@ -82,6 +69,11 @@ class Shop < ActiveRecord::Base
 
     return matching[2] if matching && matching[2].present?
   end
+
+  def normalize_friendly_id(input)
+    input.to_s.to_slug.normalize.to_s
+  end
+
 
   private
 
