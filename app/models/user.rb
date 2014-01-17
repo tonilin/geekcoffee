@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   has_many :shops, :dependent => :destroy
   
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :token_authenticatable
 
   scope :recent, -> { order("id DESC") }
 
