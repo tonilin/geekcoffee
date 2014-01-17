@@ -13,6 +13,10 @@ class Account::SettingsController < AuthenticatedController
 
   end
 
+  def edit_password
+    
+  end
+
 
   def user_params
     params.require(:user).permit(:name)
