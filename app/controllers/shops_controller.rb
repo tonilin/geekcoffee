@@ -3,7 +3,7 @@ class ShopsController < ApplicationController
 
 
   def show
-    @shop = Shop.find(params[:id])
+    @shop = Shop.friendly.find(params[:id])
     @page_type = "cafe"
 
     respond_to do |format|
