@@ -1,6 +1,6 @@
 defaults: &defaults
   app_name: "Geek Coffee"
-  domain: "http://geekcoffee.dev"
+  domain: <%= ENV['BASE_URL'] %>
   admin_emails: <%= ENV['admin_emails'] %>
   google_analytics_key: <%= ENV['google_analytics_key'] %>
   default_logo_url: "/images/logo.png"
@@ -18,4 +18,3 @@ test:
 
 production:
   <<: *defaults
-  domain: "http://geekcoffee.roachking.net"
