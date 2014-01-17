@@ -19,6 +19,8 @@
 #  formatted_address :string(255)
 #  is_starbucks      :integer          default(0)
 #  phone             :string(255)
+#  facebook_id       :string(255)
+#  slug              :string(255)
 #
 
 class Shop < ActiveRecord::Base
