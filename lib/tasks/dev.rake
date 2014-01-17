@@ -56,5 +56,12 @@ namespace :dev do
 
 
 
+  desc "Generate_shops_slug"
+  task :generate_shops_slug => :environment do
+    User.find_each(&:save)
+  end
+
+
+
 
 end
