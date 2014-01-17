@@ -17,7 +17,7 @@ Geekcoffee::Application.routes.draw do
     resources :settings do
       collection do
         get :edit_password
-        put :update_password
+        patch :update_password
       end
     end
 
