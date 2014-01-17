@@ -74,13 +74,8 @@ class Versions::V1 < Grape::API
     
       @user = User.find_by_email(email)
 
-      if @user.nil? # If user does not exist
-        return error!("Invalid email or password.", 401)
-      end
-
-      if !@user.valid_password?(password)
-        return error!("Invalid email or password.", 401)
-      end
+      return error!("Invalid email or password.", 401) if @user.nil?
+      return error!("Invalid email or password.", 401) if !@user.valid_password?(password)
 
       @user.ensure_authentication_token!
       @user.save
