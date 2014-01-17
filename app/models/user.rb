@@ -16,6 +16,7 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  name                   :string(255)
+#  authentication_token   :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -31,6 +32,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   scope :recent, -> { order("id DESC") }
+
+  before_save :ensure_authentication_token
 
   def bind_service(response)                                                    
     provider = response["provider"]                                             
@@ -63,5 +66,35 @@ class User < ActiveRecord::Base
       nil
     end
   end
+
+  def ensure_authentication_token
+    if authentication_token.blank?
+      self.authentication_token = generate_authentication_token
+    end
+  end
+
+  def ensure_authentication_token!
+    ensure_authentication_token
+    self.save
+  end
+
+  def reset_authentication_token
+    self.authentication_token = generate_authentication_token
+  end
+
+  def reset_authentication_token!
+    reset_authentication_token
+    self.save
+  end
+
+  private
+
+  def generate_authentication_token
+    loop do
+      token = Devise.friendly_token
+      break token unless User.where(authentication_token: token).first
+    end
+  end
+
 
 end
