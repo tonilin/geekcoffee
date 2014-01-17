@@ -46,9 +46,39 @@ class Versions::V1 < Grape::API
         present @shop, :with => Entities::Shop
       end
     end
+  end
 
+  resource :tokens do
+
+    desc "Return Token"
+    params do
+      requires :email, :type => String
+      requires :password, :type => String
+    end
+    post "create" do
+      email = params[:email].downcase
+      password = params[:password]
+    
+      @user = User.find_by_email(email)
+
+      if @user.nil? # If user does not exist
+        return error!("Invalid email or password.", 401)
+      end
+
+      if !@user.valid_password?(password)
+        return error!("Invalid email or password.", 401)
+      end
+
+      @user.ensure_authentication_token
+      @user.save
+
+      present @user, :with => Entities::User
+    end
 
 
   end
+
+
+
 
 end
