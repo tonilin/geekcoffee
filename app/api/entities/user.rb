@@ -1,4 +1,3 @@
-class Entities::Shop < Grape::Entity
-  expose :id, :name
-
+class Entities::User < Grape::Entity
+  expose :id, :name, :authentication_token
 end
