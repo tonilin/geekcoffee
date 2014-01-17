@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20140117024216) do
   end
 
   add_index "shops", ["lat", "lng"], name: "index_shops_on_lat_and_lng", using: :btree
+  add_index "shops", ["slug"], name: "index_shops_on_slug", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
