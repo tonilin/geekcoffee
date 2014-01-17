@@ -7,6 +7,19 @@ class Versions::V1 < Grape::API
     header "Access-Control-Max-Age", "1728000"
   end
 
+   helpers do
+    def warden
+      env['warden']
+    end
+
+    def current_user
+      warden.user ||  User.find_by_authentication_token(params[:authentication_token])
+    end
+  end
+
+
+
+
   resource :shops do
     desc "Return Shops"
     params do
@@ -50,7 +63,7 @@ class Versions::V1 < Grape::API
 
   resource :tokens do
 
-    desc "Return Token"
+    desc "Login by email and password and Return Token"
     params do
       requires :email, :type => String
       requires :password, :type => String
@@ -69,10 +82,22 @@ class Versions::V1 < Grape::API
         return error!("Invalid email or password.", 401)
       end
 
-      @user.ensure_authentication_token
+      @user.ensure_authentication_token!
       @user.save
 
       present @user, :with => Entities::User
+    end
+
+    desc "Logout the user and reset the token"
+    params do
+      requires :authentication_token, :type => String
+    end
+    post "destroy" do
+      return error!("401 Unauthorized.", 401) if !current_user
+
+      current_user.reset_authentication_token!
+
+      {}  # FIXME for 204 no content
     end
 
 
