@@ -7,7 +7,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           auth = env["omniauth.auth"]
 
           if !current_user.blank?
-            current_user.bind_service(auth)#Add an auth to existing
+            binding = User.find_binding(auth)
+            current_user.bind_service(auth) if !binding #Add an auth to existing
             redirect_to setting_path, :notice => "Bind #{provider} account successfully."
           else
             binding = User.find_binding(auth)
