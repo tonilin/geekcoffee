@@ -6,7 +6,6 @@ APP_CONFIG = YAML.load(raw_config)
 require "./config/boot"
 require "bundler/capistrano"
 require "rvm/capistrano"
-require 'capistrano-unicorn'
 
 default_environment["PATH"] = "/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin"
 
@@ -31,12 +30,6 @@ set :hipchat_token, APP_CONFIG["production"]["hipchat_token"]
 set :hipchat_room_name, APP_CONFIG["production"]["hipchat_room_name"]
 set :hipchat_announce, false # notify users?
 
-role :web, "geekcoffee.roachking.net"                          # Your HTTP server, Apache/etc
-role :app, "geekcoffee.roachking.net"                         # This may be the same as your `Web` server
-role :db,  "geekcoffee.roachking.net"   , :primary => true # This is where Rails migrations will run
-
-set :deploy_env, "production"
-set :rails_env, "production"
 set :scm_verbose, true
 
 namespace :sitemap do
@@ -78,8 +71,6 @@ end
 
 
 after "deploy:finalize_update", "my_tasks:symlink"
-after "deploy:finalize_update", "sitemap:copy_old_sitemap"
 
-after 'deploy:restart', 'unicorn:restart'  # app preloaded
 
 require 'airbrake/capistrano'
