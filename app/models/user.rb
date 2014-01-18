@@ -35,14 +35,12 @@ class User < ActiveRecord::Base
 
   before_save :ensure_authentication_token
 
-  def bind_service(provider, uid)
-    binding = User.find_binding(provider, uid)
-
-    authorizations.create(:provider => provider , :uid => uid ) if !binding      
+  def bind_service(provider, uid, token)
+    authorizations.create(:provider => provider , :uid => uid, :token => token)
   end
 
   def self.find_binding(provider, uid)
-    Authorization.find_by_provider_and_uid(provider, uid )
+    Authorization.find_by_provider_and_uid(provider, uid)
   end
 
 
