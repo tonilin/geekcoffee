@@ -55,7 +55,7 @@ gem "rvm-capistrano"
 
 gem "omniauth"
 gem "omniauth-facebook"
-
+gem "koala", "~> 1.8.0rc1"
 
 gem "hipchat"
 
