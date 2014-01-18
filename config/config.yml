@@ -19,3 +19,7 @@ test:
 production:
   <<: *defaults
   domain: "http://geekcoffee.roachking.net"
+
+production:
+  <<: *defaults
+  domain: "http://geekcoffee-staging.roachking.net"
