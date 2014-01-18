@@ -5,7 +5,7 @@ class User
       binding = User.find_binding("facebook", uid)
 
       if binding
-        user = User.find_binding("facebook", uid).try(:user)
+        user = binding.user
         binding.refresh_token(token)
         return user
       elsif user = User.find_by_email(data["email"])
