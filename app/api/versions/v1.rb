@@ -61,43 +61,73 @@ class Versions::V1 < Grape::API
     end
   end
 
-  resource :tokens do
+  resource :users do
 
-    desc "Login by email and password and Return Token"
+    desc "Sign up"
     params do
       requires :email, :type => String
       requires :password, :type => String
+      requires :password_confirmation, :type => String
     end
-    post "create" do
+    post "sign_up" do
       email = params[:email].downcase
       password = params[:password]
-    
-      @user = User.find_by_email(email)
+      password_confirmation = params[:password_confirmation]
 
-      return error!("Invalid email or password.", 401) if @user.nil?
-      return error!("Invalid email or password.", 401) if !@user.valid_password?(password)
+      user = User.new
+      user.email = email
+      user.password = password
+      user.password_confirmation = password_confirmation
+      
+      if user.save
+        present user, :with => Entities::User
+      else
+        return error!(user.errors.full_messages[0], 401)
+      end
 
-      @user.ensure_authentication_token!
-      @user.save
-
-      present @user, :with => Entities::User
-    end
-
-    desc "Logout the user and reset the token"
-    params do
-      requires :authentication_token, :type => String
-    end
-    post "destroy" do
-      return error!("401 Unauthorized.", 401) if !current_user
-
-      current_user.reset_authentication_token!
-
-      {}  # FIXME for 204 no content
     end
 
 
+
+
+
+    resource :tokens do
+
+      desc "Login by email and password and Return Token"
+      params do
+        requires :email, :type => String
+        requires :password, :type => String
+      end
+      post "create" do
+        email = params[:email].downcase
+        password = params[:password]
+      
+        @user = User.find_by_email(email)
+
+        return error!("Invalid email or password.", 401) if @user.nil?
+        return error!("Invalid email or password.", 401) if !@user.valid_password?(password)
+
+        @user.ensure_authentication_token!
+        @user.save
+
+        present @user, :with => Entities::User
+      end
+
+      desc "Logout the user and reset the token"
+      params do
+        requires :authentication_token, :type => String
+      end
+      post "destroy" do
+        return error!("401 Unauthorized.", 401) if !current_user
+
+        current_user.reset_authentication_token!
+
+        {}  # FIXME for 204 no content
+      end
+
+
+    end
   end
-
 
 
 
