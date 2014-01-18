@@ -1,10 +1,7 @@
 class User
   module OmniauthCallbacks
 
-    def find_or_create_for_facebook(response)
-      uid = response["uid"]
-      data = response["info"]
-      credentials= response["credentials"]
+    def find_or_create_for_facebook(uid, data, credentials)
 
       if user = Authorization.where("provider" => "facebook", "uid" => uid).first.try(:user)
         user
