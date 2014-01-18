@@ -8,14 +8,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
             current_user.bind_service(env["omniauth.auth"])#Add an auth to existing
             redirect_to setting_path, :notice => "Bind #{provider} account successfully."
           else
-            @user = User.find_or_create_for_#{provider}(env["omniauth.auth"])
-
-            if @user.persisted?
-              flash[:notice] = "Signed in with #{provider.to_s.titleize} successfully."
-              
-              sign_in_and_redirect @user, :event => :authentication, :notice => "Signed in successfully."
+            binding = User.find_binding(env["omniauth.auth"])
+            if binding.present?
+              sign_in_and_redirect binding.user, :event => :authentication, :notice => "Signed in successfully."
             else
-              redirect_to new_user_registration_url
+              @user = User.find_or_create_for_#{provider}(env["omniauth.auth"])
+              sign_in_and_redirect @user, :event => :authentication, :notice => "Signed in successfully."
             end
           end
         end

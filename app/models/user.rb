@@ -41,6 +41,13 @@ class User < ActiveRecord::Base
     authorizations.create(:provider => provider , :uid => uid )                 
   end
 
+  def self.find_binding(response)
+    provider = response["provider"]
+    uid = response["uid"]
+    Authorization.find_by_provider_and_uid(provider, uid )
+  end
+
+
   def admin?
     Setting.admin_emails.include?(email)
   end
