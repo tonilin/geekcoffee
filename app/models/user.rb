@@ -43,6 +43,10 @@ class User < ActiveRecord::Base
     Authorization.find_by_provider_and_uid(provider, uid)
   end
 
+  def fb_id
+    authorizations.find_by_provider("facebook").try(:uid)
+  end
+
 
   def admin?
     Setting.admin_emails.include?(email)

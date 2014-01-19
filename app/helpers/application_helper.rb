@@ -15,4 +15,12 @@ module ApplicationHelper
     Setting.app_name
   end
 
+  def render_facebook_icon(user)
+    # Using the graph api endpoint: http://developers.facebook.com/docs/api
+    if user.fb_id
+      image_tag("http://graph.facebook.com/#{user.fb_id}/picture?width=30&height=30", :class => "avatar", :alt => user.name, :title => user.name)
+    end
+  end
+
+
 end
