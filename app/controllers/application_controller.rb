@@ -22,6 +22,8 @@ class ApplicationController < ActionController::Base
 
 
   def require_is_admin
+    store_location
+
     unless (current_user && current_user.admin?)
       redirect_to root_path, :flash => { :error => "no permission" }
     end
