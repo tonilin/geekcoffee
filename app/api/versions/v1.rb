@@ -111,7 +111,7 @@ class Versions::V1 < Grape::API
       if user.save
         present user, :with => Entities::User
       else
-        error!(user.errors.full_messages[0], 401)
+        error!(user.errors, 400)
       end
 
     end
@@ -133,8 +133,8 @@ class Versions::V1 < Grape::API
       
         @user = User.find_by_email(email)
 
-        error!("Invalid email or password.", 401) if @user.nil?
-        error!("Invalid email or password.", 401) if !@user.valid_password?(password)
+        error!(I18n.t('devise.failure.invalid'), 401) if @user.nil?
+        error!(I18n.t('devise.failure.invalid'), 401) if !@user.valid_password?(password)
 
         @user.ensure_authentication_token!
         @user.save
