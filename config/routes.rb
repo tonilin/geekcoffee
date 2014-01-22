@@ -9,6 +9,8 @@ Geekcoffee::Application.routes.draw do
 
   namespace :admin do
     root :to => "shops#index"
+    get  "swagger" => "swagger#index"
+
     resources :shops
     resources :users
   end
