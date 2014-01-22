@@ -11,8 +11,12 @@ class Versions::V1 < Grape::API
       warden.user ||  User.find_by_authentication_token(params[:authentication_token])
     end
 
+    def t(key)
+      I18n.t(key)
+    end
+
     def authenticate!
-      error!(I18n.t('devise.failure.unauthenticated'), 401) unless current_user.present?
+      error!(t('devise.failure.unauthenticated'), 401) unless current_user.present?
     end
   end
 
@@ -133,8 +137,8 @@ class Versions::V1 < Grape::API
       
         @user = User.find_by_email(email)
 
-        error!(I18n.t('devise.failure.invalid'), 401) if @user.nil?
-        error!(I18n.t('devise.failure.invalid'), 401) if !@user.valid_password?(password)
+        error!(t('devise.failure.invalid'), 401) if @user.nil?
+        error!(t('devise.failure.invalid'), 401) if !@user.valid_password?(password)
 
         @user.ensure_authentication_token!
         @user.save
