@@ -22,8 +22,6 @@ class ApplicationController < ActionController::Base
 
 
   def require_is_admin
-    store_location
-
     unless (current_user && current_user.admin?)
       redirect_to root_path, :flash => { :error => "no permission" }
     end
@@ -43,9 +41,10 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
+    previous_url = session[:previous_url]
     session[:previous_url] = nil
 
-    session[:previous_url] || maps_path
+    previous_url || maps_path
   end
   
 end
