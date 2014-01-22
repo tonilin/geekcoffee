@@ -10,6 +10,10 @@ class Versions::V1 < Grape::API
     def current_user
       warden.user ||  User.find_by_authentication_token(params[:authentication_token])
     end
+
+    def authenticate!
+      error!(I18n.t('devise.failure.unauthenticated'), 401) unless current_user.present?
+    end
   end
 
 
