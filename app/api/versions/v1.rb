@@ -31,6 +31,36 @@ class Versions::V1 < Grape::API
       present @shops, :with => Entities::Shops
     end
 
+    desc "Create Shop"
+    params do
+      group :shop do
+        requires :name, :type => String
+        requires :phone, :type => String
+        requires :website_url, :type => String
+        optional :is_wifi_free, :type => Boolean
+        optional :power_outlets, :type => Boolean
+        optional :hours, :type => String
+        optional :description, :type => String
+        requires :lat, :type => Float
+        requires :lng, :type => Float
+        requires :address, :type => String
+      end
+    end
+    post do
+      authenticate!
+      shop_param = ActionController::Parameters.new(params)
+      shop_param = shop_param.require(:shop).permit(:name, :phone, :website_url, :is_wifi_free, :power_outlets, :hours, :description, :lat, :lng, :address)
+
+      @shop = Shop.new(shop_param)
+
+      if @shop.save
+        return @shop
+      else
+        error!(@shop.errors, 400)
+      end
+    end
+
+
     desc "Return Shops by near"
     params do
       requires :lat, :type => Float
