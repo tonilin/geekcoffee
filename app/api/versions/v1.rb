@@ -49,7 +49,7 @@ class Versions::V1 < Grape::API
       requires :address, :type => String
     end
     post do
-      #authenticate!
+      authenticate!
       shop_param = ActionController::Parameters.new(params)
       shop_param = shop_param.permit(:name, :phone, :website_url, :is_wifi_free, :power_outlets, :hours, :description, :lat, :lng, :address)
 
