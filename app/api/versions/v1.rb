@@ -111,7 +111,7 @@ class Versions::V1 < Grape::API
       if user.save
         present user, :with => Entities::User
       else
-        return error!(user.errors.full_messages[0], 401)
+        error!(user.errors.full_messages[0], 401)
       end
 
     end
@@ -133,8 +133,8 @@ class Versions::V1 < Grape::API
       
         @user = User.find_by_email(email)
 
-        return error!("Invalid email or password.", 401) if @user.nil?
-        return error!("Invalid email or password.", 401) if !@user.valid_password?(password)
+        error!("Invalid email or password.", 401) if @user.nil?
+        error!("Invalid email or password.", 401) if !@user.valid_password?(password)
 
         @user.ensure_authentication_token!
         @user.save
@@ -147,7 +147,7 @@ class Versions::V1 < Grape::API
         requires :authentication_token, :type => String
       end
       post "destroy" do
-        return error!("401 Unauthorized.", 401) if !current_user
+        authenticate!
 
         current_user.reset_authentication_token!
 
