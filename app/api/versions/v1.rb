@@ -8,7 +8,7 @@ class Versions::V1 < Grape::API
     end
 
     def current_user
-      warden.user ||  User.find_by_authentication_token(params[:authentication_token])
+      User.find_by_authentication_token(params[:authentication_token])
     end
 
     def t(key)
