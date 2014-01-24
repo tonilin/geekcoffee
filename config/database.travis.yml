@@ -1,0 +1,5 @@
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: geekcoffee_test
+  username: postgres
