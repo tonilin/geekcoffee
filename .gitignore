@@ -22,3 +22,4 @@ vendor/bundler_gems
 
 # Ignore application configuration
 /config/application.yml
+/config/database.yml
