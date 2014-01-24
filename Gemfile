@@ -8,9 +8,10 @@ group :development do
   gem 'mysql2'
 end
 
-group :production do
+group :production, :staging do
   gem 'pg'
   gem 'redis-rails'
+  gem "unicorn"
 end
 
 
@@ -64,8 +65,6 @@ gem "dalli"
 
 gem "compass-rails"
 
-gem "unicorn"
-
 gem "geocoder"
 gem "active_link_to"
 
@@ -117,8 +116,6 @@ end
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-#gem 'jbuilder', '~> 1.2'
 
 gem "active_model_serializers"
 
@@ -127,14 +124,4 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
