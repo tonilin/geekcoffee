@@ -6,13 +6,6 @@ development: &default
   username: <%= ENV['db_username'] %>
   password: <%= ENV['db_password'] %>
 
-production: &default
-  adapter: mysql2
-  encoding: utf8
-  database: geekcoffee_production
-  host: localhost
-  username: <%= ENV['db_username'] %>
-  password: <%= ENV['db_password'] %>
 
 test: &TEST
   database: geekcoffee_test
