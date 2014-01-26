@@ -38,8 +38,8 @@ class Versions::V1 < Grape::API
     desc "Create Shop"
     params do
       requires :name, :type => String
-      requires :phone, :type => String
-      requires :website_url, :type => String
+      optional :phone, :type => String
+      optional :website_url, :type => String
       optional :is_wifi_free, :type => Boolean
       optional :power_outlets, :type => Boolean
       optional :hours, :type => String
