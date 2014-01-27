@@ -6,8 +6,4 @@ class ShopDetailSerializer < ActiveModel::Serializer
     object.cover.thumb.url
   end
 
-
-  def user_rating
-    current_user.evaluated_value(object) if current_user
-  end
 end
