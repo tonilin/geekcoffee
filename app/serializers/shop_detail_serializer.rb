@@ -1,5 +1,10 @@
 class ShopDetailSerializer < ActiveModel::Serializer
-  attributes :id, :slug, :name, :lat, :lng, :address, :description, :is_wifi_free, :power_outlets, :hours, :website_url, :avg_rating, :user_rating
+  attributes :id, :slug, :name, :lat, :lng, :description, :is_wifi_free, :power_outlets, :website_url, :avg_rating, :cover_thumb_url
+
+
+  def cover_thumb_url
+    object.cover.thumb.url
+  end
 
 
   def user_rating
