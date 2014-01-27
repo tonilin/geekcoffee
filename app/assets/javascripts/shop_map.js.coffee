@@ -354,39 +354,6 @@ class LandingMap
         }
 
         @infowindow.open(@map, marker)
-
-
-        $(".avg-rating-container").raty({
-          half: true
-          number: 5,
-          path: "/images/raty/",
-          readOnly  : true,
-          score: data.avg_rating
-        })
-
-
-        $(".user-rating-container").raty({
-          half: true
-          number: 5,
-          path: "/images/raty/",
-          cancel: true
-          score: data.user_rating,
-          cancelPlace: 'right',
-          click: (score)=>
-            if score == null
-              $.ajax {
-                type: "delete"
-                url: "#{@shop_api_endpoint}/#{marker_id}/cancel_rating",
-                dataType: "script"
-              }
-            else
-              $.ajax {
-                type: "put"
-                url: "#{@shop_api_endpoint}/#{marker_id}/rating",
-                data: {score: score},
-                dataType: "script"
-              }
-        })
     }
 
 

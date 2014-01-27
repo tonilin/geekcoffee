@@ -1,53 +1,52 @@
 <div class="shop-detail">
-  <h3>
-    <a href="<%= shops_path %>/{{slug}}" target="_blank" class="shop-name"><%= fa_icon("coffee") %> {{name}}</a>
-  </h3>
+  <div class="shop-logo-rating">
+    <div class="logo">
+      <%= fa_icon("coffee") %>
+    </div>
+    <div class="rating">
+      {{avg_rating}}
+    </div>
+  </div>
+
+  <div class="shop-content">
+    <h3>
+      <a href="<%= shops_path %>/{{slug}}" target="_blank" class="shop-name"> {{name}}</a>
+    </h3>
 
 
-  <div class="address">{{address}}</div>
-
-  <dl class="dl-horizontal">
-    <dt class="hours">平均評價</dt>
-    <dd><span class="avg-rating-container"></span></dd>
-
-    <dt class="hours">你的評價</dt>
-    <dd><span class="user-rating-container"></span></dd>
-
-    {{#if website_url}}
-      <dt class="website"><%= fa_icon("globe") %> 網站</dt>
-      <dd><a href="{{website_url}}" target="_blank"><%= fa_icon("external-link") %></a></dd>
-    {{/if}}
+    <div class="address">{{address}}</div>
 
 
-    {{#if hours}}
-      <dt class="hours"><%= fa_icon("clock-o") %> 營業時間</dt>
-      <dd>{{hours}}</dd>
-    {{/if}}
+    <ul class="list-unstyled">
 
-
-    <dt class="is-wifi-free"><%= fa_icon("signal") %> 免費 wifi</dt>
-    <dd>
-      {{#if is_wifi_free}}
-        有
-      {{else}}
-        無
+      {{#if website_url}}
+        <li class="website">
+          <span class="title"><%= fa_icon("globe") %></span>
+          <span class="content"><a href="{{website_url}}" target="_blank"><%= fa_icon("external-link") %></a></span>
+        </li>
       {{/if}}
-    </dd>
 
+      <li class="is-wifi-free">
+        <span class="title"><%= fa_icon("signal") %></span>
+        <span class="content">
+          {{#if is_wifi_free}}
+            <%= fa_icon("check") %>
+          {{else}}
+            <%= fa_icon("times") %>
+          {{/if}}
+        </span>
+      </li>
 
-    <dt class="has_power_outlets"><%= fa_icon("bolt") %> 有無插座</dt>
-    <dd>
-      {{#if power_outlets}}
-        有
-      {{else}}
-        無
-      {{/if}}
-    </dd>
-
-    {{#if description}}
-      <dt class="description">描述</dt>
-      <dd>{{description}}</dd>
-    {{/if}}
-
-  </dl>
+      <li class="power_outlets">
+        <span class="title"><%= fa_icon("bolt") %></span>
+        <span class="content">
+          {{#if power_outlets}}
+            <%= fa_icon("check") %>
+          {{else}}
+            <%= fa_icon("times") %>
+          {{/if}}
+        </span>
+      </li>
+    </ul>
+  </div>
 </div>
