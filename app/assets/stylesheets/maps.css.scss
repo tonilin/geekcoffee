@@ -62,7 +62,6 @@ $searchBarWidth: 380px;
 
 
 .shop-detail {
-  min-width: 300px;
   font-size: 14px;
 
 
@@ -70,10 +69,10 @@ $searchBarWidth: 380px;
     float: left;
     margin-right: 10px;
     width: 50px;
-
+    border: 1px solid #ccc;
+    @include border-radius(3px 3px 3px 3px);
 
     .logo {
-      background-color: #ccc;
       height: 50px;
       width: 50px;
       @include border-radius(3px 3px 0 0);
