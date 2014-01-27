@@ -41,6 +41,8 @@ class Shop < ActiveRecord::Base
 
   before_create :save_facebook_id
 
+  mount_uploader :cover, CoverUploader
+
   def website_url_validator
 
     if website_url.present?

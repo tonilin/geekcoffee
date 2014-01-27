@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140118023131) do
+ActiveRecord::Schema.define(version: 20140127063609) do
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20140118023131) do
     t.string   "phone"
     t.string   "facebook_id"
     t.string   "slug"
+    t.string   "cover"
   end
 
   add_index "shops", ["lat", "lng"], name: "index_shops_on_lat_and_lng", using: :btree
