@@ -39,8 +39,6 @@ gem 'jquery-rails'
 gem 'devise', '3.2.2'
 gem 'meta-tags', '1.5.0', require: 'meta_tags'
 
-gem "open_graph_helper"
-
 gem "rmagick"
 gem "carrierwave"
 gem "carrierwave-meta"
