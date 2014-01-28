@@ -79,6 +79,7 @@ $searchBarWidth: 380px;
     }
 
     .rating {
+      width: 50px;
       @include border-radius(0 0 3px 3px);
       background-color: #f00034;
       color: #fff;
