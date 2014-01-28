@@ -63,7 +63,7 @@ class Shop < ActiveRecord::Base
   end
 
   def facebook_avatar
-    "http://graph.facebook.com/#{facebook_id}/picture?width=320&height=320"
+    "http://graph.facebook.com/#{facebook_id}/picture?width=320&height=320" if facebook_page?
   end
 
   def parse_facebook_id

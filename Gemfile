@@ -37,7 +37,8 @@ gem "babosa"
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'devise', '3.2.2'
-gem "seo_helper", "~> 1.0.2"
+gem 'meta-tags', '1.5.0', require: 'meta_tags'
+
 gem "open_graph_helper"
 
 gem "rmagick"

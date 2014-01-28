@@ -4,13 +4,20 @@ class ShopsController < ApplicationController
 
   def show
     @shop = Shop.friendly.find(params[:id])
-    @page_type = "cafe"
+
+    set_meta_tags :title => @shop.name,
+      :description => @shop.description || @meta_tags[:description],
+      :og => {
+        :title => @shop.name,
+        :description => @shop.description || @meta_tags[:description],
+        :image => @shop.facebook_avatar || @meta_tags[:og][:image],
+        :type => "cafe",
+      },
+      :"place:location:latitude" => @shop.lat,
+      :"place:location:longitude" => @shop.lng
 
     respond_to do |format|
       format.html do
-        set_page_title @shop.name
-        set_page_description @shop.description if @shop.description.present?
-        set_page_image @shop.facebook_avatar if @shop.facebook_page?
       end
       format.json do
         render :json => @shop, :serializer => ShopDetailSerializer, :root => false
