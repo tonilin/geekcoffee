@@ -40,6 +40,7 @@ class Shop < ActiveRecord::Base
     :aggregated_by => :average
 
   before_create :save_facebook_id
+  before_create :save_facebook_cover
 
   mount_uploader :cover, CoverUploader
 
@@ -83,6 +84,10 @@ class Shop < ActiveRecord::Base
 
   def save_facebook_id
     self.facebook_id = parse_facebook_id || nil
+  end
+
+  def save_facebook_cover
+    self.remote_cover_url = facebook_avatar
   end
 
 end
