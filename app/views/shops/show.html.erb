@@ -54,9 +54,9 @@
   </div>
   <div class="col-md-4">
 
-    <% if @shop.facebook_page? %>
+    <% if @shop.cover? %>
       <div class="well">
-        <%= image_tag @shop.facebook_avatar, :class => "img-rounded center-block" %>
+        <%= image_tag @shop.cover.preview, :class => "img-rounded center-block" %>
       </div>
     <% end %>
 
