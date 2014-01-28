@@ -42,25 +42,16 @@ namespace :dev do
     end
   end
 
-  desc "Save facebook id"
-  task :save_facebook_id => :environment do
+  desc "Save og image"
+  task :save_og_image => :environment do
     Shop.find_each do |shop|
-      if shop.parse_facebook_id.present?
-        shop.facebook_id = shop.parse_facebook_id
+      if shop.facebook_page?
+        shop.remote_cover_url = shop.facebook_avatar
         shop.save
-        puts shop.id
       end
     end
 
   end
-
-
-
-  desc "Generate_shops_slug"
-  task :generate_shops_slug => :environment do
-    Shop.find_each(&:save)
-  end
-
 
 
 
