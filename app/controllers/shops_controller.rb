@@ -14,7 +14,8 @@ class ShopsController < ApplicationController
         :type => "cafe",
       },
       :"place:location:latitude" => @shop.lat,
-      :"place:location:longitude" => @shop.lng
+      :"place:location:longitude" => @shop.lng,
+      :reverse => true
 
     respond_to do |format|
       format.html do

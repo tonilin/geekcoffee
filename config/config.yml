@@ -1,6 +1,8 @@
 defaults: &defaults
   app_name: "Geek Coffee"
   domain: "http://geekcoffee.dev"
+  description: "Geek Coffee, 尋找你附近的咖啡廳"
+  keywords: "咖啡館, 咖啡, 上網, 咖啡店, 喝咖啡, Geek Coffee,Geek, wifi, cafe, coffee, free"
   admin_emails: <%= ENV['admin_emails'] %>
   google_analytics_key: <%= ENV['google_analytics_key'] %>
   default_logo_url: "/images/logo.png"
