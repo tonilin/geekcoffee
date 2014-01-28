@@ -68,14 +68,14 @@ $searchBarWidth: 380px;
   .shop-logo-rating {
     float: left;
     margin-right: 10px;
-    width: 50px;
-    border: 1px solid #ccc;
     @include border-radius(3px 3px 3px 3px);
-
 
     .logo {
       height: 50px;
       width: 50px;
+      border-style: solid;
+      border-color: #ccc;
+      border-width: 1px 1px 0 1px;
       @include border-radius(3px 3px 0 0);
     }
 
