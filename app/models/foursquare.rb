@@ -11,7 +11,7 @@
 #
 
 class Foursquare < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :shop
 
   scope :recent, -> { order("id DESC") }
 
