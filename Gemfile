@@ -88,7 +88,6 @@ gem 'swagger-ui', :require => 'swagger'
 gem "sitemap_generator"
 
 gem 'airbrake'
-gem 'sneaky-save'
 
 group :development do
   gem "capistrano"

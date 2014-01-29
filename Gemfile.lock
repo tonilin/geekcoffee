@@ -299,8 +299,6 @@ GEM
     sitemap_generator (4.3.1)
       builder
     slop (3.4.7)
-    sneaky-save (0.0.4)
-      activerecord (>= 3.2.0)
     sprockets (2.10.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -402,7 +400,6 @@ DEPENDENCIES
   shoulda-matchers
   simple_form (~> 3.0.0.rc)
   sitemap_generator
-  sneaky-save
   sqlite3
   swagger-ui
   timecop
