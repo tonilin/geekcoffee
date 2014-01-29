@@ -1,0 +1,38 @@
+class FoursquareQueryService
+
+  def initialize(lat, lng)
+    @client = Foursquare.client
+    @lat = lat
+    @lng = lng
+  end
+
+  def find_foursquare_model(foursquare_id)
+    Foursquare.find_by_foursquare_id(foursquare_id)
+  end
+
+  def query_foursquare
+    @client.search_venues_by_tip(:ll => "#{@lat},#{@lng}", :query => 'coffee')
+  end
+
+
+  def run
+
+    query_foursquare.each do |data|
+      foursquare_id = data.id
+      foursquare_data = data.to_json
+
+      foursquare = find_foursquare_model(foursquare_id)
+
+      if !foursquare
+        foursquare = Foursquare.new
+        foursquare.foursquare_id = foursquare_id
+        foursquare.foursquare_data = foursquare_data
+        foursquare.save
+      end
+
+    end
+
+
+  end
+
+end
