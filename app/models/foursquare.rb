@@ -5,13 +5,12 @@
 #  id              :integer          not null, primary key
 #  foursquare_id   :string(255)
 #  foursquare_data :text
-#  shop_id         :integer
 #  created_at      :datetime
 #  updated_at      :datetime
 #
 
 class Foursquare < ActiveRecord::Base
-  belongs_to :shop
+  has_one :shop
 
   scope :recent, -> { order("id DESC") }
 

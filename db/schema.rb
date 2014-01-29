@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 20140129083935) do
   create_table "foursquares", force: true do |t|
     t.string   "foursquare_id"
     t.text     "foursquare_data"
-    t.integer  "shop_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
