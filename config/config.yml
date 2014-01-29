@@ -21,6 +21,8 @@ defaults: &defaults
   google_map_key: <%= ENV['google_map_key'] %>
   facebook_app_id:  <%= ENV['facebook_app_id'] %>
   facebook_secret: <%= ENV['facebook_secret'] %>
+  foursquare_id:  <%= ENV['foursquare_id'] %>
+  foursquare_secret: <%= ENV['foursquare_secret'] %>
   devise_secre_key: <%= ENV['devise_secre_key'] %>
 
 development:

@@ -21,6 +21,8 @@
 #  phone             :string(255)
 #  facebook_id       :string(255)
 #  slug              :string(255)
+#  cover             :string(255)
+#  foursquare_id     :integer
 #
 
 require 'spec_helper'

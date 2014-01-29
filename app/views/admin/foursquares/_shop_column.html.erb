@@ -1,0 +1,5 @@
+<% if foursquare.shop.present? %>
+  <%= foursquare.shop.id %>
+<% else %>
+  <%= render_foursquare_shop_create_btn(foursquare) %>
+<% end %>

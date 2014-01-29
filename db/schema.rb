@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140127063609) do
+ActiveRecord::Schema.define(version: 20140129101045) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -20,6 +23,13 @@ ActiveRecord::Schema.define(version: 20140127063609) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "token"
+  end
+
+  create_table "foursquares", force: true do |t|
+    t.string   "foursquare_id"
+    t.text     "foursquare_data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "rs_evaluations", force: true do |t|
@@ -86,6 +96,7 @@ ActiveRecord::Schema.define(version: 20140127063609) do
     t.string   "facebook_id"
     t.string   "slug"
     t.string   "cover"
+    t.integer  "foursquare_id"
   end
 
   add_index "shops", ["lat", "lng"], name: "index_shops_on_lat_and_lng", using: :btree

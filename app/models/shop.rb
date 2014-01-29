@@ -21,10 +21,13 @@
 #  phone             :string(255)
 #  facebook_id       :string(255)
 #  slug              :string(255)
+#  cover             :string(255)
+#  foursquare_id     :integer
 #
 
 class Shop < ActiveRecord::Base
   belongs_to :user
+  belongs_to :foursquare
 
   validate :website_url_validator
   validates_presence_of :name, :address, :lat, :lng
@@ -77,6 +80,15 @@ class Shop < ActiveRecord::Base
 
   def normalize_friendly_id(input)
     input.to_s.to_slug.normalize.to_s
+  end
+
+  def assign_value_from_foursquare(foursquare)
+    self.name = foursquare.name
+    self.address = foursquare.address
+    self.lat = foursquare.lat
+    self.lng = foursquare.lng
+    self.phone = foursquare.phone
+    self.foursquare = foursquare
   end
 
 

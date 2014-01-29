@@ -5,7 +5,7 @@ gem 'rails', '4.0.0'
 
 # Use mysql as the database for Active Record
 group :development do
-  gem 'mysql2'
+  gem 'pg'
 end
 
 group :production, :staging do
@@ -36,6 +36,7 @@ gem "babosa"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'button_link_to'
 gem 'devise', '3.2.2'
 gem 'meta-tags', '1.5.0', require: 'meta_tags'
 
@@ -44,6 +45,8 @@ gem "carrierwave"
 gem "carrierwave-meta"
 
 gem "settingslogic"
+
+gem 'foursquare2'
 
 gem 'anjlab-bootstrap-rails', '~> 3.0.3.0', :require => 'bootstrap-rails'
 gem "simple_form", "~> 3.0.0.rc"
