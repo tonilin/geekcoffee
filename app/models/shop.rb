@@ -34,6 +34,7 @@ class Shop < ActiveRecord::Base
   geocoded_by :address, :latitude  => :lat, :longitude => :lng
 
   scope :recent, -> { order("id DESC") }
+  scope :not_starbucks, -> { where(["is_starbucks = ?", 0]) }
 
   extend FriendlyId
   friendly_id :name, use: :slugged
