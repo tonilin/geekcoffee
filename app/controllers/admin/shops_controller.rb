@@ -23,7 +23,7 @@ class Admin::ShopsController < AdminController
   private
 
   def find_shop
-    @shop = Shop.find(params[:id])
+    @shop = Shop.friendly.find(params[:id])
   end
 
 end
