@@ -13,6 +13,7 @@
 class Foursquare < ActiveRecord::Base
   belongs_to :user
 
+  scope :recent, -> { order("id DESC") }
 
   def self.client
     Foursquare2::Client.new(
