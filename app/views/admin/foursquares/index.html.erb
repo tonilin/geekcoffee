@@ -32,3 +32,20 @@
 </table>
 
 <%= will_paginate(@foursquares, :renderer => BootstrapPagination::Rails) %>
+
+<% content_for :javascripts do %>
+<script>
+  $(document).on("ajax:success", ".foursquare-shop-create-btn", function(event, data) {
+    $(this).parents("td").html(data);
+  })
+
+</script>
+<% end %>
+
+
+
+
+
+
+
+

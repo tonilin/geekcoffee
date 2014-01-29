@@ -6,7 +6,7 @@ module Admin::FoursquaresHelper
       create_shop_admin_foursquare_path(foursquare),
       :remote => true,
       :method => :post,
-      :class => "btn btn-primary"
+      :class => "btn btn-primary foursquare-shop-create-btn"
     )
   end
 
