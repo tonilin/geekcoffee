@@ -13,6 +13,12 @@ class Foursquare < ActiveRecord::Base
   has_one :shop
 
   scope :recent, -> { order("id DESC") }
+  scope :not_imported, -> do 
+    joins("LEFT JOIN shops ON shops.foursquare_id = foursquares.id").where(["shops.id IS NULL"])
+  end
+  scope :imported, -> do 
+    joins("LEFT JOIN shops ON shops.foursquare_id = foursquares.id").where(["shops.id IS NOT NULL"])
+  end
 
   def self.client
     Foursquare2::Client.new(

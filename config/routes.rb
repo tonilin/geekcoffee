@@ -14,6 +14,10 @@ Geekcoffee::Application.routes.draw do
     resources :shops
     resources :users
     resources :foursquares do
+      collection do
+        get :imported
+      end
+
       member do
         post :create_shop
       end

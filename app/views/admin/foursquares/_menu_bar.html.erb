@@ -1,0 +1,11 @@
+<nav class="navbar navbar-default">
+  <ul class="nav navbar-nav">
+    <li class="<%= active_link_to_class(admin_foursquares_path, :active => :exclusive) %>">
+      <%= link_to("New", admin_foursquares_path) %>
+    </li>
+    <li class="<%= active_link_to_class(imported_admin_foursquares_path, :active => :inclusive) %>">
+      <%= link_to("Imported", imported_admin_foursquares_path) %>
+    </li>
+  </ul>
+
+</div>

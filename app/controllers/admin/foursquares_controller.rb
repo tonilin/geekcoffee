@@ -1,9 +1,12 @@
 class Admin::FoursquaresController < AdminController
 
   def index
-    @foursquares = Foursquare.recent.paginate(:page => params[:page], :per_page => 25 )
+    @foursquares = Foursquare.recent.not_imported.paginate(:page => params[:page], :per_page => 25 )
   end
 
+  def imported
+    @foursquares = Foursquare.recent.imported.paginate(:page => params[:page], :per_page => 25 )
+  end
 
   def create_shop
     @foursquare = Foursquare.find(params[:id])
