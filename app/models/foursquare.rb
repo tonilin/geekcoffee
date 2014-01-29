@@ -22,4 +22,34 @@ class Foursquare < ActiveRecord::Base
     )
   end
 
+  def name
+    json_data["name"]
+  end
+
+  def phone
+    json_data["contact"]["formattedPhone"]
+  end
+
+  def address
+    json_data["location"]["address"]
+  end
+
+  def lat
+    json_data["location"]["lat"]
+  end
+
+  def lng
+    json_data["location"]["lng"]
+  end
+
+  def rating
+    json_data["rating"]
+  end
+
+  def json_data
+    @json_data ||= JSON.parse(foursquare_data)
+  end
+
+
+
 end
