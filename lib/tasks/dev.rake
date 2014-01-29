@@ -53,6 +53,14 @@ namespace :dev do
 
   end
 
+  desc "fix foursqure rating"
+  task :fix_foursqure_rating => :environment do
+    Foursquare.find_each do |foursquare|
+      foursquare.rating = foursquare.json_data["rating"]
+      foursquare.save
+    end
+
+  end
 
 
 end

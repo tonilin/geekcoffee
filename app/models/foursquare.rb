@@ -47,10 +47,6 @@ class Foursquare < ActiveRecord::Base
     json_data["location"]["lng"]
   end
 
-  def rating
-    json_data["rating"]
-  end
-
   def json_data
     @json_data ||= JSON.parse(foursquare_data)
   end

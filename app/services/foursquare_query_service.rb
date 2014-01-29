@@ -22,14 +22,18 @@ class FoursquareQueryService
 
     query_foursquare_datas.each do |data|
       foursquare_id = data.id
-      foursquare_data = data.to_json
+
 
       foursquare = find_foursquare_model(foursquare_id)
 
       if !foursquare
+        foursquare_data = query_foursquare_data(foursquare_id)
+
         foursquare = Foursquare.new
         foursquare.foursquare_id = foursquare_id
-        foursquare.foursquare_data = query_foursquare_data(foursquare_id).to_json
+        foursquare.foursquare_data = foursquare_data.to_json
+        foursquare.rating = foursquare_data.rating
+
         foursquare.save
       end
 
