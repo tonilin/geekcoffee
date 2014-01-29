@@ -1,0 +1,35 @@
+<h3>Foursquare list</h3>
+
+<table class="table table-bordered" >
+  <tr>
+    <th> ID </th>
+    <th> Foursquare ID </th>
+    <th> Name </th>
+    <th> Phone </th>
+    <th> Address </th>
+    <th> lat </th>
+    <th> lng </th>
+    <th> rating </th>
+    <th> shop </th>
+  </tr>
+  <% @foursquares.each do |foursquare| %>
+  <tr>
+    <td><%= foursquare.id %></td>
+    <td><%= foursquare.foursquare_id %></td>
+    <td><%= foursquare.name %></td>
+    <td><%= foursquare.phone %></td>
+    <td><%= foursquare.address %></td>
+    <td><%= foursquare.lat %></td>
+    <td><%= foursquare.lng %></td>
+    <td><%= foursquare.rating %></td>
+    <td>
+      <%= foursquare.shop_id %>
+
+
+    </td>
+  </tr>
+  <% end %>
+
+</table>
+
+<%= will_paginate(@foursquares, :renderer => BootstrapPagination::Rails) %>
