@@ -8,6 +8,7 @@
 #  uid        :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  token      :string(255)
 #
 
 class Authorization < ActiveRecord::Base
