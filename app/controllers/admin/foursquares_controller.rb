@@ -16,8 +16,8 @@ class Admin::FoursquaresController < AdminController
     shop = @foursquare.build_shop
     shop.user = current_user
     shop.assign_value_from_foursquare(@foursquare)
-    shop.save!
-
+    shop.sneaky_save
+    
     render :layout => nil
   end
 
