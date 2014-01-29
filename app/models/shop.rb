@@ -102,7 +102,7 @@ class Shop < ActiveRecord::Base
   end
 
   def save_facebook_cover
-    if facebook_page? && cover.nil?
+    if facebook_page? && !cover?
       self.remote_cover_url = self.facebook_avatar 
       self.save
     end
