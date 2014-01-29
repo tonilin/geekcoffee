@@ -5,7 +5,7 @@ gem 'rails', '4.0.0'
 
 # Use mysql as the database for Active Record
 group :development do
-  gem 'mysql2'
+  gem 'pg'
 end
 
 group :production, :staging do
