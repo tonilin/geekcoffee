@@ -23,9 +23,11 @@
     <td><%= foursquare.lng %></td>
     <td><%= foursquare.rating %></td>
     <td>
-      <%= foursquare.shop_id %>
-
-
+      <% if foursquare.shop.present? %>
+        <%= foursquare.shop_id %>
+      <% else %>
+        <%= render_foursquare_shop_create_btn(foursquare) %>
+      <% end %>
     </td>
   </tr>
   <% end %>
