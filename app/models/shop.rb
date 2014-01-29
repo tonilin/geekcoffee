@@ -26,6 +26,7 @@
 
 class Shop < ActiveRecord::Base
   belongs_to :user
+  has_one :foursquare
 
   validate :website_url_validator
   validates_presence_of :name, :address, :lat, :lng
