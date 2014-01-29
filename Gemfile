@@ -36,6 +36,7 @@ gem "babosa"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'button_link_to'
 gem 'devise', '3.2.2'
 gem 'meta-tags', '1.5.0', require: 'meta_tags'
 

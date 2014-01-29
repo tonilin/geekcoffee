@@ -59,6 +59,7 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.1.4)
+    button_link_to (0.0.3)
     callsite (0.0.11)
     cape (1.8.0)
     capistrano (2.15.5)
@@ -352,6 +353,7 @@ DEPENDENCIES
   babosa
   better_errors (~> 0.9.0)
   binding_of_caller
+  button_link_to
   cape
   capistrano
   capistrano-ext
