@@ -13,6 +13,7 @@ Geekcoffee::Application.routes.draw do
 
     resources :shops
     resources :users
+    resources :foursquares
   end
 
   namespace :account do
