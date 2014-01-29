@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129083935) do
+ActiveRecord::Schema.define(version: 20140129101045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20140129083935) do
     t.string   "facebook_id"
     t.string   "slug"
     t.string   "cover"
+    t.integer  "foursquare_id"
   end
 
   add_index "shops", ["lat", "lng"], name: "index_shops_on_lat_and_lng", using: :btree
