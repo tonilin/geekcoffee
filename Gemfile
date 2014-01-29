@@ -45,6 +45,8 @@ gem "carrierwave-meta"
 
 gem "settingslogic"
 
+gem 'foursquare2'
+
 gem 'anjlab-bootstrap-rails', '~> 3.0.3.0', :require => 'bootstrap-rails'
 gem "simple_form", "~> 3.0.0.rc"
 gem "will_paginate", "3.0.3"
