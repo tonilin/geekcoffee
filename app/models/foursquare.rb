@@ -13,6 +13,7 @@ class Foursquare < ActiveRecord::Base
   has_one :shop
 
   scope :recent, -> { order("id DESC") }
+  scope :order_by_rating, -> { order("rating DESC NULLS LAST") }
   scope :not_imported, -> do 
     joins("LEFT JOIN shops ON shops.foursquare_id = foursquares.id").where(["shops.id IS NULL"])
   end

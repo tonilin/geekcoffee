@@ -1,7 +1,7 @@
 class Admin::FoursquaresController < AdminController
 
   def index
-    @foursquares = Foursquare.recent.not_imported.paginate(:page => params[:page], :per_page => 25 )
+    @foursquares = Foursquare.order_by_rating.not_imported.paginate(:page => params[:page], :per_page => 25 )
   end
 
   def imported
