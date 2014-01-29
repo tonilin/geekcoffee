@@ -23,11 +23,8 @@
     <td><%= foursquare.lng %></td>
     <td><%= foursquare.rating %></td>
     <td>
-      <% if foursquare.shop.present? %>
-        <%= foursquare.shop_id %>
-      <% else %>
-        <%= render_foursquare_shop_create_btn(foursquare) %>
-      <% end %>
+      <%= render :partial => "shop_column", :locals => {:foursquare => foursquare} %>
+
     </td>
   </tr>
   <% end %>
