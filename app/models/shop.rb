@@ -82,6 +82,15 @@ class Shop < ActiveRecord::Base
     input.to_s.to_slug.normalize.to_s
   end
 
+  def assign_value_from_foursquare(foursquare)
+    self.name = foursquare.name
+    self.address = foursquare.address
+    self.lat = foursquare.lat
+    self.lng = foursquare.lng
+    self.phone = foursquare.phone
+    self.foursquare = foursquare
+  end
+
 
   private
 
