@@ -89,6 +89,7 @@ class Shop < ActiveRecord::Base
     self.lat = foursquare.lat
     self.lng = foursquare.lng
     self.phone = foursquare.phone
+    self.is_wifi_free = foursquare.free_wifi?
     self.foursquare = foursquare
   end
 
