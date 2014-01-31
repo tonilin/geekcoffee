@@ -97,7 +97,7 @@ class Shop < ActiveRecord::Base
   private
 
   def save_facebook_id
-    if facebook_id.empty?
+    if facebook_id.blank?
       self.facebook_id = parse_facebook_id || nil
     end
   end
