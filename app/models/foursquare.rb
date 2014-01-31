@@ -48,6 +48,11 @@ class Foursquare < ActiveRecord::Base
     json_data["location"]["lng"]
   end
 
+  def foursquare_url
+    json_data["canonicalUrl"]
+  end
+
+
   def json_data
     @json_data ||= JSON.parse(foursquare_data)
   end

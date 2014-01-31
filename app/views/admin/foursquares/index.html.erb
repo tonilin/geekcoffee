@@ -16,7 +16,7 @@
   </tr>
   <% @foursquares.each do |foursquare| %>
   <tr>
-    <td><%= foursquare.id %></td>
+    <td><%= render_foursquare_foursquare_id(foursquare) %></td>
     <td><%= foursquare.foursquare_id %></td>
     <td><%= foursquare.name %></td>
     <td><%= foursquare.phone %></td>
