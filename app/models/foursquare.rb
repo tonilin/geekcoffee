@@ -24,7 +24,8 @@ class Foursquare < ActiveRecord::Base
   def self.client
     Foursquare2::Client.new(
       :client_id => Setting.foursquare_id,
-      :client_secret => Setting.foursquare_secret
+      :client_secret => Setting.foursquare_secret,
+      :api_version => '20131016'
     )
   end
 
