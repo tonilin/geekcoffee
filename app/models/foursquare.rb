@@ -52,6 +52,10 @@ class Foursquare < ActiveRecord::Base
     json_data["canonicalUrl"]
   end
 
+  def free_wifi?
+    json_data["tags"].include?("free wifi")
+  end
+
 
   def json_data
     @json_data ||= JSON.parse(foursquare_data)

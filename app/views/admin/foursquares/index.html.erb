@@ -13,6 +13,7 @@
     <th> lng </th>
     <th> rating </th>
     <th> shop </th>
+    <th> wifi </th>
   </tr>
   <% @foursquares.each do |foursquare| %>
   <tr>
@@ -24,6 +25,7 @@
     <td><%= foursquare.lat %></td>
     <td><%= foursquare.lng %></td>
     <td><%= foursquare.rating %></td>
+    <td><%= foursquare.free_wifi? %></td>
     <td>
       <%= render :partial => "shop_column", :locals => {:foursquare => foursquare} %>
 
