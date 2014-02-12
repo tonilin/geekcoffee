@@ -1,4 +1,4 @@
-require 'capistrano-unicorn'
+
 
 set :deploy_env, "production"
 set :rails_env,  "production"

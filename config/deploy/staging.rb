@@ -1,4 +1,4 @@
-require 'capistrano-unicorn'
+
 
 set :deploy_to, "/home/apps/#{application}-staging"
 set :deploy_env, "staging"
