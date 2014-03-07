@@ -5,10 +5,10 @@ language: ruby
 rvm:
   - 2.1.0
 env:
-  - DB=postgresql
+  - DB=mysql2
 before_script:
   - cp config/database.travis.yml config/database.yml
-  - psql -c 'create database geekcoffee_test;' -U postgres
+  - mysql -e 'create database geekcoffee_test'
 script: 
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare

@@ -1,5 +1,5 @@
 test:
-  adapter: postgresql
-  encoding: utf8
+  adapter: mysql2
+  encoding: utf8mb4
   database: geekcoffee_test
-  username: postgres
+  username: root
