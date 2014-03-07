@@ -79,6 +79,17 @@ class Versions::V1 < Grape::API
       present @shops, :with => Entities::Shops
     end
 
+    desc "Search Shops"
+    params do
+      optional :per_page, :type => Integer, :default => 100
+      optional :page, :type => Integer, :default => 1
+    end
+    get do
+      @shops = Shop.recent.paginate(:page => params[:page], :per_page => params[:per_page])
+
+      present @shops, :with => Entities::Shops
+    end
+
 
     params do
       requires :id, :type => Integer
