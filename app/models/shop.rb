@@ -35,6 +35,7 @@ class Shop < ActiveRecord::Base
 
   scope :recent, -> { order("id DESC") }
   scope :not_starbucks, -> { where(["is_starbucks = ?", 0]) }
+  scope :search_by_name, ->(query) { where(["name LIKE ?", "%#{query}%"]) }
 
   extend FriendlyId
   friendly_id :name, use: :slugged

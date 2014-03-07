@@ -81,11 +81,12 @@ class Versions::V1 < Grape::API
 
     desc "Search Shops"
     params do
+      requires :query, :type => String
       optional :per_page, :type => Integer, :default => 100
       optional :page, :type => Integer, :default => 1
     end
-    get do
-      @shops = Shop.recent.paginate(:page => params[:page], :per_page => params[:per_page])
+    get "search" do
+      @shops = Shop.search_by_name(params[:query]).recent.paginate(:page => params[:page], :per_page => params[:per_page])
 
       present @shops, :with => Entities::Shops
     end
